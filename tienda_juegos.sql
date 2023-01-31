@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-01-2023 a las 10:20:40
+-- Tiempo de generación: 31-01-2023 a las 12:50:08
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -63,6 +63,14 @@ CREATE TABLE `plataformas` (
   `logotipo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `plataformas`
+--
+
+INSERT INTO `plataformas` (`id`, `nombre`, `activo`, `logotipo`) VALUES
+(1, 'PlayStation 5', 1, 'media/img_plataformas/ps5.png'),
+(2, 'Nintendo Switch', 1, 'media/img_plataformas/switch.png');
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +84,13 @@ CREATE TABLE `usuarios` (
   `pass` varchar(100) NOT NULL,
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `nick`, `pass`, `activo`) VALUES
+(0, 'Administrador', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', 0);
 
 --
 -- Índices para tablas volcadas
@@ -124,13 +139,13 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `plataformas`
 --
 ALTER TABLE `plataformas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
