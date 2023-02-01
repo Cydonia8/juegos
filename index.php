@@ -13,6 +13,9 @@
 <body>
     <?php
         menuEstandar();
+        // include "vistas/recientes.php";
+        // include "controladores/ultimos_juegos.php";
+        
     ?>
 </body>
 </html>

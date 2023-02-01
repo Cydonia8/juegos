@@ -1,6 +1,7 @@
 <?php
-    require_once "../bd/bd.php";
     require_once "../bd/configBD.php";
+    require_once "../bd/bd.php"; 
+
     class juego{
         private $id;
         private $nombre;
@@ -17,7 +18,7 @@
             $this->plataforma=0;
             $this->caratula='';
             $this->fecha_lanzamiento = '';
-            private $activo=0;
+            $this->$activo=0;
         }
 
         public function __get($attr){
@@ -37,6 +38,7 @@
                 $juegos[$i]["caratula"] = $fila["caratula"];
                 $juegos[$i]["fecha"] = $fila["fecha_lanzamiento"];
                 $i++;
+                echo "gika";
             }
             $conexion->close();
             return $juegos;
