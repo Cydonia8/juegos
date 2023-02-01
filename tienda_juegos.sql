@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-01-2023 a las 12:50:08
+-- Tiempo de generación: 01-02-2023 a las 14:23:30
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -50,6 +50,14 @@ CREATE TABLE `juegos` (
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `juegos`
+--
+
+INSERT INTO `juegos` (`id`, `nombre`, `descripcion`, `plataforma`, `caratula`, `fecha_lanzamiento`, `activo`) VALUES
+(1, 'Hogwarts Legacy', 'juegarro de magias y movidas giratorias. qué locura', 1, '../media/img_juegos/hogwarts.jpg', '2023-02-10', 1),
+(2, 'Breath of the Wild', 'un man qua va corriendo pa tos laos haciendo movidas con mucho copyright', 2, '../media/img_juegos/breath.jpg', '2023-01-04', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -68,8 +76,8 @@ CREATE TABLE `plataformas` (
 --
 
 INSERT INTO `plataformas` (`id`, `nombre`, `activo`, `logotipo`) VALUES
-(1, 'PlayStation 5', 1, 'media/img_plataformas/ps5.png'),
-(2, 'Nintendo Switch', 1, 'media/img_plataformas/switch.png');
+(1, 'PlayStation 5', 1, '../media/img_plataformas/ps5.png'),
+(2, 'Nintendo Switch', 1, '../media/img_plataformas/switch.png');
 
 -- --------------------------------------------------------
 
@@ -133,7 +141,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
