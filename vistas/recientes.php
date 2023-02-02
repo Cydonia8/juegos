@@ -16,6 +16,7 @@
                     <div>
                         <img src=\"".adecuar_ruta_foto($datos_ps5[$i]['caratula'])."\">
                     </div>
+                    <div>
                     <h3>".$datos_ps5[$i]['juego']."</h3>
                     <h3>".$datos_ps5[$i]['fecha']."</h3>
                   </div>";
