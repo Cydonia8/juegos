@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once "funciones.php";
+    include "bd/bd.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

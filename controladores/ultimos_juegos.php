@@ -1,5 +1,5 @@
 <?php
-    require_once "bd/bd.php";
+    // require_once "../bd/bd.php";
     require_once "modelos/juego.php";
     $j = new juego();
     $datos = $j->ultimosJuegosPS5();
