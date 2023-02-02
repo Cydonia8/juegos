@@ -1,7 +1,7 @@
 <?php
     class conectar{
-        public static function conectarBD($bdname){
-            $conexion = new mysqli('localhost', 'root', '', $bdname);
+        public static function conectarBD(){
+            $conexion = new mysqli('localhost', 'root', '', "tienda_juegos");
             $conexion->set_charset('utf8');
             return $conexion;
         }

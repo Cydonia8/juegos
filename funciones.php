@@ -11,4 +11,9 @@
                 </nav>
         </header>";
     }
+
+    function adecuar_ruta_foto($ruta){
+        $imagen_rutanueva = preg_replace("`^.{1}`",'',$ruta);
+        return $imagen_rutanueva;
+    }
 ?>

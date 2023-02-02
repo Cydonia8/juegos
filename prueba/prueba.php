@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "funciones.php";
+    require_once "../funciones.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
         menuEstandar();
         // include "vistas/recientes.php";
         // include "controladores/ultimos_juegos.php";
-        include "controladores/ultimos_juegos.php";
+        include "../controladores/ultimos_juegos.php";
         
     ?>
 </body>

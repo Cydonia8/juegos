@@ -1,6 +1,4 @@
-<?php
-    require_once "../bd/configBD.php";
-    require_once "../bd/bd.php"; 
+<?php 
 
     class juego{
         private $id;
@@ -18,7 +16,7 @@
             $this->plataforma=0;
             $this->caratula='';
             $this->fecha_lanzamiento = '';
-            $this->$activo=0;
+            $this->activo=0;
         }
 
         public function __get($attr){
@@ -29,23 +27,23 @@
         }
 
         public function ultimosJuegosPS5(){
-            $conexion = conectar::conectarBD($nombreBD);
+            $conexion = conectar::conectarBD();
             $recientes = $conexion->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 1 order by fecha_lanzamiento desc limit 4");
             $i = 0;
+            $juegos=array();
             while($fila=$recientes->fetch_array(MYSQLI_ASSOC)){
                 $juegos[$i]["juego"] = $fila["juego"];
                 $juegos[$i]["plataforma"] = $fila["plat"];
                 $juegos[$i]["caratula"] = $fila["caratula"];
                 $juegos[$i]["fecha"] = $fila["fecha_lanzamiento"];
                 $i++;
-                echo "gika";
             }
             $conexion->close();
             return $juegos;
         }
 
         public function ultimosJuegosSwitch(){
-            $conexion = conectar::conectarBD($nombreBD);
+            $conexion = conectar::conectarBD();
             $recientes = $conexion->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 2 order by fecha_lanzamiento desc limit 4");
             $i = 0;
             while($fila=$recientes->fetch_array(MYSQLI_ASSOC)){
