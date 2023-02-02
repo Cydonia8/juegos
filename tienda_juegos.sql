@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-02-2023 a las 14:23:30
+-- Tiempo de generación: 02-02-2023 a las 14:21:08
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -55,8 +55,23 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`id`, `nombre`, `descripcion`, `plataforma`, `caratula`, `fecha_lanzamiento`, `activo`) VALUES
-(1, 'Hogwarts Legacy', 'juegarro de magias y movidas giratorias. qué locura', 1, '../media/img_juegos/hogwarts.jpg', '2023-02-10', 1),
-(2, 'Breath of the Wild', 'un man qua va corriendo pa tos laos haciendo movidas con mucho copyright', 2, '../media/img_juegos/breath.jpg', '2023-01-04', 1);
+(1, 'Hogwarts Legacy', 'Juegarro de magias y movidas explosivas. Y además puedes volar, ¿qué le gusta más a un crío que poder volar, aparte de un baptisterio romano del siglo primero? Qué locura.', 1, '../media/img_juegos/hogwarts.png', '2023-02-10', 1),
+(2, 'Breath of the Wild', 'Un man qua va corriendo pa tos laos haciendo movidas con mucho copyright.', 2, '../media/img_juegos/breath.jpg', '2023-01-04', 1),
+(3, 'God of War: Ragnarok', 'Un colega to fuerte que va con su crío buscando un sitio donde clavar la sombrilla, y como no encuentra ningún sitio libre se cabrea que flipas y empieza a repartir hostias a todo el que ve.', 1, '../media/img_juegos/ragnarok.jpg', '2022-12-16', 1),
+(4, 'Horizon: Forbidden West', 'Una muchacha con una lanza y muchos circuitos y movidas va peleándose con dinosaurios de latón porque se ha pasado con las setas.', 1, '../media/img_juegos/horizon.png', '2022-09-14', 1),
+(5, 'SpiderMan: Miles Morales', 'El colega de los saltos ahora es latino. Que a mí me parece genial, pero los fachas no veas, van a convulsionar.', 1, '../media/img_juegos/spiderman.png', '2022-12-14', 1),
+(6, 'Pokemon Arceus', 'Estos hijos de puta de Nintendo hacen los juegos con los ojos cerrados pero les da absolutamente igual porque saben que to dios lo va a comprar. ', 2, '../media/img_juegos/pokemon.jpg', '2022-07-13', 1),
+(7, 'Luigi\'s Mansion 3', 'El hermano de mario, el otro italiano, el rarito, se mete en una casa con fantasmas y se muere de un infarto.', 2, '../media/img_juegos/luigi.jpg', '2022-03-16', 1),
+(8, 'Kirby y la tierra olvidada', 'Nuestro colega Kirby sigue drogándose sin ningún tipo de control ni parpadeo, esas pupilas están cada vez más dilatadas. Su adicción lo ha llevado a una zona inhóspita y desconocida: Almanjáyar. ', 2, '../media/img_juegos/kirby.jpg', '2022-02-09', 1),
+(9, 'Halo Infinite', 'Pues no sé de qué va esto, un pavo con armadura que va pegando tiros supongo y en el espacio, rodeado de una espectacular movida giratoria.', 3, '../media/img_juegos/halo.jpg', '2022-05-17', 1),
+(10, 'The Medium', 'Un juego de susticos que fue criticado. Fantasmas que no dan miedo vaya, lo que te encuentras todos los días cuando vas a clase o al trabajo.', 3, '../media/img_juegos/medium.jpg', '2021-02-10', 1),
+(11, 'Forza Horizon 5', 'Coches que van completamente follados sin ningún tipo de ley ni orden. Como meterte en Salobreña a conducir.', 3, '../media/img_juegos/forza.jpg', '2021-04-09', 1),
+(12, 'FarCry 6', 'Ahora Gus Fring es un dictador latinoamericano. Para nuestra desgracia, ya no tiene Los Pollos Hermanos, ahora sólo dispone de paramilitares que hacen lo que les ordena. Igual que antes.', 3, '../media/img_juegos/farcry.jpg', '2021-09-16', 1),
+(13, 'Beyond Good and Evil', 'Menudo juegardo por dios. De lo mejor que hubo en la play 2. Ya no se hacen juegos así.', 4, '../media/img_juegos/beyond.jpg', '2019-09-11', 1),
+(14, 'Jak II: El Renegado', 'Mi primer juego de PS2. BOF, TREMENDO.', 4, '../media/img_juegos/jak2.webp', '2018-02-16', 1),
+(15, 'Kingdom Hearts II', 'Nos reímos de Nomura pero vaya juegardo se marcó con Kingdom Hearts II. ¿Y la de horas que le eché? No está pagado.', 4, '../media/img_juegos/kh2.jpg', '2018-05-11', 1),
+(16, 'Prince of Persia: Sands of Time', 'Otro juegardo. Vaya época fue la PS2. Este men podía retroceder el tiempo y además hacía parkour, una especie de Ezio Auditore hipertrofiado. Espectacular.', 4, '../media/img_juegos/persia.jpg', '2017-02-16', 1),
+(17, 'The Last Of Us: Part I', 'EL JUEGO.', 1, '../media/img_juegos/tlou.png', '2021-02-17', 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +92,9 @@ CREATE TABLE `plataformas` (
 
 INSERT INTO `plataformas` (`id`, `nombre`, `activo`, `logotipo`) VALUES
 (1, 'PlayStation 5', 1, '../media/img_plataformas/ps5.png'),
-(2, 'Nintendo Switch', 1, '../media/img_plataformas/switch.png');
+(2, 'Nintendo Switch', 1, '../media/img_plataformas/switch.png'),
+(3, 'Xbox Series X', 1, '../media/img_plataformas/xbox.png'),
+(4, 'PlayStation 2', 1, '../media/img_plataformas/ps2.png');
 
 -- --------------------------------------------------------
 
@@ -141,13 +158,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
 --
 ALTER TABLE `plataformas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

@@ -9,39 +9,57 @@
 <body> -->
     <?php
     require_once "funciones.php";
-        echo "<table border>
-                <tr>
-                    <td>Juego</td>
-                    <td>Plataforma</td>
-                    <td>Carátula</td>
-                    <td>Lanzamiento</td>
-                </tr>";
-        for($i= 0;$i<count($datos);$i++){
-            echo "<tr>
-                    <td>".$datos[$i]['juego']."</td>
-                    <td>".$datos[$i]['plataforma']."</td>
-                    <td><img src=\"".adecuar_ruta_foto($datos[$i]['caratula'])."\"></td>
-                    <td>".$datos[$i]['fecha']."</td>
-            </tr>";
+        
+        echo "<article class=\"plataforma\">";
+        for($i= 0;$i<count($datos_ps5);$i++){
+            echo "<div class=\"juego\">
+                    <div>
+                        <img src=\"".adecuar_ruta_foto($datos_ps5[$i]['caratula'])."\">
+                    </div>
+                    <h3>".$datos_ps5[$i]['juego']."</h3>
+                    <h3>".$datos_ps5[$i]['fecha']."</h3>
+                  </div>";
         }
-        echo "</table>";
+        echo "</article>";
 
-        echo "<table border>
-                <tr>
-                    <td>Juego</td>
-                    <td>Plataforma</td>
-                    <td>Carátula</td>
-                    <td>Lanzamiento</td>
-                </tr>";
+        echo "<article class=\"plataforma\">";
         for($i= 0;$i<count($datos_switch);$i++){
-            echo "<tr>
-                    <td>".$datos_switch[$i]['juego']."</td>
-                    <td>".$datos_switch[$i]['plataforma']."</td>
-                    <td><img src=\"".adecuar_ruta_foto($datos_switch[$i]['caratula'])."\"></td>
-                    <td>".$datos_switch[$i]['fecha']."</td>
-            </tr>";
+            echo "<div class=\"juego\">
+                    <div>
+                        <img src=\"".adecuar_ruta_foto($datos_switch[$i]['caratula'])."\">
+                    </div>
+                    <h3>".$datos_switch[$i]['juego']."</h3>
+                    <h3>".$datos_switch[$i]['fecha']."</h3>
+                  </div>";
         }
-        echo "</table>";
+        echo "</article>";
+
+        
+        echo "<article class=\"plataforma\">";
+        for($i= 0;$i<count($datos_xbox);$i++){
+            echo "<div class=\"juego\">
+                    <div>
+                        <img src=\"".adecuar_ruta_foto($datos_xbox[$i]['caratula'])."\">
+                    </div>
+                    <h3>".$datos_xbox[$i]['juego']."</h3>
+                    <h3>".$datos_xbox[$i]['fecha']."</h3>
+                  </div>";
+        }
+        echo "</article>";
+
+        echo "<article class=\"plataforma\">";
+        for($i= 0;$i<count($datos_ps2);$i++){
+            echo "<div class=\"juego\">
+                    <div>
+                        <img src=\"".adecuar_ruta_foto($datos_ps2[$i]['caratula'])."\">
+                    </div>
+                    <h3>".$datos_ps2[$i]['juego']."</h3>
+                    <h3>".$datos_ps2[$i]['fecha']."</h3>
+                  </div>";
+        }
+        echo "</article>";
+
+       
     ?>
 <!-- </body>
 </html> -->
