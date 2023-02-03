@@ -10,15 +10,16 @@
     <?php
     require_once "funciones.php";
         
-        echo "<article class=\"plataforma\">";
+        echo "<article class=\"plataforma row\">";
         for($i= 0;$i<count($datos_ps5);$i++){
-            echo "<div class=\"juego\">
+            echo "<div class=\"juego col-3\">
                     <div>
                         <img src=\"".adecuar_ruta_foto($datos_ps5[$i]['caratula'])."\">
                     </div>
                     <div>
                     <h3>".$datos_ps5[$i]['juego']."</h3>
                     <h3>".$datos_ps5[$i]['fecha']."</h3>
+                    </div>
                   </div>";
         }
         echo "</article>";

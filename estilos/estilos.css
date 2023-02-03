@@ -2,10 +2,9 @@ img{
     width: 60%;
 }
 .plataforma{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    width: 80%;
+    margin: auto;
 }
-.juego{
+/* .juego{
     align-self: center;
-}
+} */
