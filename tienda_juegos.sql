@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-02-2023 a las 14:21:08
+-- Tiempo de generación: 03-02-2023 a las 10:55:03
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -33,6 +33,14 @@ CREATE TABLE `comentario` (
   `fecha` date NOT NULL,
   `texto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`usuario`, `juego`, `fecha`, `texto`) VALUES
+(2, 17, '2022-10-20', 'Kojima San aprueba este juego de vídeo. Buen gameplay, buena música, buenos personajes. Echo en falta cinemáticas de 17 horas, pero no todos podéis ser perfectos como yo.'),
+(3, 4, '2023-02-01', 'Vaya hostias mete la tía esta con la lanza esa to guapa. Mu guapo el juego. Mu guapoooo.');
 
 -- --------------------------------------------------------
 
@@ -115,7 +123,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `nick`, `pass`, `activo`) VALUES
-(0, 'Administrador', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', 0);
+(0, 'Administrador', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', 0),
+(2, 'Hideo Kojima', 'kojisan', 'f2671bcea2e7e2d90dcb2f0ab5ea549b', 1),
+(3, 'Gamer TM', 'geimer', 'f1187e160d3dd9721f2e21a1cf4064db', 1);
 
 --
 -- Índices para tablas volcadas
@@ -170,7 +180,7 @@ ALTER TABLE `plataformas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
