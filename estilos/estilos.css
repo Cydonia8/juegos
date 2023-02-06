@@ -5,6 +5,26 @@ img{
     width: 80%;
     margin: auto;
 }
+.ultimos-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* .juego{
     align-self: center;
 } */
+.carousel{
+    width: 50%;
+    margin: auto;
+    border: 1px solid black;
+}
+.carousel img{
+    max-width: 60%;
+    margin: auto;
+}
+.carousel button{
+    background-color: black;
+}
+.carousel-caption{
+    background-color: rgba(51, 49, 49, 0.616);
+}

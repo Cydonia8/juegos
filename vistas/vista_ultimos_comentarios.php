@@ -11,8 +11,9 @@ echo '<div id="carouselExampleCaptions" class="carousel slide">
          echo' <div class="carousel-item active">
             <img src="'.adecuar_ruta_foto($ultimos_comentarios[$i]['foto']).'" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>'.$ultimos_comentarios[$i]['usuario'].'</h5>
+              <p>'.$ultimos_comentarios[$i]['comentario'].'</p>
+              <span>'.formatearFecha($ultimos_comentarios[$i]['fecha']).'</span>
             </div>
           </div>';
     }

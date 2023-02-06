@@ -16,4 +16,10 @@
         $imagen_rutanueva = preg_replace("`^.{1}`",'',$ruta);
         return $imagen_rutanueva;
     }
+
+    function formatearFecha($fecha){
+        $marcatiempo = strtotime($fecha);
+        $fecha_formateada = date('d-m-Y', $marcatiempo);
+        return $fecha_formateada;
+    }
 ?>
