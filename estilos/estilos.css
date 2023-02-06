@@ -1,5 +1,36 @@
-img{
-    width: 60%;
+@font-face {
+    font-family: 'Optima';
+    src: url('fuentes/optima/Optima\ Medium.ttf');
+}
+header{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+header ul{
+    display: flex;
+    list-style: none;
+}
+header nav{
+    width: 80%;
+}
+.logo-menu{
+    width: 40%;
+}
+h1,h2{
+    font-family: 'Lato', sans-serif;
+}
+.juego img{
+    max-width: 100%;
+    border-radius: 8px;
+    filter: drop-shadow(1px -1px 6px #000);
+}
+.juego img:hover{
+    transform: scale(1.05);
+}
+.juego{
+    font-family: 'Optima';
+    font-weight: bolder;
 }
 .plataforma{
     width: 80%;
@@ -9,6 +40,7 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 /* .juego{
     align-self: center;
@@ -16,13 +48,14 @@ img{
 .carousel{
     width: 50%;
     margin: auto;
-    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(51, 49, 49, 0.616);
 }
 .carousel img{
-    max-width: 60%;
-    margin: auto;
+    max-width: 100%;
+    border-radius: 8px;
 }
-.carousel button{
+.carousel span.carousel-control-prev-icon, span.carousel-control-next-icon{
     background-color: black;
 }
 .carousel-caption{
