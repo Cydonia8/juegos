@@ -23,5 +23,23 @@
     <?php
         menuImprimir($user);
     ?>
+    <main>
+        <?php
+            $current_plataforma;
+            foreach($juegos as $pos=>$juego){
+                $current_plataforma = $juegos[$pos]["plataforma"];
+                if($pos > 0){
+                    if($current_plataforma != $juegos[$pos-1]["plataforma"]){
+                        
+                    }
+                }else{
+    
+                }
+                echo $juegos[$pos]["juego"];
+                echo '<img src="'.$juegos[$pos]['foto'].'">';
+                echo "<br>";
+            }
+        ?>
+    </main>
 </body>
 </html>

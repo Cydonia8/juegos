@@ -62,7 +62,18 @@
 
         public static function todosJuegos(){
             $conexion = conectar::conectarBD();
-            $todos = $conexion->query("select j.nombre juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
+            $todos = $conexion->query("select j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
+            $i = 0;
+            while($fila=$todos->fetch_array(MYSQLI_ASSOC)){
+                $juegos[$i]["juego"] = $fila["juego"];
+                $juegos[$i]["id"] = $fila["id_juego"];
+                $juegos[$i]["foto"] = $fila["caratula"];
+                $juegos[$i]["plataforma"] = $fila["plataforma"];
+                $i++;
+            }
+
+            return $juegos;
+            $conexion->close();
         }
 
         // public function ultimosJuegosSwitch(){
