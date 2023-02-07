@@ -6,16 +6,37 @@ header{
     display: flex;
     width: 100%;
     justify-content: center;
+    padding: 1rem;
+    margin-bottom: 3rem;
 }
 header ul{
     display: flex;
     list-style: none;
+    padding: 0;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+header nav a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+header.bg-black{
+  color: #524099c5;
+
+
 }
 header nav{
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
 .logo-menu{
-    width: 40%;
+    width: 100%;
 }
 h1,h2{
     font-family: 'Lato', sans-serif;
@@ -35,11 +56,18 @@ h1,h2{
 .plataforma{
     width: 80%;
     margin: auto;
+    border: 2px solid #795fe3;
+    border-radius: 20px;
+    padding: 1rem;
+    -webkit-box-shadow: 1px 1px 26px -5px #795fe3;
+    -moz-box-shadow: 1px 1px 26px -5px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 26px -5px #795fe3;
 }
 .ultimos-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
     
 }
 /* .juego{

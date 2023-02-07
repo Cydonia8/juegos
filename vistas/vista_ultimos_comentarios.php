@@ -1,10 +1,15 @@
 <?php
 echo '<div id="carouselExampleCaptions" class="carousel slide">
-<div class="carousel-indicators">
-  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-</div>
+<div class="carousel-indicators">';
+
+foreach($ultimos_comentarios as $posicion=>$comentario){
+  if($posicion == 0){
+    echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'.$posicion.'" class="active" aria-current="true" aria-label="Slide '.$posicion.'"></button>';
+  }else{
+    echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'.$posicion.'" aria-current="true" aria-label="Slide '.$posicion.'"></button>';
+  }
+}
+echo '</div>
 <div class="carousel-inner">';
     for($i=0;$i<count($ultimos_comentarios);$i++){
         if($i == 0){
