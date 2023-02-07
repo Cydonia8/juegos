@@ -9,7 +9,7 @@
 <body> -->
     <?php
         
-        echo "<article class=\"plataforma row\"><h2 class=\"text-center\">Últimos juegos de PS5</h2>";
+        echo "<article class=\"plataforma row\"><h2 class=\"text-left\">Últimos juegos de PS5</h2>";
         for($i= 0;$i<count($datos_ps5);$i++){
             echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                     <div class=\"d-flex justify-content-center\">
@@ -23,7 +23,7 @@
         }
         echo "</article>";
 
-        echo "<article class=\"plataforma row\"><h2 class=\"text-center\">Últimos juegos de Switch</h2>";
+        echo "<article class=\"plataforma row\"><h2 class=\"text-left\">Últimos juegos de Switch</h2>";
         for($i= 0;$i<count($datos_switch);$i++){
             echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                     <div class=\"d-flex justify-content-center\">
@@ -36,7 +36,7 @@
         echo "</article>";
 
         
-        echo "<article class=\"plataforma row\"><h2 class=\"text-center\">Últimos juegos de Xbox Series X</h2>";
+        echo "<article class=\"plataforma row\"><h2 class=\"text-left\">Últimos juegos de Xbox Series X</h2>";
         for($i= 0;$i<count($datos_xbox);$i++){
             echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                     <div class=\"d-flex justify-content-center\">
@@ -48,7 +48,7 @@
         }
         echo "</article>";
 
-        echo "<article class=\"plataforma row\"><h2 class=\"text-center\">Últimos juegos de PS2</h2>";
+        echo "<article class=\"plataforma row\"><h2 class=\"text-left\">Últimos juegos de PS2</h2>";
         for($i= 0;$i<count($datos_ps2);$i++){
             echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                     <div class=\"d-flex justify-content-center\">
@@ -62,5 +62,3 @@
 
        
     ?>
-<!-- </body>
-</html> -->

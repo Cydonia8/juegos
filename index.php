@@ -2,6 +2,8 @@
     session_start();
     require_once "funciones/funciones.php";
     require "bd/bd.php";
+    $user = comprobarVisitante();
+    echo "el usuario es $user,";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@
 </head>
 <body>
     <?php
-        menuEstandar();
+       menuImprimir($user, "index");
         // include "vistas/recientes.php";
         // include "controladores/ultimos_juegos.php";
         

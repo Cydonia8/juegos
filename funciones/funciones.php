@@ -13,6 +13,46 @@
         </header>";
     }
 
+    function menuImprimir($user, $ruta = "noindex"){
+        if($ruta == "noindex"){
+            if($user == "admin"){
+
+            }elseif($user == ""){
+                echo "<header>
+                        <nav>
+                            <ul>
+                                <li><a href=\"../index.php\">Inicio</a></li>
+                                <li><a href=\"../controladores/seccion_juegos.php\">Juegos</a></li>
+                                <li><a href=\"../index.php\"><img class=\"logo-menu\" src=\"media/img_assets/ready.png\"></a></li>
+                                <li><a href=\"../controladores/seccion_plataformas.php\">Plataformas</a></li>
+                                <li><a href=\"../controladores/seccion_acceder.php\">Acceder</a></li>
+                            </ul>
+                        </nav>
+                    </header>";
+            }else{
+                
+            }
+        }else{
+            if($user == "admin"){
+
+            }elseif($user == ""){
+                echo "<header>
+                        <nav>
+                            <ul>
+                                <li><a href=\"index.php\">Inicio</a></li>
+                                <li><a href=\"controladores/seccion_juegos.php\">Juegos</a></li>
+                                <li><a href=\"index.php\"><img class=\"logo-menu\" src=\"media/img_assets/ready.png\"></a></li>
+                                <li><a href=\"controladores/seccion_plataformas.php\">Plataformas</a></li>
+                                <li><a href=\"controladores/seccion_acceder.php\">Acceder</a></li>
+                            </ul>
+                        </nav>
+                    </header>";
+            }else{
+                
+            }
+        }
+    }
+
     function adecuar_ruta_foto($ruta){
         $imagen_rutanueva = preg_replace("`^.{1}`",'',$ruta);
         return $imagen_rutanueva;
@@ -22,5 +62,17 @@
         $marcatiempo = strtotime($fecha);
         $fecha_formateada = date('d-m-Y', $marcatiempo);
         return $fecha_formateada;
+    }
+    function comprobarVisitante(){
+        if(isset($_COOKIE['sesion'])){
+            session_decode($_COOKIE['sesion']);
+            $user = $_SESSION['user'];
+        }elseif(isset($_SESSION['user'])){
+            $user = $_SESSION['user'];
+        }else{
+            $user = "";
+        }
+        
+        return $user;
     }
 ?>
