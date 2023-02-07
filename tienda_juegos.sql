@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2023 a las 14:19:45
+-- Tiempo de generación: 07-02-2023 a las 13:02:49
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -39,6 +39,7 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`usuario`, `juego`, `fecha`, `texto`) VALUES
+(2, 16, '2022-12-16', 'Assassin\'s Creed es una burda copia de este juego. Está guay, pero de nuevo, faltan cinemáticas. Amateurs.'),
 (2, 17, '2022-10-20', 'Kojima San aprueba este juego de vídeo. Buen gameplay, buena música, buenos personajes. Echo en falta cinemáticas de 17 horas, pero no todos podéis ser perfectos como yo.'),
 (3, 3, '2023-02-01', 'Si lo sacan en pc de una puta vez, le mamo la polla a todos los desarrolladore de sony sin falta.'),
 (3, 4, '2023-02-01', 'Vaya hostias mete la tía esta con la lanza esa to guapa. Mu guapo el juego. Mu guapoooo.');
