@@ -89,3 +89,25 @@ h1,h2{
 .carousel-caption{
     background-color: rgba(51, 49, 49, 0.616);
 }
+.contenedor-seccion-juegos{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+/* .contenedor-seccion-juegos .plataforma{
+    display: flex;
+    flex-direction: column;
+    
+}
+.contenedor-seccion-juegos .plataforma .contenedor-flex{
+    display: flex;
+} */
+.contenedor-seccion-juegos .juego img{
+    max-width: 100%;
+}
+#seccion-plataformas .plat img{
+    width: 50%;
+}
+#seccion-plataformas .contenedor-seccion-plataformas{
+    margin: auto;
+}

@@ -19,27 +19,40 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body>
+<body id="seccion-juegos">
     <?php
         menuImprimir($user);
     ?>
     <main>
-        <?php
-            $current_plataforma;
-            foreach($juegos as $pos=>$juego){
-                $current_plataforma = $juegos[$pos]["plataforma"];
-                if($pos > 0){
-                    if($current_plataforma != $juegos[$pos-1]["plataforma"]){
-                        
+        <section class="contenedor-seccion-juegos">
+            <?php
+                $current_plataforma;
+                foreach($juegos as $pos=>$juego){
+                    $current_plataforma = $juegos[$pos]["plataforma"];
+                    if($pos > 0){
+                        if($current_plataforma != $juegos[$pos-1]["plataforma"]){
+                            echo "<div class=\"plataforma row\"><h2>Juegos de ".$current_plataforma."</h2><div class=\"contenedor-flex row\">";
+                        }
+                    }else{
+                        echo "<div class=\"plataforma row\"><h2>Juegos de ".$current_plataforma."</h2><div class=\"contenedor-flex row\">";
                     }
-                }else{
-    
+                    echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
+                        <img src=\"".$juegos[$pos]['foto']."\">
+                        <h4>".$juegos[$pos]["juego"]."</h4>
+                        <span>Ver más...</span>
+                    </div>";
+                    // crearCarrousel($juegos);
+                    // echo $juegos[$pos]["juego"];
+                    // echo '<img src="'.$juegos[$pos]['foto'].'">';
+                    if($pos > 0 and $pos < sizeof($juegos)-1){
+                        if($current_plataforma != $juegos[$pos+1]["plataforma"]){
+                            echo "</div></div>";
+                        }
+                    }
                 }
-                echo $juegos[$pos]["juego"];
-                echo '<img src="'.$juegos[$pos]['foto'].'">';
-                echo "<br>";
-            }
-        ?>
+                echo "</div></div>";
+            ?>
+        </section>
     </main>
 </body>
 </html>
