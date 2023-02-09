@@ -25,8 +25,17 @@
     ?>
     <main>
         <section class="container-xl">
+            <form action="../controladores/seccion_acceder.php" method="post">
+                <input type="text" name="user" placeholder="Usuario">
+                <input type="text" name="pass" placeholder="Contraseña">
+                <input type="submit" name="enviar" value="Acceder">
+            </form>
             <?php
-                
+                if(isset($comprobante)){
+                    if($comprobante == 0){
+                        echo "ladron de mierda";
+                    }
+                }
             ?>
         </section>
     </main>

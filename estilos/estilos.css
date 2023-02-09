@@ -115,3 +115,7 @@ h1,h2{
     border-radius: 8px;
     filter: drop-shadow(1px -1px 6px #000);
 }
+#seccion-plataformas img{
+    filter: drop-shadow(1px -1px 6px #000);
+
+}
