@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2023 a las 13:02:49
+-- Tiempo de generación: 09-02-2023 a las 14:27:32
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -81,7 +81,8 @@ INSERT INTO `juegos` (`id`, `nombre`, `descripcion`, `plataforma`, `caratula`, `
 (14, 'Destroy All Humans', 'Básicamente eres un alien que va reventando yankis, arrancándoles el cerebro y nutriéndote de sus conocimientos. En esencia lo mismo que hacen los propios yankis con el resto del mundo, o Inglaterra y el British Museum con cualquier obra que no es suya.', 4, '../media/img_juegos/destroy.jpg', '2018-02-16', 1),
 (15, 'Grand Theft Auto: San Andreas', 'Vaya juegazo con gráficos sangrantes y una jugabilidad que daban ganas de arrancarse las manos. Toreando a todo el ejército yanki subido en una bici mientras vas vestido con los vaqueros de tu tío Rodolfo y una camiseta de tirantes blanca llena de lamparones. Historia de los videojuegos.', 4, '../media/img_juegos/gta.jpg', '2018-05-11', 1),
 (16, 'Prince of Persia: Sands of Time', 'Otro juegardo. Vaya época fue la PS2. Este men podía retroceder el tiempo y además hacía parkour, una especie de Ezio Auditore hipertrofiado. Espectacular.', 4, '../media/img_juegos/persia.jpg', '2017-02-16', 1),
-(17, 'The Last Of Us: Part I', 'EL JUEGO.', 1, '../media/img_juegos/tlou.jpg', '2021-02-17', 1);
+(17, 'The Last Of Us: Part I', 'EL JUEGO.', 1, '../media/img_juegos/tlou.jpg', '2021-02-17', 1),
+(18, 'Hogwarts Legacy', 'Juegarro de magias y movidas explosivas. Y además puedes volar, ¿qué le gusta más a un crío que poder volar, aparte de un baptisterio romano del siglo primero? Qué locura.', 3, '../media/img_juegos/hogwarts.jpg', '2022-06-15', 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
