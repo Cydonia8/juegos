@@ -39,7 +39,11 @@
                     echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                         <img src=\"".$juegos[$pos]['foto']."\">
                         <h4>".$juegos[$pos]["juego"]."</h4>
-                        <span>Ver más...</span>
+                        <form action=\"../controladores/ver_mas_juego.php\" method=\"post\">
+                            <input hidden name=\"id\" value=\"".$juegos[$pos]["id"]."\">
+                            <input hidden name=\"nombre\" value=\"".$juegos[$pos]["juego"]."\">
+                            <input type=\"submit\" name=\"enviar\" value=\"Ver más\">
+                        </form>
                     </div>";
                     // crearCarrousel($juegos);
                     // echo $juegos[$pos]["juego"];

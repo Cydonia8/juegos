@@ -111,3 +111,7 @@ h1,h2{
 #seccion-plataformas .contenedor-seccion-plataformas{
     margin: auto;
 }
+#ver-mas .juego-info img{
+    border-radius: 8px;
+    filter: drop-shadow(1px -1px 6px #000);
+}

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once "../bd/bd.php";
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
 
@@ -19,15 +20,27 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-acceder">
+<body id="ver-mas">
     <?php
         menuImprimir($user);
     ?>
     <main>
-        <section class="container-xl">
-            <?php
-                
-            ?>
+        <section class="ver-mas-juego container-xl">
+            <div class="juego-info row">
+                <?php
+                    $nombre = $datos[0]["nombre"];
+                    $foto = $datos[0]["foto"];
+                    $descripcion = $datos[0]["descripcion"];
+                    echo "<div class=\"col-12 col-lg-6\"><img class=\"img-fluid\" src=\"$foto\"></div>";
+                    echo "<div class=\"col-12 col-lg-6\">
+                        <h2>$nombre</h2>
+                        <p>$descripcion</p>";
+                    foreach($lanzamientos as $pos=>$lanz){
+                        echo "<h4>Lanzamiento en ".$lanzamientos[$pos]["plataforma"].": ".formatearFecha($lanzamientos[$pos]["fecha"])."</h4>";
+                    }
+                    echo "</div>";
+                ?>
+            </div>
         </section>
     </main>
 </body>

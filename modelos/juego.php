@@ -76,6 +76,32 @@
             $conexion->close();
         }
 
+        public function datosJuego($id){
+            $conexion = conectar::conectarBD();
+            $datos = $conexion->query("select descripcion, caratula, nombre from juegos where id = '$id'");
+            $fila = $datos->fetch_array(MYSQLI_ASSOC);
+            $datos_juego[0]["nombre"] = $fila["nombre"];
+            $datos_juego[0]["foto"] = $fila["caratula"];
+            $datos_juego[0]["descripcion"] = $fila["descripcion"];
+            $conexion->close();
+            return $datos_juego;
+        }
+
+        public function lanzamientosJuego($nombre){
+            $conexion = conectar::conectarBD();
+            $lanzamientos = $conexion->prepare("select fecha_lanzamiento, p.nombre plat from juegos j, plataformas p where j.plataforma = p.id and j.nombre = ? order by fecha_lanzamiento desc");
+            $lanzamientos->bind_param('s', $nombre);
+            $lanzamientos->bind_result($fecha, $plataforma);
+            $lanzamientos->execute();
+            $i=0;
+            while($lanzamientos->fetch()){
+                $lanzamiento[$i]["fecha"] = $fecha;
+                $lanzamiento[$i]["plataforma"] = $plataforma;
+                $i++;
+            }
+            $conexion->close();
+            return $lanzamiento;
+        }
         // public function ultimosJuegosSwitch(){
         //     // $conexion = conectar::conectarBD();
         //     $recientes = $this->bd->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 2 and j.activo = 1 order by fecha_lanzamiento desc limit 4");
