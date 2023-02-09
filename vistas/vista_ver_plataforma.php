@@ -19,25 +19,24 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-plataformas">
+<body id="ver-plataforma">
     <?php
         menuImprimir($user);
+        $nombre_plat = $plat->nombre;
     ?>
     <main>
-        <h1 class="text-center mb-5">Plataformas con las que trabajamos</h1>
-        <section class="contenedor-seccion-plataformas row container-xl">
+        <h1 class="text-center mb-5">Videojuegos de <?php echo $nombre_plat; ?></h1>
+        <section class="contenedor-ver-plataforma row container-xl">
             <?php
-                foreach($plataformas as $pos => $plat){
-                    echo "<div class=\"col-12 col-md-6 plat text-center\">
-                        <a><img src=\"".$plataformas[$pos]["logo"]."\"></a>
-                        <form action=\"../controladores/plataforma_resumen.php\" method=\"post\">
-                            <input hidden name =\"id\" value=\"".$plataformas[$pos]["id"]."\">
-                            <input hidden name=\"foto\" value=\"".$plataformas[$pos]["logo"]."\">
-                            <input hidden name=\"nombre\" value=\"".$plataformas[$pos]["nombre"]."\">
-                            <input type=\"submit\" name=\"enviar\">
-                        </form>
-                    </div>";
+                echo "<table>";
+                foreach($juegos as $pos=>$fila){
+                    echo "<tr>
+                            <td><img class=\"img-fluid\" src=\"".$juegos[$pos]["foto"]."\"></td>
+                            <td>".$juegos[$pos]["nombre"]."</td>
+                            <td>".formatearFecha($juegos[$pos]["fecha"])."</td>
+                          </tr>";
                 }
+                echo "</table>";
             ?>
         </section>
     </main>

@@ -117,5 +117,19 @@ h1,h2{
 }
 #seccion-plataformas img{
     filter: drop-shadow(1px -1px 6px #000);
-
+}
+#seccion-plataformas h1{
+    font-size: 3rem;
+}
+#seccion-plataformas .contenedor-seccion-plataformas div:first-child{
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+}
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2){
+    border-bottom: 3px solid black;
+    padding: 1rem;
+}
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3){
+    border-right: 3px solid black;
+    padding: 1rem;
 }
