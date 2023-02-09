@@ -26,17 +26,20 @@
     ?>
     <main>
         <h1 class="text-center mb-5">Videojuegos de <?php echo $nombre_plat; ?></h1>
-        <section class="contenedor-ver-plataforma row container-xl">
+        <section class="contenedor-ver-plataforma row container-xl mx-auto gap-5">
             <?php
-                echo "<table>";
                 foreach($juegos as $pos=>$fila){
-                    echo "<tr>
-                            <td><img class=\"img-fluid\" src=\"".$juegos[$pos]["foto"]."\"></td>
-                            <td>".$juegos[$pos]["nombre"]."</td>
-                            <td>".formatearFecha($juegos[$pos]["fecha"])."</td>
-                          </tr>";
+                    // col-12 col-lg-6
+                    echo "<article class=\"row \"> 
+                            <div class=\"col-12 col-md-8 text-center\">
+                                <img class=\"img-fluid\" src=\"".$juegos[$pos]["foto"]."\">
+                            </div>
+                            <div class=\"col-12 col-md-4 d-flex flex-column justify-content-center align-items-center\">
+                                <h2>".$juegos[$pos]["nombre"]."</h2>
+                                <h3>Lanzado el ".formatearFecha($juegos[$pos]["fecha"])."</h3>
+                            </div>";
+                    echo "</article>";
                 }
-                echo "</table>";
             ?>
         </section>
     </main>
