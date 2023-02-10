@@ -19,33 +19,31 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="ver-plataforma">
+<body id="seccion-plataformas">
     <?php
         menuImprimir($user);
-        $nombre_plat = $plat->nombre;
     ?>
     <main>
-        <h1 class="text-center mb-5">Videojuegos de <?php echo $nombre_plat; ?></h1>
-        <section class="contenedor-ver-plataforma row container-xl mx-auto gap-5">
-            <?php
-                if(sizeof($juegos) > 0){
-                    foreach($juegos as $pos=>$fila){
-                        // col-12 col-lg-6
-                        echo "<article class=\"row \"> 
-                                <div class=\"col-12 col-md-8 text-center\">
-                                    <img class=\"img-fluid\" src=\"".$juegos[$pos]["foto"]."\">
-                                </div>
-                                <div class=\"col-12 col-md-4 d-flex flex-column justify-content-center align-items-center\">
-                                    <h2>".$juegos[$pos]["nombre"]."</h2>
-                                    <h3>Lanzado el ".formatearFecha($juegos[$pos]["fecha"])."</h3>
-                                </div>";
-                        echo "</article>";
+        <h1 class="text-center mb-5">Plataformas</h1>
+        <section class="">
+            <table border>
+                <tr>
+                    <td>ID de plataforma</td>
+                    <td>Nombre de plataforma</td>
+                    <td>Logotipo de plataforma</td>
+                    <td>Plataforma activa</td>
+                </tr>
+                <?php
+                    foreach($datos as $pos=>$dato){
+                        echo "<tr>
+                                <td class=\"text-center\">".$datos[$pos]["id"]."</td>
+                                <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
+                                <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$datos[$pos]["logo"]."\"></td>
+                                <td class=\"text-center\">".$datos[$pos]["activo"]."</td>
+                        </tr>";
                     }
-                }else{
-                    echo "<h2 class=\"text-center\">No hay juegos de esta plataforma</h2>";
-                }
-                
-            ?>
+                ?>
+            </table>
         </section>
     </main>
 </body>

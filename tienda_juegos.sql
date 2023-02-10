@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2023 a las 14:27:32
+-- Tiempo de generación: 10-02-2023 a las 10:17:32
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -105,7 +105,8 @@ INSERT INTO `plataformas` (`id`, `nombre`, `activo`, `logotipo`) VALUES
 (1, 'PlayStation 5', 1, '../media/img_plataformas/ps5.png'),
 (2, 'Nintendo Switch', 1, '../media/img_plataformas/switch.png'),
 (3, 'Xbox Series X', 1, '../media/img_plataformas/xbox.png'),
-(4, 'PlayStation 2', 1, '../media/img_plataformas/ps2.png');
+(4, 'PlayStation 2', 1, '../media/img_plataformas/ps2.png'),
+(5, 'Steam', 1, '../media/img_plataformas/steam.png');
 
 -- --------------------------------------------------------
 
@@ -127,8 +128,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `nick`, `pass`, `activo`) VALUES
 (0, 'Administrador', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', 0),
-(2, 'Hideo Kojima', 'kojisan', 'f2671bcea2e7e2d90dcb2f0ab5ea549b', 1),
-(3, 'Gamer TM', 'geimer', 'f1187e160d3dd9721f2e21a1cf4064db', 1);
+(2, 'Hideo Kojima', 'kojisan', 'f2671bcea2e7e2d90dcb2f0ab5ea549b', 0),
+(3, 'Gamer TM', 'geimer', 'f1187e160d3dd9721f2e21a1cf4064db', 1),
+(4, 'Neil Druckmann', 'neild', '1d0b794ff83d2d4dbe35214394145b9e', 0);
 
 --
 -- Índices para tablas volcadas
@@ -177,13 +179,13 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `plataformas`
 --
 ALTER TABLE `plataformas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
