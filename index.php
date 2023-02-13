@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once "funciones/funciones.php";
     require "bd/bd.php";
     $user = comprobarVisitante();

@@ -37,5 +37,18 @@
             $desactivacion->close();
             $conexion->close();
         }
+
+        public function sacarIDUsuario($nick){
+            $conexion = conectar::conectarBD();
+            $consulta = $conexion->prepare("select id from usuarios where nick = ?");
+            $consulta->bind_param('s', $nick);
+            $consulta->bind_result($id);
+            $consulta->execute();
+            $consulta->fetch();
+            $consulta->close();
+            $conexion->close();
+
+            return $id;
+        }
     }
 ?>

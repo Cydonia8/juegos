@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
 
@@ -42,6 +41,7 @@
                         <form action=\"../controladores/ver_mas_juego.php\" method=\"post\">
                             <input hidden name=\"id\" value=\"".$juegos[$pos]["id"]."\">
                             <input hidden name=\"nombre\" value=\"".$juegos[$pos]["juego"]."\">
+                            <input hidden name=\"plat\" value=\"".$juegos[$pos]["id_plat"]."\">
                             <input type=\"submit\" name=\"enviar\" value=\"Ver más\">
                         </form>
                     </div>";

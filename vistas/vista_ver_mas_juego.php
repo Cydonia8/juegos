@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     require_once "../bd/bd.php";
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
@@ -30,6 +30,7 @@
                 <?php
                     $nombre = $datos[0]["nombre"];
                     $foto = $datos[0]["foto"];
+                    $id_juego = $datos[0]["id"];
                     $descripcion = $datos[0]["descripcion"];
                     echo "<div class=\"col-12 col-lg-6\"><img class=\"img-fluid\" src=\"$foto\"></div>";
                     echo "<div class=\"col-12 col-lg-6\">
@@ -40,6 +41,26 @@
                     }
                     echo "</div>";
                 ?>
+            </div>
+            <div class="comentarios container-xl row">
+                <?php
+                    if($user != "" and $user != "admin"){
+                        if(sizeof($comentarios) > 0){
+                            foreach($comentarios as $pos=>$coment){
+                                echo "<article class=\"col-12 col-md-6\">
+                                    <h4>".$comentarios[$pos]["usuario"]."</h4>
+                                    <p>".$comentarios[$pos]["texto"]."</p>
+                                    <h3>".formatearFecha($comentarios[$pos]["fecha"])."</h3>
+                                </article>";
+                            }
+                        }
+                    }
+                ?>
+                <form action="../controladores/insertar_comentario.php" method="post">
+                    <input type="textarea" placeholder="Comentario..." name="comentario">
+                    <input hidden value="<?php echo $id_juego; ?>" name="juego">
+                    <input type="submit" name="enviar" value="comentar">
+                </form>
             </div>
         </section>
     </main>

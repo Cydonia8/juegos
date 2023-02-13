@@ -62,13 +62,14 @@
 
         public static function todosJuegos(){
             $conexion = conectar::conectarBD();
-            $todos = $conexion->query("select j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
+            $todos = $conexion->query("select p.id id_plat, j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
             $i = 0;
             while($fila=$todos->fetch_array(MYSQLI_ASSOC)){
                 $juegos[$i]["juego"] = $fila["juego"];
                 $juegos[$i]["id"] = $fila["id_juego"];
                 $juegos[$i]["foto"] = $fila["caratula"];
                 $juegos[$i]["plataforma"] = $fila["plataforma"];
+                $juegos[$i]["id_plat"] = $fila["id_plat"];
                 $i++;
             }
 
@@ -78,15 +79,25 @@
 
         public function datosJuego($id){
             $conexion = conectar::conectarBD();
-            $datos = $conexion->query("select descripcion, caratula, nombre from juegos where id = '$id'");
+            $datos = $conexion->query("select id, descripcion, caratula, nombre from juegos where id = '$id'");
             $fila = $datos->fetch_array(MYSQLI_ASSOC);
             $datos_juego[0]["nombre"] = $fila["nombre"];
             $datos_juego[0]["foto"] = $fila["caratula"];
             $datos_juego[0]["descripcion"] = $fila["descripcion"];
+            $datos_juego[0]["id"] = $fila["id"];
             $conexion->close();
             return $datos_juego;
         }
 
+        public function datosRecargaJuego($id){
+            $conexion = conectar::conectarBD();
+            $datos = $conexion->query("select j.nombre juego, p.id plat from juegos j, plataformas p where p.id = j.plataforma and j.id = '$id'");
+            $fila = $datos->fetch_array(MYSQLI_ASSOC);
+            $datos_j[0]["juego"] = $fila["juego"];
+            $datos_j[0]["plataforma"] = $fila["plat"];
+            $conexion->close();
+            return $datos_j;
+        }
         public function lanzamientosJuego($nombre){
             $conexion = conectar::conectarBD();
             $lanzamientos = $conexion->prepare("select fecha_lanzamiento, p.nombre plat from juegos j, plataformas p where j.plataforma = p.id and j.nombre = ? order by fecha_lanzamiento desc");

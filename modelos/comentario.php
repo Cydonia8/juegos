@@ -34,5 +34,30 @@
             }
             return $comentarios;
         }
+
+        public function comentariosJuego($id, $plat){
+            $comentarios = $this->bd->prepare("select texto, fecha, u.nombre usuario, j.nombre juego from comentario c, juegos j, usuarios u where c.juego = j.id and c.usuario = u.id and c.juego = ? and j.plataforma = ?");
+            $comentarios->bind_param('ii', $id, $plat);
+            $comentarios->bind_result($texto, $fecha, $usuario, $juego);
+            $comentarios->execute();
+            $i=0;
+            $coments = array();
+            while($comentarios->fetch()){
+                $coments[$i]["texto"] = $texto;
+                $coments[$i]["fecha"] = $fecha;
+                $coments[$i]["usuario"] = $usuario;
+                $coments[$i]["juego"] = $juego;
+                $i++;
+            }
+            $comentarios->close();
+            return $coments;
+        }
+
+        public function insertarComentario($usuario, $juego, $texto, $fecha){
+            $insertar = $this->bd->prepare("insert into comentario values (?, ?, ?, ?)");
+            $insertar->bind_param('iiss', $usuario, $juego, $texto, $fecha);
+            $insertar->execute();
+            $insertar->close();
+        }
     }
 ?>

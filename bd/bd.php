@@ -1,4 +1,5 @@
 <?php
+session_start();
     class conectar{
         public static function conectarBD(){
             $conexion = new mysqli('localhost', 'root', '', "tienda_juegos");
