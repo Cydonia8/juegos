@@ -127,5 +127,15 @@
         }
         return $salida;
     }
+    function imprimirPlataforma($array){
+        foreach($array as $pos=>$dato){
+            echo "<tr>
+                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$array[$pos]["logo"]."\"></td>
+                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>
+            </tr>";
+        }
+    }
 
 ?>

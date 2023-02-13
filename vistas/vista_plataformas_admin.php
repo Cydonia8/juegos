@@ -38,23 +38,25 @@
                 </tr>
                 <?php
                     if(isset($resultados)){
-                        foreach($resultados as $pos=>$dato){
-                            echo "<tr>
-                                    <td class=\"text-center\">".$resultados[$pos]["id"]."</td>
-                                    <td class=\"text-center\">".$resultados[$pos]["nombre"]."</td>
-                                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$resultados[$pos]["logo"]."\"></td>
-                                    <td class=\"text-center\">".usuarioActivo($resultados[$pos]["activo"])."</td>
-                            </tr>";
-                        }
+                        imprimirPlataforma($resultados);
+                        // foreach($resultados as $pos=>$dato){
+                        //     echo "<tr>
+                        //             <td class=\"text-center\">".$resultados[$pos]["id"]."</td>
+                        //             <td class=\"text-center\">".$resultados[$pos]["nombre"]."</td>
+                        //             <td class=\"text-center\"><img class=\"w-50\" src=\"".$resultados[$pos]["logo"]."\"></td>
+                        //             <td class=\"text-center\">".usuarioActivo($resultados[$pos]["activo"])."</td>
+                        //     </tr>";
+                        // }
                     }else{
-                        foreach($datos as $pos=>$dato){
-                            echo "<tr>
-                                    <td class=\"text-center\">".$datos[$pos]["id"]."</td>
-                                    <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
-                                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$datos[$pos]["logo"]."\"></td>
-                                    <td class=\"text-center\">".usuarioActivo($datos[$pos]["activo"])."</td>
-                            </tr>";
-                        }
+                        imprimirPlataforma($datos);
+                        // foreach($datos as $pos=>$dato){
+                        //     echo "<tr>
+                        //             <td class=\"text-center\">".$datos[$pos]["id"]."</td>
+                        //             <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
+                        //             <td class=\"text-center\"><img class=\"w-50\" src=\"".$datos[$pos]["logo"]."\"></td>
+                        //             <td class=\"text-center\">".usuarioActivo($datos[$pos]["activo"])."</td>
+                        //     </tr>";
+                        // }
                     }
                     
                 ?>
