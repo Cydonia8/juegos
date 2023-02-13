@@ -18,16 +18,27 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-acceder">
+<body id="seccion-comentarios-admin">
     <?php
         menuImprimir($user);
     ?>
     <main>
-        <section class="container-xl">
+        <section class="container-xl g-3 mx-auto row justify-content-center justify-content-md-start">
             <?php
                 foreach($comentarios as $pos=>$coment){
-                    echo "<h2>Comentario de ".$comentarios[$pos]["juego"]."</h2>
-                    <p>".$comentarios[$pos]["texto"]."</p>";
+                    echo "<div class=\"card col-12 col-md-4 g-3\" style=\"width: 18rem;\">
+                            <div class=\"card-body\">
+                            <h5 class=\"card-title\">Comentario de ".$comentarios[$pos]["juego"]."</h5>
+                            <h6 class=\"card-subtitle mb-2 text-muted\">".formatearFecha($comentarios[$pos]["fecha"])."/".$comentarios[$pos]["usuario"]."</h6>
+                            <p class=\"card-text\">".$comentarios[$pos]["texto"]."</p>
+                            <form action=\"../controladores/eliminar_comentario.php\" class=\"card-link\" method=\"post\">
+                                <input hidden value=\"".$comentarios[$pos]["juego"]."\" name=\"juego\">
+                                <input hidden value=\"".$comentarios[$pos]["texto"]."\" name=\"texto\">
+                                <input hidden value=\"".$comentarios[$pos]["usuario"]."\" name=\"usuario\">
+                                <input type=\"submit\" name=\"enviar\" value=\"Eliminar\">
+                            </form>
+                            </div>
+                        </div>";
                 }
             ?>
         </section>

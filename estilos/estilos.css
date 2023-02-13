@@ -137,3 +137,6 @@ h1,h2{
     border-radius: 8px;
     filter: drop-shadow(1px -1px 6px #000);
 }
+#seccion-comentarios-admin .container-xl{
+    gap: 2rem;
+}

@@ -45,6 +45,11 @@
             <div class="comentarios container-xl row">
                 <?php
                     if($user != "" and $user != "admin"){
+                        echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                        <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
+                        <input hidden value=\"$id_juego\" name=\"juego\">
+                        <input type=\"submit\" name=\"enviar\" value=\"comentar\">
+                        </form>";
                         if(sizeof($comentarios) > 0){
                             foreach($comentarios as $pos=>$coment){
                                 echo "<article class=\"col-12 col-md-6\">
@@ -54,11 +59,11 @@
                                 </article>";
                             }
                         }
-                        echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
-                        <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
-                        <input hidden value=\"$id_juego\" name=\"juego\">
-                        <input type=\"submit\" name=\"enviar\" value=\"comentar\">
-                    </form>";
+                    //     echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                    //     <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
+                    //     <input hidden value=\"$id_juego\" name=\"juego\">
+                    //     <input type=\"submit\" name=\"enviar\" value=\"comentar\">
+                    // </form>";
                     }
                 ?>
                 <!-- <form action="../controladores/insertar_comentario.php" method="post">

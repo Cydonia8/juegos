@@ -61,19 +61,35 @@
         }
 
         public function getComentarios(){
-            $comentarios = $this->bd->query("select texto, j.nombre juego, u.nombre usuario, fecha from comentario c, juegos j, usuarios u where c.juego = j.id and c.usuario = u.id");
+            $comentarios = $this->bd->query("select texto, j.nombre juego, u.nick usuario, fecha from comentario c, juegos j, usuarios u where c.juego = j.id and c.usuario = u.id");
             $i = 0;
             while($fila = $comentarios->fetch_array(MYSQLI_ASSOC)){
                 $comentario[$i]["texto"] = $fila["texto"];
                 $comentario[$i]["juego"] = $fila["juego"];
                 $comentario[$i]["usuario"] = $fila["usuario"];
+                $comentario[$i]["fecha"] = $fila["fecha"];
                 $i++;
             }
             return $comentario;
         }
 
         public function getDatosBorrar($texto, $juego, $usuario){
+            $datos = $this->bd->prepare("select usuario, juego from comentario c, juegos j, usuarios u where c.usuario = u.id and c.juego = j.id and texto = ? and u.nick = ? and j.nombre = ?");
+            $datos->bind_param('sss', $texto, $usuario, $juego);
+            $datos->bind_result($usuario_id, $juego_id);
+            $datos->execute();
+            $datos->fetch();
+            $codigos[0]["usuario"] = $usuario_id;
+            $codigos[0]["juego"] = $juego_id;
+            $datos->close();
+            return $codigos;
+        }
 
+        public function eliminarComentario($texto, $juego, $usuario){
+            $sentencia = $this->bd->prepare("delete from comentario where texto = ? and juego = ? and usuario = ?");
+            $sentencia->bind_param('sii', $texto, $juego, $usuario);
+            $sentencia->execute();
+            $sentencia->close();
         }
     }
 ?>
