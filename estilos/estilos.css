@@ -140,3 +140,6 @@ h1,h2{
 #seccion-comentarios-admin .container-xl{
     gap: 2rem;
 }
+#seccion-comentarios-admin .card{
+    filter: drop-shadow(1px -1px 4px #000);
+}

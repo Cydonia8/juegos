@@ -63,6 +63,7 @@
         public function getComentarios(){
             $comentarios = $this->bd->query("select texto, j.nombre juego, u.nick usuario, fecha from comentario c, juegos j, usuarios u where c.juego = j.id and c.usuario = u.id");
             $i = 0;
+            $comentario = array();
             while($fila = $comentarios->fetch_array(MYSQLI_ASSOC)){
                 $comentario[$i]["texto"] = $fila["texto"];
                 $comentario[$i]["juego"] = $fila["juego"];
