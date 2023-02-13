@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     require "../bd/bd.php";
     require "../modelos/acceso.php";
     if(isset($_POST["enviar"])){

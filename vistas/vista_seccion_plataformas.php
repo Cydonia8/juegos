@@ -28,7 +28,7 @@
             <?php
                 foreach($plataformas as $pos => $plat){
                     echo "<div class=\"col-12 col-md-6 plat text-center\">
-                        <a><img src=\"".$plataformas[$pos]["logo"]."\"></a>
+                        <img src=\"".$plataformas[$pos]["logo"]."\">
                         <form action=\"../controladores/plataforma_resumen.php\" method=\"post\">
                             <input hidden name =\"id\" value=\"".$plataformas[$pos]["id"]."\">
                             <input hidden name=\"foto\" value=\"".$plataformas[$pos]["logo"]."\">

@@ -111,6 +111,11 @@ h1,h2{
 #seccion-plataformas .contenedor-seccion-plataformas{
     margin: auto;
 }
+#seccion-plataformas .contenedor-seccion-plataformas input{
+    font-size: 1.3rem;
+    padding: 0.6rem;
+    z-index: 100;
+}
 #ver-mas .juego-info img{
     border-radius: 8px;
     filter: drop-shadow(1px -1px 6px #000);
@@ -142,4 +147,8 @@ h1,h2{
 }
 #seccion-comentarios-admin .card{
     filter: drop-shadow(1px -1px 4px #000);
+}
+
+#ver-mas .comentarios input[type="text"]{
+    width: 90%;
 }

@@ -42,14 +42,28 @@
                     echo "</div>";
                 ?>
             </div>
-            <div class="comentarios container-xl row">
+            <div class="comentarios container-xl mt-5 row">
                 <?php
                     if($user != "" and $user != "admin"){
-                        echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
-                        <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
-                        <input hidden value=\"$id_juego\" name=\"juego\">
-                        <input type=\"submit\" name=\"enviar\" value=\"comentar\">
-                        </form>";
+                        echo "<p>
+                        <button class=\"btn btn-dark\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapseExample\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+                          Añadir comentario
+                        </button>
+                      </p>
+                      <div class=\"collapse\" id=\"collapseExample\">
+                        <div class=\"card card-body\">
+                            <form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                                <input type=\"text\" placeholder=\"Comentario...\" name=\"comentario\">
+                                <input hidden value=\"$id_juego\" name=\"juego\">
+                                <input type=\"submit\" name=\"enviar\" value=\"Comentar\">
+                            </form>
+                        </div>
+                      </div>";
+                        // echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                        // <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
+                        // <input hidden value=\"$id_juego\" name=\"juego\">
+                        // <input type=\"submit\" name=\"enviar\" value=\"comentar\">
+                        // </form>";
                         if(sizeof($comentarios) > 0){
                             foreach($comentarios as $pos=>$coment){
                                 echo "<article class=\"col-12 col-md-6\">
