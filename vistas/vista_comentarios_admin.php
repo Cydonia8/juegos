@@ -18,31 +18,18 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-plataformas">
+<body id="seccion-acceder">
     <?php
         menuImprimir($user);
     ?>
     <main>
-        <h1 class="text-center mb-5">Plataformas</h1>
-        <section class="">
-            <table border>
-                <tr>
-                    <td>ID de plataforma</td>
-                    <td>Nombre de plataforma</td>
-                    <td>Logotipo de plataforma</td>
-                    <td>Plataforma activa</td>
-                </tr>
-                <?php
-                    foreach($datos as $pos=>$dato){
-                        echo "<tr>
-                                <td class=\"text-center\">".$datos[$pos]["id"]."</td>
-                                <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
-                                <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$datos[$pos]["logo"]."\"></td>
-                                <td class=\"text-center\">".$datos[$pos]["activo"]."</td>
-                        </tr>";
-                    }
-                ?>
-            </table>
+        <section class="container-xl">
+            <?php
+                foreach($comentarios as $pos=>$coment){
+                    echo "<h2>Comentario de ".$comentarios[$pos]["juego"]."</h2>
+                    <p>".$comentarios[$pos]["texto"]."</p>";
+                }
+            ?>
         </section>
     </main>
 </body>

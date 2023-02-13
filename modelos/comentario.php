@@ -59,5 +59,21 @@
             $insertar->execute();
             $insertar->close();
         }
+
+        public function getComentarios(){
+            $comentarios = $this->bd->query("select texto, j.nombre juego, u.nombre usuario, fecha from comentario c, juegos j, usuarios u where c.juego = j.id and c.usuario = u.id");
+            $i = 0;
+            while($fila = $comentarios->fetch_array(MYSQLI_ASSOC)){
+                $comentario[$i]["texto"] = $fila["texto"];
+                $comentario[$i]["juego"] = $fila["juego"];
+                $comentario[$i]["usuario"] = $fila["usuario"];
+                $i++;
+            }
+            return $comentario;
+        }
+
+        public function getDatosBorrar($texto, $juego, $usuario){
+
+        }
     }
 ?>

@@ -54,13 +54,18 @@
                                 </article>";
                             }
                         }
+                        echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                        <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
+                        <input hidden value=\"$id_juego\" name=\"juego\">
+                        <input type=\"submit\" name=\"enviar\" value=\"comentar\">
+                    </form>";
                     }
                 ?>
-                <form action="../controladores/insertar_comentario.php" method="post">
+                <!-- <form action="../controladores/insertar_comentario.php" method="post">
                     <input type="textarea" placeholder="Comentario..." name="comentario">
-                    <input hidden value="<?php echo $id_juego; ?>" name="juego">
+                    <input hidden value="" name="juego">
                     <input type="submit" name="enviar" value="comentar">
-                </form>
+                </form> -->
             </div>
         </section>
     </main>

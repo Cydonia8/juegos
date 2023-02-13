@@ -24,7 +24,7 @@
                                 <li><a href=\"../controladores/plataformas_admin.php\">Plataformas</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"../media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"../controladores/seccion_usuarios.php\">Usuarios</a></li>
-                                <li><a href=\"../controladores/seccion_comentarios.php\">Comentarios</a></li>
+                                <li><a href=\"../controladores/comentarios_admin.php\">Comentarios</a></li>
                                 <li><a href=\"../controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
                             </ul>
                         </nav>
@@ -64,7 +64,7 @@
                                 <li><a href=\"controladores/plataformas_admin.php\">Plataformas</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_usuarios.php\">Usuarios</a></li>
-                                <li><a href=\"controladores/seccion_comentarios.php\">Comentarios</a></li>
+                                <li><a href=\"controladores/comentarios_admin.php\">Comentarios</a></li>
                                 <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
                             </ul>
                         </nav>
