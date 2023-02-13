@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-02-2023 a las 10:17:32
+-- Tiempo de generación: 13-02-2023 a las 10:59:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -42,7 +42,14 @@ INSERT INTO `comentario` (`usuario`, `juego`, `fecha`, `texto`) VALUES
 (2, 16, '2022-12-16', 'Assassin\'s Creed es una burda copia de este juego. Está guay, pero de nuevo, faltan cinemáticas. Amateurs.'),
 (2, 17, '2022-10-20', 'Kojima San aprueba este juego de vídeo. Buen gameplay, buena música, buenos personajes. Echo en falta cinemáticas de 17 horas, pero no todos podéis ser perfectos como yo.'),
 (3, 3, '2023-02-01', 'Si lo sacan en pc de una puta vez, le mamo la polla a todos los desarrolladore de sony sin falta.'),
-(3, 4, '2023-02-01', 'Vaya hostias mete la tía esta con la lanza esa to guapa. Mu guapo el juego. Mu guapoooo.');
+(3, 4, '2023-02-01', 'Vaya hostias mete la tía esta con la lanza esa to guapa. Mu guapo el juego. Mu guapoooo.'),
+(3, 7, '2023-02-13', 'mario'),
+(3, 8, '2023-02-13', 'No me gusta este muñeco, da miedo'),
+(3, 13, '2023-02-13', 'EL JUEGARDO'),
+(3, 14, '2023-02-13', 'el alien calvo'),
+(3, 15, '2023-02-13', 'los niggas'),
+(3, 18, '2022-04-20', 'Magia es la que necesito yo para follar de una vez.'),
+(4, 16, '2022-07-21', 'Los persas son casi como los moros. Inmigrantes fuera.');
 
 -- --------------------------------------------------------
 
@@ -140,7 +147,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `nick`, `pass`, `activo`) VALUES
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD PRIMARY KEY (`usuario`,`juego`),
+  ADD PRIMARY KEY (`usuario`,`juego`,`texto`),
   ADD KEY `ce_com_jue` (`juego`);
 
 --
