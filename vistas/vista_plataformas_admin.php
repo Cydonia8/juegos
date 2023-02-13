@@ -18,14 +18,18 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-plataformas">
+<body id="seccion-plataformas-admin">
     <?php
         menuImprimir($user);
     ?>
     <main>
         <h1 class="text-center mb-5">Plataformas</h1>
         <section class="">
-            <table border>
+            <form action="../controladores/busqueda_admin.php" method="post">
+                <input type="text" name="nombre" placeholder="Nombre de plataforma">
+                <input type="submit" name="buscar-plat" value="Buscar">
+            </form>
+            <table class="mx-auto w-50 text-center">
                 <tr>
                     <td>ID de plataforma</td>
                     <td>Nombre de plataforma</td>
@@ -33,14 +37,26 @@
                     <td>Plataforma activa</td>
                 </tr>
                 <?php
-                    foreach($datos as $pos=>$dato){
-                        echo "<tr>
-                                <td class=\"text-center\">".$datos[$pos]["id"]."</td>
-                                <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
-                                <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$datos[$pos]["logo"]."\"></td>
-                                <td class=\"text-center\">".$datos[$pos]["activo"]."</td>
-                        </tr>";
+                    if(isset($resultados)){
+                        foreach($resultados as $pos=>$dato){
+                            echo "<tr>
+                                    <td class=\"text-center\">".$resultados[$pos]["id"]."</td>
+                                    <td class=\"text-center\">".$resultados[$pos]["nombre"]."</td>
+                                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$resultados[$pos]["logo"]."\"></td>
+                                    <td class=\"text-center\">".usuarioActivo($resultados[$pos]["activo"])."</td>
+                            </tr>";
+                        }
+                    }else{
+                        foreach($datos as $pos=>$dato){
+                            echo "<tr>
+                                    <td class=\"text-center\">".$datos[$pos]["id"]."</td>
+                                    <td class=\"text-center\">".$datos[$pos]["nombre"]."</td>
+                                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$datos[$pos]["logo"]."\"></td>
+                                    <td class=\"text-center\">".usuarioActivo($datos[$pos]["activo"])."</td>
+                            </tr>";
+                        }
                     }
+                    
                 ?>
             </table>
         </section>

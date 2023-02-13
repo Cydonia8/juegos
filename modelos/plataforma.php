@@ -50,5 +50,26 @@
             $conexion->close();
             return $juego;
         }
+
+        public function buscarPlataforma($patron){
+            $cadena_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->prepare("select nombre, logotipo, id, activo from plataformas where nombre like ?");
+            $sentencia->bind_param('s', $cadena_busqueda);
+            $sentencia->bind_result($nombre, $logotipo, $id, $activo);
+            $sentencia->execute();
+            $resultados = array();
+            $i=0;
+            while($sentencia->fetch()){
+                $resultados[$i]["nombre"] = $nombre;
+                $resultados[$i]["logo"] = $logotipo;
+                $resultados[$i]["id"] = $id;
+                $resultados[$i]["activo"] = $activo;
+                $i++;
+            }
+            $sentencia->close();
+            $conexion->close();
+            return $resultados;
+        }
     }
 ?>

@@ -152,3 +152,20 @@ h1,h2{
 #ver-mas .comentarios input[type="text"]{
     width: 90%;
 }
+#seccion-plataformas-admin table{
+    border-collapse: collapse;
+    font-weight: bold;
+}
+#seccion-plataformas-admin table td{
+    padding: 1rem;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+#seccion-plataformas-admin table td:last-of-type{
+    border-bottom: 2px solid;
+    border-right: none;
+}
+#seccion-plataformas-admin table tr:nth-child(2n){
+    background-color:#795fe35d;
+}
