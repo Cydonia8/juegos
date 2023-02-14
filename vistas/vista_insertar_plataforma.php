@@ -30,11 +30,10 @@
             </button>
         <h1 class="text-center mb-5">Insertar plataforma</h1>
         <section class="">
-            <form action="../controladores/insercion_admin.php" method="post">
+            <form action="../controladores/insercion_admin.php" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Nombre" name="nombre" required>
-                <input type="text" placeholder="Nombre de usuario" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass" required>
-                <input type="submit" name="insertar-usuario" value="Insertar">
+                <input type="file" name="logo" required>
+                <input type="submit" name="insertar-plat" value="Insertar">
             </form>
         </section>
         <?php

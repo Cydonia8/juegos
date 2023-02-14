@@ -23,6 +23,31 @@
         include "../vistas/vista_insertar_usuario.php";
         
     }elseif(isset($_POST["insertar-plat"])){
-        
+        $nombre = $_POST["nombre"];
+        $ruta_original = $_FILES["logo"]["tmp_name"];
+        $tamanio = $_FILES["logo"]["size"];
+        $extension = $_FILES["logo"]["type"];
+        $success;
+
+        if(!cadenaVacia($nombre)){
+            if(comprobarTamanio($tamanio) and comprobarExtension($extension)){
+                $nuevo_nombre;
+                switch($extension){
+                    case "image/jpeg":
+                        $nuevo_nombre = $nombre.".jpeg";
+                        break;
+                    case "image/png":
+                        $nuevo_nombre = $nombre.".png";
+                        break;
+                }
+                $foto = "../media/img_plataformas/".$nuevo_nombre;
+                move_uploaded_file($ruta_original, $foto);
+            }
+            $plat = new plataforma();
+            $plat->insertarPlataforma($nombre, $foto);
+            $success = true;
+        }else{
+            $success = false;
+        }
     }
 ?>

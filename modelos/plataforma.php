@@ -94,5 +94,15 @@
             $modificar->close();
             $conexion->close();
         }
+
+        public function insertarPlataforma($nombre, $logo){
+            $conexion = conectar::conectarBD();
+            $activo = 1;
+            $insertar = $conexion->prepare("insert into plataformas values ('',?,?,?)");
+            $insertar->bind_param('sis',$nombre, $activo, $logo);
+            $insertar->execute();
+            $insertar->close();
+            $conexion->close();
+        }
     }
 ?>
