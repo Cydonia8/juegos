@@ -98,7 +98,6 @@
         public function getDatosUsuario($id){
             $conexion = conectar::conectarBD();
             $sentencia = $conexion->query("select id, nombre, nick, pass from usuarios where id = '$id'");
-            $resultado;
             $i=0;
             while($fila=$sentencia->fetch_array(MYSQLI_ASSOC)){
                 $resultado[$i]["id"] = $fila["id"];
@@ -113,8 +112,11 @@
 
         public function modificarUsuario($id, $nombre, $nick, $pass){
             $conexion = conectar::conectarBD();
-            $modificar = $conexion->prepare("update usuarios set nombre = ? and nick = ? and pass = ? where id = ?");
-            $modificar->bind_param();
+            $modificar = $conexion->prepare("update usuarios set nombre = ?, nick = ?, pass = ? where id = ?");
+            $modificar->bind_param('sssi', $nombre, $nick, $pass, $id);
+            $modificar->execute();
+            $modificar->close();
+            $conexion->close();
         }
     }
 ?>

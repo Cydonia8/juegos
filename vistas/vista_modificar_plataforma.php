@@ -23,24 +23,28 @@
 <body id="seccion-usuarios">
     <?php
         menuImprimir($user);
+        $nombre = $datos[0]["nombre"];
+        $logo = $datos[0]["logo"];
+        $id = $datos[0]["id"];
     ?>
     <main>
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        <h1 class="text-center mb-5">Insertar plataforma</h1>
+        <h1 class="text-center mb-5">Modificar plataforma</h1>
         <section class="">
-            <form action="../controladores/insercion_admin.php" method="post">
-                <input type="text" placeholder="Nombre" name="nombre" required>
-                <input type="text" placeholder="Nombre de usuario" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass" required>
-                <input type="submit" name="insertar-usuario" value="Insertar">
+            <form action="../controladores/modificacion_admin.php" method="post" enctype="multipart/form-data">
+                <input type="text" value="<?php echo $nombre; ?>" name="nombre" required>
+                <input type="file" value="<?php echo $logo; ?>" name="logo">
+                <input hidden value="<?php echo $id; ?>" name="id">
+                <input hidden value="<?php echo $logo ?>" name="logo-original">
+                <input type="submit" name="modificacion-plat" value="Modificar">
             </form>
         </section>
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales\">Usuario insertado</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Plataforma modificada</h3>";
                 }else{
                     echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
                 }

@@ -19,9 +19,10 @@
             $success = true;
         }else{
             $success = false;
-            echo "que no, a chuparla";
         }
         include "../vistas/vista_insertar_usuario.php";
+        
+    }elseif(isset($_POST["insertar-plat"])){
         
     }
 ?>

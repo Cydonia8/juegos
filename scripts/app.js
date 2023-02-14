@@ -2,6 +2,7 @@
 
 const abrir_menu = document.querySelector(".abrir-menu")
 const menu = document.querySelector("header")
+const temporales = document.querySelector(".mensajes-temporales");
 
 abrir_menu.addEventListener("click", ()=>{
     if(menu.classList.contains("mostrar-menu")){
@@ -12,3 +13,7 @@ abrir_menu.addEventListener("click", ()=>{
         abrir_menu.classList.add("fijar-mostrar-menu")
     }
 })
+
+setTimeout(()=>{
+    temporales.style.display="none"
+},1500)

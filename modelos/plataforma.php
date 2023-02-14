@@ -71,5 +71,28 @@
             $conexion->close();
             return $resultados;
         }
+
+        public function getDatosPlataforma($id){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->query("select id, nombre, logotipo from plataformas where id = '$id'");
+            $i=0;
+            while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
+                $datos[$i]["nombre"] = $fila["nombre"];
+                $datos[$i]["logo"] = $fila["logotipo"];
+                $datos[$i]["id"] = $fila["id"];
+                $i++;
+            }
+            $conexion->close();
+            return $datos;
+        }
+
+        public function modificarPlataforma($id, $nombre, $foto){
+            $conexion = conectar::conectarBD();
+            $modificar = $conexion->prepare("update plataformas set nombre = ?, logotipo = ? where id = ?");
+            $modificar->bind_param('ssi', $nombre, $foto, $id);
+            $modificar->execute();
+            $modificar->close();
+            $conexion->close();
+        }
     }
 ?>

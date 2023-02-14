@@ -25,6 +25,7 @@
         menuImprimir($user);
         $nombre = $datos[0]["nombre"];
         $nick = $datos[0]["nick"];
+        $id = $datos[0]["id"];
         $pass_original = $datos[0]["pass"];
     ?>
     <main>
@@ -36,17 +37,18 @@
             <form action="../controladores/modificacion_admin.php" method="post">
                 <input type="text" value="<?php echo $nombre; ?>" name="nombre" required>
                 <input type="text" value="<?php echo $nick; ?>" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass" required>
+                <input type="password" placeholder="Contraseña" name="pass">
                 <input hidden value="<?php echo $pass_original; ?>" name="pass-original">
+                <input hidden value="<?php echo $id; ?>" name="id">
                 <input type="submit" name="modificacion-usuario" value="Modificar">
             </form>
         </section>
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3>Usuario modificado</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Usuario modificado</h3>";
                 }else{
-                    echo "<h3>Datos mal, ceporro</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
                 }
 
             }

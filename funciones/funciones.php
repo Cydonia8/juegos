@@ -203,5 +203,25 @@
         return $vacio;
     }
 
+    function comprobarExtension($extension){
+        $correcto = false;
+        if($extension == "image/jpeg" or $extension == "image/png"){
+            $correcto = true;
+        }
+        
+        return $correcto;
+    }
+
+    //Función que comprueba si el tamaño de una fotografía es menor o igual a 1.5 MB
+    function comprobarTamanio($tamaño){
+        $tamaño_mb = $tamaño / pow(1024, 2);
+        $correcto = false;
+        if($tamaño_mb <= 1.5){
+            $correcto = true;
+        }
+
+        return $correcto;
+    }
+
 
 ?>
