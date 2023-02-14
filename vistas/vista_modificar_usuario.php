@@ -20,37 +20,37 @@
     <script src="../scripts/app.js" defer></script>
     <title>Document</title>
 </head>
-<body id="ver-plataforma">
+<body id="seccion-usuarios">
     <?php
         menuImprimir($user);
-        $nombre_plat = $plat->nombre;
+        $nombre = $datos[0]["nombre"];
+        $nick = $datos[0]["nick"];
+        $pass_original = $datos[0]["pass"];
     ?>
     <main>
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        <h1 class="text-center mb-5">Videojuegos de <?php echo $nombre_plat; ?></h1>
-        <section class="contenedor-ver-plataforma row container-xl mx-auto gap-5">
-            <?php
-                if(sizeof($juegos) > 0){
-                    foreach($juegos as $pos=>$fila){
-                        // col-12 col-lg-6
-                        echo "<article class=\"row \"> 
-                                <div class=\"col-12 col-md-8 text-center\">
-                                    <img class=\"img-fluid\" src=\"".$juegos[$pos]["foto"]."\">
-                                </div>
-                                <div class=\"col-12 col-md-4 d-flex flex-column justify-content-center align-items-center\">
-                                    <h2>".$juegos[$pos]["nombre"]."</h2>
-                                    <h3>Lanzado el ".formatearFecha($juegos[$pos]["fecha"])."</h3>
-                                </div>";
-                        echo "</article>";
-                    }
-                }else{
-                    echo "<h2 class=\"text-center\">No hay juegos de esta plataforma</h2>";
-                }
-                
-            ?>
+        <h1 class="text-center mb-5">Modificar usuario</h1>
+        <section class="">
+            <form action="../controladores/modificacion_admin.php" method="post">
+                <input type="text" value="<?php echo $nombre; ?>" name="nombre" required>
+                <input type="text" value="<?php echo $nick; ?>" name="nick" required>
+                <input type="password" placeholder="Contraseña" name="pass" required>
+                <input hidden value="<?php echo $pass_original; ?>" name="pass-original">
+                <input type="submit" name="modificacion-usuario" value="Modificar">
+            </form>
         </section>
+        <?php
+            if(isset($success)){
+                if($success){
+                    echo "<h3>Usuario modificado</h3>";
+                }else{
+                    echo "<h3>Datos mal, ceporro</h3>";
+                }
+
+            }
+        ?>
     </main>
 </body>
 </html>

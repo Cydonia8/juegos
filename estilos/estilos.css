@@ -17,6 +17,7 @@ header ul{
     justify-content: space-around;
     align-items: center;
     margin: 0;
+    flex-wrap: wrap;
 }
 header nav a{
     text-decoration: none;
@@ -27,16 +28,21 @@ header nav a{
 }
 header.bg-black{
   color: #524099c5;
-
-
 }
 header nav{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 .logo-menu{
     width: 100%;
+}
+.abrir-menu{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    font-size: 1.5rem;
+    z-index: 1000;
 }
 h1,h2{
     font-family: 'Lato', sans-serif;
@@ -156,6 +162,9 @@ h1,h2{
     border-collapse: collapse;
     font-weight: bold;
 }
+.table-wrapper{
+    overflow-x: auto;
+}
 table img{
     border-radius: 8px;
 }
@@ -172,9 +181,47 @@ table img{
  table tr:nth-child(2n){
     background-color:#795fe35d;
 }
-#seccion-juegos-admin table img{
-    max-width: 100%;
+.enlaces-insertar{
+    text-decoration: none;
+    color: black;
+    
 }
+/* #seccion-juegos-admin table img{
+    max-width: 100%;
+} */
+/* #seccion-juegos-admin table td:nth-of-type(5){
+    width: 50%;
+    padding: 0.3rem;
+} */
 /* table td:empty{
     background-color: #9e9e9eb0;
 } */
+@media screen and (min-width: 1000px){
+    .abrir-menu{
+        display: none;
+    }
+}
+@media screen and (max-width: 1000px){
+    header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        left: -1200px;
+        height: auto;
+        transition: .8s;
+        height: 70vh;
+    }
+    .mostrar-menu{
+        left: 0;
+        transition: .8s;
+    }
+    .fijar-mostrar-menu{
+        position: fixed;
+    }
+    header nav ul{
+        flex-direction: column;
+        align-items: center;
+        height: 70vh;
+    }
+}

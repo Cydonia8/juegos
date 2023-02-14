@@ -13,9 +13,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../estilos/estilos.css">
+    <script src="../scripts/app.js" defer></script>
     <title>Document</title>
 </head>
 <body id="seccion-juegos-admin">
@@ -23,12 +25,17 @@
         menuImprimir($user);
     ?>
     <main>
-        <h1 class="text-center mb-5"></h1>
+    <button class="abrir-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        <h1 class="text-center mb-5">Juegos</h1>
         <section class="">
-            <form action="../controladores/busqueda_admin.php" method="post">
+            <form class="text-center" action="../controladores/busqueda_admin.php" method="post">
                 <input type="text" name="nombre" placeholder="Nombre de juego">
                 <input type="submit" name="buscar-juego" value="Buscar">
             </form>
+            <a class="text-center mx-auto enlaces-insertar" href="../vistas/vista_insertar_juego.php">Insertar juego</a>
+            <div class="table-wrapper">
             <table class="mx-auto w-75 text-center">
             <tr>
                 <td>ID de juego</td>
@@ -66,6 +73,7 @@
                    
                 ?>
             </table>
+            </div>
         </section>
     </main>
 </body>

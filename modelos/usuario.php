@@ -71,5 +71,50 @@
             $conexion->close();
             return $resultados;
         }
+
+        public function usuarioRepetido($nick){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->prepare("select count(*) from usuarios where nick = ?");
+            $sentencia->bind_param('s', $nick);
+            $sentencia->bind_result($comprobante);
+            $sentencia->execute();
+            $sentencia->fetch();
+            $sentencia->close();
+            $conexion->close();
+
+            return $comprobante;
+        }
+
+        public function insertarUsuario($nombre, $nick, $pass){
+            $conexion = conectar::conectarBD();
+            $activo = 1;
+            $insercion = $conexion->prepare("insert into usuarios values ('',?, ?, ?, ?)");
+            $insercion->bind_param('sssi', $nombre, $nick, $pass, $activo   );
+            $insercion->execute();
+            $insercion->close();
+            $conexion->close();
+        }
+
+        public function getDatosUsuario($id){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->query("select id, nombre, nick, pass from usuarios where id = '$id'");
+            $resultado;
+            $i=0;
+            while($fila=$sentencia->fetch_array(MYSQLI_ASSOC)){
+                $resultado[$i]["id"] = $fila["id"];
+                $resultado[$i]["nombre"] = $fila["nombre"];
+                $resultado[$i]["nick"] = $fila["nick"];
+                $resultado[$i]["pass"] = $fila["pass"];
+                $i++;
+            }
+            $conexion->close();
+            return $resultado;
+        }
+
+        public function modificarUsuario($id, $nombre, $nick, $pass){
+            $conexion = conectar::conectarBD();
+            $modificar = $conexion->prepare("update usuarios set nombre = ? and nick = ? and pass = ? where id = ?");
+            $modificar->bind_param();
+        }
     }
 ?>

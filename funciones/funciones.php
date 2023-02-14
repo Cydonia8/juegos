@@ -25,7 +25,7 @@
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"../media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"../controladores/seccion_usuarios.php\">Usuarios</a></li>
                                 <li><a href=\"../controladores/comentarios_admin.php\">Comentarios</a></li>
-                                <li><a href=\"../controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
+                                <li><a href=\"../controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
                             </ul>
                         </nav>
                     </header>";
@@ -49,7 +49,7 @@
                                 <li><a href=\"../controladores/seccion_juegos.php\">Juegos</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"../media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"../controladores/seccion_plataformas.php\">Plataformas</a></li>
-                                <li><a href=\"../controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
+                                <li><a href=\"../controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
                             </ul>
                         </nav>
                     </header>";
@@ -65,7 +65,7 @@
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_usuarios.php\">Usuarios</a></li>
                                 <li><a href=\"controladores/comentarios_admin.php\">Comentarios</a></li>
-                                <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
+                                <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
                             </ul>
                         </nav>
                     </header>";
@@ -89,7 +89,7 @@
                                 <li><a href=\"controladores/seccion_juegos.php\">Juegos</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_plataformas.php\">Plataformas</a></li>
-                                <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión de $user</a></li>
+                                <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
                             </ul>
                         </nav>
                     </header>";
@@ -176,7 +176,7 @@
                     <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
                     <td class=\"text-center\">".$array[$pos]["descripcion"]."</td>
                     <td class=\"text-center\">".$array[$pos]["plataforma"]."</td>
-                    <td class=\"text-center\"><img src=\"".$array[$pos]["caratula"]."\"></td>
+                    <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$array[$pos]["caratula"]."\"></td>
                     <td class=\"text-center\">".formatearFecha($array[$pos]["fecha"])."</td>
                     <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
                     if($array[$pos]["activo"] == 1){
@@ -196,6 +196,11 @@
                         </td>";
                 echo "</tr>";
         }
+    }
+
+    function cadenaVacia($cadena){
+        $vacio = preg_match("`^\s*$`",$cadena);
+        return $vacio;
     }
 
 
