@@ -34,7 +34,7 @@
                 <input type="text" name="nombre" placeholder="Nombre de juego">
                 <input type="submit" name="buscar-juego" value="Buscar">
             </form>
-            <a class="text-center mx-auto enlaces-insertar" href="../vistas/vista_insertar_juego.php">Insertar juego</a>
+            <a class="text-center mx-auto enlaces-insertar" href="../controladores/lista_plataformas.php">Insertar juego</a>
             <div class="table-wrapper">
             <table class="mx-auto w-75 text-center">
             <tr>

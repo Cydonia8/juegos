@@ -30,8 +30,35 @@
             </button>
         <h1 class="text-center mb-5">Insertar juego</h1>
         <section class="">
-            
+            <form action="../controladores/insercion_admin.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="nombre" placeholder="Nombre del juego" required>
+                <input type="text" name="descripcion" placeholder="Descripción del juego" required>
+                <select name="plataforma" required>
+                    <option value="null" checked hidden>Elige una plataforma</option>
+                    <?php
+                        foreach($datos as $pos=>$nom){
+                            echo "<option value=\"".$datos[$pos]["id"]."\">".$datos[$pos]["nombre"]."</option>";
+                        }
+                    ?>
+                </select>
+                <input type="file" name="foto" required>
+                <input type="date" name="fecha" required>
+                <input type="submit" name="insertar-juego" value="Insertar">
+            </form>
         </section>
+        <?php
+            if(isset($success)){
+                if($success){
+                    echo "<h3 class=\"mensaje-temporal\">Juego insertado correctamente</h3>";
+                }else{
+                    echo "<h3 class=\"mensaje-temporal\">Alguno de los datos es erróneo</h3>";;
+                    if($foto_error){
+                        echo "<h3 class=\"mensaje-temporal\">Formato o tamaño de foto inválidos</h3>";
+                    }
+                }
+            }
+            
+        ?>
     </main>
 </body>
 </html>

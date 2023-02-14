@@ -1,5 +1,4 @@
 <?php
-session_start();
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
 
@@ -24,24 +23,30 @@ session_start();
 <body id="seccion-usuarios">
     <?php
         menuImprimir($user);
+        $nombre = $datos[0]["nombre"];
+        $nick = $datos[0]["nick"];
+        $id = $datos[0]["id"];
+        $pass_original = $datos[0]["pass"];
     ?>
     <main>
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        <h1 class="text-center mb-5">Insertar usuario</h1>
+        <h1 class="text-center mb-5">Modificar juego</h1>
         <section class="">
-            <form action="../controladores/insercion_admin.php" method="post">
-                <input type="text" placeholder="Nombre" name="nombre" required>
-                <input type="text" placeholder="Nombre de usuario" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass" required>
-                <input type="submit" name="insertar-usuario" value="Insertar">
+            <form action="../controladores/modificacion_admin.php" method="post">
+                <input type="text" value="<?php echo $nombre; ?>" name="nombre" required>
+                <input type="text" value="<?php echo $nick; ?>" name="nick" required>
+                <input type="password" placeholder="Contraseña" name="pass">
+                <input hidden value="<?php echo $pass_original; ?>" name="pass-original">
+                <input hidden value="<?php echo $id; ?>" name="id">
+                <input type="submit" name="modificacion-juego" value="Modificar">
             </form>
         </section>
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales\">Usuario insertado</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Usuario modificado</h3>";
                 }else{
                     echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
                 }

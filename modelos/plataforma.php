@@ -104,5 +104,19 @@
             $insertar->close();
             $conexion->close();
         }
+
+        public function getNombrePlataformas(){
+            $conexion = conectar::conectarBD();
+            $consulta = $conexion->query("select nombre, id from plataformas");
+            $i=0;
+            $resultados = array();
+            while($fila = $consulta->fetch_array(MYSQLI_ASSOC)){
+                $resultados[$i]["nombre"] = $fila["nombre"];
+                $resultados[$i]["id"] = $fila["id"];
+                $i++;
+            }
+            $conexion->close();
+            return $resultados;
+        }
     }
 ?>

@@ -4,15 +4,19 @@
     require "../modelos/juego.php";
     require "../modelos/usuario.php";
     include "../funciones/funciones.php";
+    $usu = new usuario();
+    $plat = new plataforma();
+    $j = new juego();
 
     if(isset($_POST["modificar-usuario"])){
-        $usu = new usuario();
         $datos = $usu->getDatosUsuario($_POST["usuario"]);
         include "../vistas/vista_modificar_usuario.php";
     }elseif(isset($_POST["modificar-plat"])){
-        $plat = new plataforma();
         $datos = $plat->getDatosPlataforma($_POST["plataforma"]);
         include "../vistas/vista_modificar_plataforma.php";
+    }elseif(isset($_POST["modificar-juego"])){
+        $datos = $j->getDatosJuego($_POST["juego"]);
+        include "../vistas/vista_modificar_juego.php";
     }
 
     if(isset($_POST["modificacion-usuario"])){

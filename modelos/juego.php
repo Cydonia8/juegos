@@ -168,6 +168,31 @@
             $conexion->close();
         }
 
+        public function insertarJuego($nombre, $descripcion, $plataforma, $caratula, $fecha, $activo){
+            $conexion = conectar::conectarBD();
+            $insercion = $conexion->prepare("insert into juegos values (null, ?, ?, ?, ?, ?, ?)");
+            $insercion->bind_param('ssissi', $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo);
+            $insercion->execute();
+            $insercion->close();
+            $conexion->close();
+        }
+
+        public function getDatosJuego($id){
+            $conexion = conectar::conectarBD();
+            $consulta = $conexion->query("select id, nombre, descripcion, plataforma, caratula, fecha_lanzamiento from juegos where id = '$id'");
+            $fila = $consulta->fetch_array(MYSQLI_ASSOC);
+
+            $resultado[0]["id"] = $fila["id"];
+            $resultado[0]["nombre"] = $fila["nombre"];
+            $resultado[0]["descripcion"] = $fila["descripcion"];
+            $resultado[0]["plataforma"] = $fila["plataforma"];
+            $resultado[0]["caratula"] = $fila["caratula"];
+            $resultado[0]["fecha"] = $fila["fecha_lanzamiento"];
+            
+            $conexion->close();
+
+            return $resultado;
+        }
         
 
 
