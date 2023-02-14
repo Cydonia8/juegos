@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
     <title>Document</title>
 </head>
-<body id="seccion-usuarios">
+<body id="seccion-juegos-admin">
     <?php
         menuImprimir($user);
     ?>
@@ -26,23 +26,26 @@
         <h1 class="text-center mb-5"></h1>
         <section class="">
             <form action="../controladores/busqueda_admin.php" method="post">
-                <input type="text" name="nombre" placeholder="Nombre de usuario">
-                <input type="submit" name="buscar-usuario" value="Buscar">
+                <input type="text" name="nombre" placeholder="Nombre de juego">
+                <input type="submit" name="buscar-juego" value="Buscar">
             </form>
-            <table class="mx-auto w-50 text-center">
+            <table class="mx-auto w-75 text-center">
             <tr>
-                <td>ID de usuario</td>
-                <td>Nombre del usuario</td>
-                <td>Nick del usuario</td>
-                <td>Usuario activo</td>
-                <td>Desactivar usuario</td>
-                <td>Modificar usuario</td>
+                <td>ID de juego</td>
+                <td>Nombre del juego</td>
+                <td>Descripción del juego</td>
+                <td>Plataforma</td>
+                <td>Imagen del juego</td>
+                <td>Fecha de lanzamiento</td>
+                <td>Juego activo</td>
+                <td>Desactivar</td>
+                <td>Modificar</td>
             </tr>
                 <?php
                     if(isset($resultados)){
-                        imprimirUsuario($resultados);
+                        imprimirJuego($resultados);
                     }else{
-                        imprimirUsuario($datos);
+                        imprimirJuego($datos);
                     }
                     // foreach($datos as $pos=>$usu){
                     //     echo "<tr>

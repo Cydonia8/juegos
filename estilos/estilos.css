@@ -152,20 +152,29 @@ h1,h2{
 #ver-mas .comentarios input[type="text"]{
     width: 90%;
 }
-#seccion-plataformas-admin table{
+ table{
     border-collapse: collapse;
     font-weight: bold;
 }
-#seccion-plataformas-admin table td{
+table img{
+    border-radius: 8px;
+}
+ table td{
     padding: 1rem;
     border-bottom: 2px solid;
     border-right: 2px solid;
 }
 
-#seccion-plataformas-admin table td:last-of-type{
+ table td:last-of-type{
     border-bottom: 2px solid;
     border-right: none;
 }
-#seccion-plataformas-admin table tr:nth-child(2n){
+ table tr:nth-child(2n){
     background-color:#795fe35d;
 }
+#seccion-juegos-admin table img{
+    max-width: 100%;
+}
+/* table td:empty{
+    background-color: #9e9e9eb0;
+} */

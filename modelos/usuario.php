@@ -50,5 +50,26 @@
 
             return $id;
         }
+
+        public function buscarUsuario($patron){
+            $cadena_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->prepare("select id, nombre, nick, activo from usuarios where id > 0 and nombre like ?");
+            $sentencia->bind_param('s', $cadena_busqueda);
+            $sentencia->bind_result($id, $nombre, $nick, $activo);
+            $sentencia->execute();
+            $i=0;
+            $resultados = array();
+            while($sentencia->fetch()){
+                $resultados[$i]["id"] = $id;
+                $resultados[$i]["nombre"] = $nombre;
+                $resultados[$i]["nick"] = $nick;
+                $resultados[$i]["activo"] = $activo;
+                $i++;
+            }
+            $sentencia->close();
+            $conexion->close();
+            return $resultados;
+        }
     }
 ?>

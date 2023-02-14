@@ -20,7 +20,7 @@
                         <nav>
                             <ul>
                                 <li><a href=\"../index.php\">Inicio</a></li>
-                                <li><a href=\"../controladores/seccion_juegos.php\">Juegos</a></li>
+                                <li><a href=\"../controladores/juegos_admin.php\">Juegos</a></li>
                                 <li><a href=\"../controladores/plataformas_admin.php\">Plataformas</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"../media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"../controladores/seccion_usuarios.php\">Usuarios</a></li>
@@ -60,7 +60,7 @@
                         <nav>
                             <ul>
                                 <li><a href=\"index.php\">Inicio</a></li>
-                                <li><a href=\"controladores/seccion_juegos.php\">Juegos</a></li>
+                                <li><a href=\"controladores/juegos_admin.php\">Juegos</a></li>
                                 <li><a href=\"controladores/plataformas_admin.php\">Plataformas</a></li>
                                 <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_usuarios.php\">Usuarios</a></li>
@@ -134,8 +134,69 @@
                     <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
                     <td class=\"text-center\"><img class=\"w-50\" src=\"".$array[$pos]["logo"]."\"></td>
                     <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>
+                    <td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                        <input hidden value=\"".$array[$pos]["id"]."\" name=\"plataforma\">
+                        <input type=\"submit\" name=\"modificar-plat\" value=\"Modificar\">    
+                    </form>
+                    </td>
             </tr>";
         }
     }
+
+    function imprimirUsuario($array){
+        foreach($array as $pos=>$usu){
+            echo "<tr>
+                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["nick"]."</td>
+                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
+                    if($array[$pos]["activo"] == 1){
+                        echo "<td class=\"text-center\">
+                                <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                    <input type=\"submit\" name=\"desactivar-usuario\" value=\"Desactivar\">
+                                </form>
+                        </td>";
+                    }else{
+                        echo "<td></td>";
+                    }
+                    echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                                <input hidden value=\"".$array[$pos]["id"]."\" name=\"usuario\">
+                                <input type=\"submit\" name=\"modificar-usuario\" value=\"Modificar\">    
+                            </form>
+                        </td>";
+                echo "</tr>";
+        }
+    }
+
+    function imprimirJuego($array){
+        foreach($array as $pos=>$usu){
+            echo "<tr>
+                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["descripcion"]."</td>
+                    <td class=\"text-center\">".$array[$pos]["plataforma"]."</td>
+                    <td class=\"text-center\"><img src=\"".$array[$pos]["caratula"]."\"></td>
+                    <td class=\"text-center\">".formatearFecha($array[$pos]["fecha"])."</td>
+                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
+                    if($array[$pos]["activo"] == 1){
+                        echo "<td class=\"text-center\">
+                                <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                    <input type=\"submit\" name=\"desactivar-juego\" value=\"Desactivar\">
+                                </form>
+                        </td>";
+                    }else{
+                        echo "<td></td>";
+                    }
+                    echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                                <input hidden value=\"".$array[$pos]["id"]."\" name=\"juego\">
+                                <input type=\"submit\" name=\"modificar-juego\" value=\"Modificar\">    
+                            </form>
+                        </td>";
+                echo "</tr>";
+        }
+    }
+
 
 ?>

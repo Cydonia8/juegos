@@ -35,6 +35,7 @@
                     <td>Nombre de plataforma</td>
                     <td>Logotipo de plataforma</td>
                     <td>Plataforma activa</td>
+                    <td>Modificar</td>
                 </tr>
                 <?php
                     if(isset($resultados)){

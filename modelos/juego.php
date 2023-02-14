@@ -113,46 +113,60 @@
             $conexion->close();
             return $lanzamiento;
         }
-        // public function ultimosJuegosSwitch(){
-        //     // $conexion = conectar::conectarBD();
-        //     $recientes = $this->bd->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 2 and j.activo = 1 order by fecha_lanzamiento desc limit 4");
-        //     $i = 0;
-        //     while($fila=$recientes->fetch_array(MYSQLI_ASSOC)){
-        //         $juegos[$i]["juego"] = $fila["juego"];
-        //         $juegos[$i]["plataforma"] = $fila["plat"];
-        //         $juegos[$i]["caratula"] = $fila["caratula"];
-        //         $juegos[$i]["fecha"] = $fila["fecha_lanzamiento"];
-        //         $i++;
-        //     }
-        //     return $juegos;
-        // }
-
-        // public function ultimosJuegosXBOX(){
-        //     $recientes = $this->bd->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 3 and j.activo = 1 order by fecha_lanzamiento desc limit 4");
-        //     $i = 0;
-        //     while($fila=$recientes->fetch_array(MYSQLI_ASSOC)){
-        //         $juegos[$i]["juego"] = $fila["juego"];
-        //         $juegos[$i]["plataforma"] = $fila["plat"];
-        //         $juegos[$i]["caratula"] = $fila["caratula"];
-        //         $juegos[$i]["fecha"] = $fila["fecha_lanzamiento"];
-        //         $i++;
-        //     }
-        //     return $juegos;
-        // }
-
-        // public function ultimosJuegosPS2(){
-        //     $recientes = $this->bd->query("select j.nombre juego, p.nombre plat, caratula, fecha_lanzamiento from juegos j, plataformas p where p.id = j.plataforma and plataforma = 4 and j.activo = 1 order by fecha_lanzamiento desc limit 4");
-        //     $i = 0;
-        //     while($fila=$recientes->fetch_array(MYSQLI_ASSOC)){
-        //         $juegos[$i]["juego"] = $fila["juego"];
-        //         $juegos[$i]["plataforma"] = $fila["plat"];
-        //         $juegos[$i]["caratula"] = $fila["caratula"];
-        //         $juegos[$i]["fecha"] = $fila["fecha_lanzamiento"];
-        //         $i++;
-        //     }
-        //     return $juegos;
-        // }
         
+        public function getJuegos(){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->query("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo from juegos j, plataformas p where j.plataforma = p.id");
+            $i=0;
+            $resultados=array();
+            while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
+                $resultados[$i]["id"] = $fila["id"];
+                $resultados[$i]["nombre"] = $fila["juego"];
+                $resultados[$i]["descripcion"] = $fila["descripcion"];
+                $resultados[$i]["plataforma"] = $fila["plataforma"];
+                $resultados[$i]["caratula"] = $fila["caratula"];
+                $resultados[$i]["fecha"] = $fila["fecha_lanzamiento"];
+                $resultados[$i]["activo"] = $fila["activo"];
+                $i++;
+            }
+            $conexion->close();
+            return $resultados;
+        }
+
+        public function buscarJuego($patron){
+            $patron_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->prepare("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo from juegos j, plataformas p where j.plataforma = p.id and j.nombre like ?");
+            $sentencia->bind_param('s', $patron_busqueda);
+            $sentencia->bind_result($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo);
+            $sentencia->execute();
+            
+            $resultados = array();
+            $i=0;
+
+            while($sentencia->fetch()){
+                $resultados[$i]["id"] = $id;
+                $resultados[$i]["nombre"] = $nombre;
+                $resultados[$i]["descripcion"] = $descripcion;
+                $resultados[$i]["plataforma"] = $plataforma;
+                $resultados[$i]["caratula"] = $caratula;
+                $resultados[$i]["fecha"] = $fecha;
+                $resultados[$i]["activo"] = $activo;
+                $i++;
+            }
+            $sentencia->close();
+            $conexion->close();
+            return $resultados;
+        }
+        
+        public function desactivarJuego($id){
+            $conexion = conectar::conectarBD();
+            $desactivacion = $conexion->prepare("update juegos set activo = 0 where id = ?");
+            $desactivacion->bind_param('i', $id);
+            $desactivacion->execute();
+            $desactivacion->close();
+            $conexion->close();
+        }
 
         
 
