@@ -194,6 +194,14 @@
             return $resultado;
         }
         
+        public function modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha){
+            $conexion = conectar::conectarBD();
+            $modificacion = $conexion->prepare("update juegos set nombre = ?, descripcion = ?, plataforma = ?, caratula = ?, fecha_lanzamiento = ? where id = ? ");
+            $modificacion->bind_param('ssissi', $nombre, $descripcion, $plataforma, $caratula, $fecha, $id);
+            $modificacion->execute();
+            $modificacion->close();
+            $conexion->close();
+        }
 
 
     }

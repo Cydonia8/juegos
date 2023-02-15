@@ -42,7 +42,14 @@
                                 <div class=\"col-12 col-md-4 d-flex flex-column justify-content-center align-items-center\">
                                     <h2>".$juegos[$pos]["nombre"]."</h2>
                                     <h3>Lanzado el ".formatearFecha($juegos[$pos]["fecha"])."</h3>
+                                    <form action=\"../controladores/ver_mas_juego.php\" method=\"post\">
+                                    <input hidden name=\"id\" value=\"".$juegos[$pos]["id_juego"]."\">
+                                    <input hidden name=\"nombre\" value=\"".$juegos[$pos]["nombre"]."\">
+                                    <input hidden name=\"plat\" value=\"".$juegos[$pos]["id_plataforma"]."\">
+                                    <input type=\"submit\" name=\"enviar\" value=\"Ver más\">
+                                </form>
                                 </div>";
+                                
                         echo "</article>";
                     }
                 }else{

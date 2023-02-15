@@ -16,6 +16,7 @@
         include "../vistas/vista_modificar_plataforma.php";
     }elseif(isset($_POST["modificar-juego"])){
         $datos = $j->getDatosJuego($_POST["juego"]);
+        $plats = $plat->getNombrePlataformas();
         include "../vistas/vista_modificar_juego.php";
     }
 
@@ -33,7 +34,6 @@
         }
 
         if(!cadenaVacia($nombre) and !cadenaVacia($nick) and !cadenaVacia($pass)){
-            $usu = new usuario();
             $usu->modificarUsuario($id, $nombre, $nick, $pass);
             $success = true;
             $datos = $usu->getDatosUsuario($id);
@@ -49,11 +49,13 @@
         $foto = $_FILES["logo"]["name"];
         $logo_original = $_POST["logo-original"];
         $id = $_POST["id"];
-        $success;
+        $success = false;
+        $foto_error = false;
         // echo $foto;
         if(!cadenaVacia(($nombre))){
             if($foto == ""){
                 $foto = $logo_original;
+                $success = true;
             }else{
                 $extension_foto = $_FILES["logo"]["type"];
                 $tamanio_foto = $_FILES["logo"]["size"];
@@ -70,17 +72,64 @@
                     }
                     $foto = "../media/img_plataformas/".$nuevo_nombre;
                     move_uploaded_file($ruta_original, $foto);
+                    $success = true;
+                }else{
+                    $foto_error = true;
                 }
-            }
-            $plat = new plataforma();
+            }       
+        }
+        if($success){
             $plat->modificarPlataforma($id, $nombre, $foto);
-            $success = true;
-
-        }else{
-            $success = false;
         }
         $datos = $plat->getDatosPlataforma($id);
         include "../vistas/vista_modificar_plataforma.php";
         
+    }elseif(isset($_POST["modificacion-juego"])){
+        $nombre = $_POST["nombre"];
+        $descripcion = $_POST["descripcion"];
+        $caratula = $_FILES["foto"]["name"];
+        $caratula_original = $_POST["foto-original"];
+        $plataforma = $_POST["plataforma"];
+        $fecha = $_POST["fecha"];
+        $id = $_POST["id"];
+        $success = false;
+        $foto_error = false;
+
+        
+        if(!cadenaVacia($nombre) and !cadenaVacia($descripcion)){
+            if($caratula == ""){
+                $caratula = $caratula_original; 
+                $success = true;
+            }else{
+                
+                $tamanio_foto = $_FILES["foto"]["size"];
+                $extension_foto = $_FILES["foto"]["type"];
+                $ruta_original = $_FILES["foto"]["tmp_name"];
+                if(comprobarExtension($extension_foto) and comprobarTamanio($tamanio_foto)){
+                    $nuevo_nombre;
+                    switch($extension_foto){
+                        case "image/jpeg":
+                            $nuevo_nombre = $nombre.".jpeg";
+                            break;
+                        case "image/png":
+                            $nuevo_nombre = $nombre.".png";
+                            break;
+                    }
+                    $caratula = "../media/img_juegos/".$nuevo_nombre;
+                    move_uploaded_file($ruta_original, $caratula);
+                    $success = true;
+                    
+                }else{
+                    $foto_error = true;
+                }
+            }
+        }
+        if($success){
+            $j->modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha);
+        }
+        $datos = $j->getDatosJuego($id);
+        $plats = $plat->getNombrePlataformas();
+        include "../vistas/vista_modificar_juego.php";
+
     }
 ?>

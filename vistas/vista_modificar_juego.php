@@ -24,9 +24,11 @@
     <?php
         menuImprimir($user);
         $nombre = $datos[0]["nombre"];
-        $nick = $datos[0]["nick"];
+        $descripcion = $datos[0]["descripcion"];
+        $plataforma = $datos[0]["plataforma"];
+        $caratula_original = $datos[0]["caratula"];
         $id = $datos[0]["id"];
-        $pass_original = $datos[0]["pass"];
+        $fecha = $datos[0]["fecha"];
     ?>
     <main>
     <button class="abrir-menu">
@@ -34,11 +36,24 @@
             </button>
         <h1 class="text-center mb-5">Modificar juego</h1>
         <section class="">
-            <form action="../controladores/modificacion_admin.php" method="post">
+            <form action="../controladores/modificacion_admin.php" method="post" enctype="multipart/form-data">
                 <input type="text" value="<?php echo $nombre; ?>" name="nombre" required>
-                <input type="text" value="<?php echo $nick; ?>" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass">
-                <input hidden value="<?php echo $pass_original; ?>" name="pass-original">
+                <input type="text" value="<?php echo $descripcion; ?>" name="descripcion" required>
+                <select name="plataforma" required>
+                    <?php
+                        foreach($plats as $pos=>$nom){
+                            if($plats[$pos]["id"] == $plataforma){
+                                echo "<option selected value=\"".$plats[$pos]["id"]."\">".$plats[$pos]["nombre"]."</option>";
+                            }else{
+                                echo "<option value=\"".$plats[$pos]["id"]."\">".$plats[$pos]["nombre"]."</option>";
+                            }
+                            
+                        }
+                    ?>
+                </select>
+                <input type="file" name="foto">
+                <input type="date" name="fecha" value="<?php echo $fecha; ?>">
+                <input hidden value="<?php echo $caratula_original; ?>" name="foto-original">
                 <input hidden value="<?php echo $id; ?>" name="id">
                 <input type="submit" name="modificacion-juego" value="Modificar">
             </form>
@@ -46,9 +61,12 @@
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales\">Usuario modificado</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Juego modificado</h3>";
                 }else{
                     echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
+                    if($foto_error){
+                        echo "<h3 class=\"mensaje-temporal\">Formato o tamaño de foto inválidos</h3>"; 
+                    }
                 }
 
             }

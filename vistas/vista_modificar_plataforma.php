@@ -47,6 +47,9 @@
                     echo "<h3 class=\"mensajes-temporales\">Plataforma modificada</h3>";
                 }else{
                     echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
+                    if($foto_error){
+                        echo "<h3 class=\"mensaje-temporal\">Formato o tamaño de foto inválidos</h3>"; 
+                    }
                 }
 
             }

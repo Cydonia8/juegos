@@ -14,7 +14,6 @@
         $pass = $_POST["pass"];
         $success;
 
-        $usu = new usuario();
         $existe = $usu->usuarioRepetido($nick);
         if($existe == 0 and(!cadenaVacia($nombre) and !cadenaVacia($nick) and !cadenaVacia($pass))){
             $pass = md5(md5($pass));
@@ -30,7 +29,8 @@
         $ruta_original = $_FILES["logo"]["tmp_name"];
         $tamanio = $_FILES["logo"]["size"];
         $extension = $_FILES["logo"]["type"];
-        $success;
+        $success = false;
+        $foto_error = false;
 
         if(!cadenaVacia($nombre)){
             if(comprobarTamanio($tamanio) and comprobarExtension($extension)){
@@ -45,13 +45,15 @@
                 }
                 $foto = "../media/img_plataformas/".$nuevo_nombre;
                 move_uploaded_file($ruta_original, $foto);
+                $success = true;
+            }else{
+                $foto_error = true;
             }
-            $plat = new plataforma();
-            $plat->insertarPlataforma($nombre, $foto);
-            $success = true;
-        }else{
-            $success = false;
         }
+        if($success){
+            $plat->insertarPlataforma($nombre, $foto);
+        }
+        include "../vistas/vista_insertar_plataforma.php";
     }else {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];

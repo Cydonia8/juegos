@@ -38,13 +38,15 @@
 
         public function juegosPlataforma($id){
             $conexion = conectar::conectarBD();
-            $lanzamientos = $conexion->query("select caratula, j.nombre juego, fecha_lanzamiento from juegos j, plataformas p where j.plataforma = p.id and p.id = '$id'");
+            $lanzamientos = $conexion->query("select j.id id_juego, p.id id_plataforma, caratula, j.nombre juego, fecha_lanzamiento from juegos j, plataformas p where j.plataforma = p.id and p.id = '$id'");
             $i = 0;
             $juego = array();
             while($fila = $lanzamientos->fetch_array(MYSQLI_ASSOC)){
                 $juego[$i]["foto"] = $fila["caratula"];
                 $juego[$i]["nombre"] = $fila["juego"];
                 $juego[$i]["fecha"] = $fila["fecha_lanzamiento"];
+                $juego[$i]["id_juego"] = $fila["id_juego"];
+                $juego[$i]["id_plataforma"] = $fila["id_plataforma"];
                 $i++;
             }
             $conexion->close();

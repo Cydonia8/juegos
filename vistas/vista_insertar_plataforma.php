@@ -1,5 +1,7 @@
 <?php
-session_start();
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
 
@@ -40,9 +42,12 @@ session_start();
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales\">Usuario insertado</h3>";
+                    echo "<h3 class=\"mensajes-temporales\">Plataforma insertada</h3>";
                 }else{
                     echo "<h3 class=\"mensajes-temporales\">Datos mal, ceporro</h3>";
+                    if($foto_error){
+                        echo "<h3 class=\"mensaje-temporal\">Formato o tamaño de foto inválidos</h3>"; 
+                    }
                 }
 
             }
