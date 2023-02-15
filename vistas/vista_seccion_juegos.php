@@ -43,7 +43,7 @@
                     echo "<div class=\"juego col-12 col-md-6 col-lg-3\">
                         <img src=\"".$juegos[$pos]['foto']."\">
                         <h4>".$juegos[$pos]["juego"]."</h4>
-                        <form action=\"../controladores/ver_mas_juego.php\" method=\"post\">
+                        <form class=\"text-center\" action=\"../controladores/ver_mas_juego.php\" method=\"post\">
                             <input hidden name=\"id\" value=\"".$juegos[$pos]["id"]."\">
                             <input hidden name=\"nombre\" value=\"".$juegos[$pos]["juego"]."\">
                             <input hidden name=\"plat\" value=\"".$juegos[$pos]["id_plat"]."\">

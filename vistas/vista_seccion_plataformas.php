@@ -32,7 +32,7 @@
         <section class="contenedor-seccion-plataformas row container-xl">
             <?php
                 foreach($plataformas as $pos => $plat){
-                    echo "<div class=\"col-12 col-md-6 plat text-center\">
+                    echo "<div class=\"col-12 p-3 col-md-6 plat text-center d-flex flex-column align-items-center justify-content-around\">
                         <img src=\"".$plataformas[$pos]["logo"]."\">
                         <form action=\"../controladores/plataforma_resumen.php\" method=\"post\">
                             <input hidden name =\"id\" value=\"".$plataformas[$pos]["id"]."\">

@@ -132,17 +132,18 @@ h1,h2{
 #seccion-plataformas h1{
     font-size: 3rem;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:first-child{
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(1n){
     border-bottom: 3px solid black;
     border-right: 3px solid black;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2){
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2n){
     border-bottom: 3px solid black;
-    padding: 1rem;
+    border-right: none;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3){
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n){
     border-right: 3px solid black;
-    padding: 1rem;
+    /* border-right: none; */
+
 }
 #ver-plataforma .contenedor-ver-plataforma img{
     border-radius: 8px;
