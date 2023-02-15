@@ -136,13 +136,15 @@ h1,h2{
     border-bottom: 3px solid black;
     border-right: 3px solid black;
 }
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(1n):last-child{
+    border-bottom: none;
+}
 #seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2n){
     border-bottom: 3px solid black;
     border-right: none;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n){
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n):not(nth:child(even)){
     border-right: 3px solid black;
-    /* border-right: none; */
 
 }
 #ver-plataforma .contenedor-ver-plataforma img{
@@ -185,7 +187,58 @@ table img{
 .enlaces-insertar{
     text-decoration: none;
     color: black;
-    
+    background-color: #795fe385;
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 20%;
+}
+.forms-busqueda input[type="submit"]{
+    background-color: #795fe385;
+    border-radius: 8px;
+    border: none;
+    padding: 0.3rem;
+}
+.ver-mas{
+    background-color: #795fe3d0;
+    border-radius: 8px;
+    border: none;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    width: 70%;
+}
+.forms-ver-mas-plataformas input[type="submit"]{
+    width: 80%;
+    background-color: #795fe3d0;
+    border-radius: 8px;
+    border: none;
+    color: white;
+}
+.forms-ver-mas-plataformas{
+   width: 50%;
+}
+.enviar-comentario{
+    background-color: #795fe3d0;
+}
+.comentario-box{
+    border: 2px solid #795fe3;
+    border-radius: 20px;
+    -webkit-box-shadow: 1px 1px 26px -5px #795fe3;
+    -moz-box-shadow: 1px 1px 26px -5px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 26px -5px #795fe3;
+}
+.forms-volver{
+    display: flex;
+}
+.forms-volver input[type="submit"],a.forms-volver{
+    z-index: 999;
+    background-color: #795fe3d0;
+    border-radius: 8px;
+    border: none;
+    width: 10%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    place-content: center;
 }
 /* #seccion-juegos-admin table img{
     max-width: 100%;

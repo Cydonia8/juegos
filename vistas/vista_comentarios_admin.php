@@ -33,7 +33,7 @@
                 if(sizeof($comentarios) > 0){
                     foreach($comentarios as $pos=>$coment){
                         echo "<div class=\"card col-12 col-md-4 g-3\" style=\"width: 18rem;\">
-                                <div class=\"card-body\">
+                                <div class=\"card-body d-flex flex-column align-items-stretch justify-content-around\">
                                 <h5 class=\"card-title\">Comentario de ".$comentarios[$pos]["juego"]."</h5>
                                 <h6 class=\"card-subtitle mb-2 text-muted\">".formatearFecha($comentarios[$pos]["fecha"])."/".$comentarios[$pos]["usuario"]."</h6>
                                 <p class=\"card-text\">".$comentarios[$pos]["texto"]."</p>
@@ -41,7 +41,7 @@
                                     <input hidden value=\"".$comentarios[$pos]["juego"]."\" name=\"juego\">
                                     <input hidden value=\"".$comentarios[$pos]["texto"]."\" name=\"texto\">
                                     <input hidden value=\"".$comentarios[$pos]["usuario"]."\" name=\"usuario\">
-                                    <input type=\"submit\" name=\"enviar\" value=\"Eliminar\">
+                                    <input type=\"submit\" class=\"btn btn-danger\" name=\"enviar\" value=\"Eliminar\">
                                 </form>
                                 </div>
                             </div>";

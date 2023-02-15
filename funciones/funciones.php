@@ -136,7 +136,7 @@
                     <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>
                     <td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
                         <input hidden value=\"".$array[$pos]["id"]."\" name=\"plataforma\">
-                        <input type=\"submit\" name=\"modificar-plat\" value=\"Modificar\">    
+                        <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-plat\" value=\"Modificar\">    
                     </form>
                     </td>
             </tr>";
@@ -154,15 +154,19 @@
                         echo "<td class=\"text-center\">
                                 <form action=\"../controladores/desactivar.php\" method=\"post\">
                                     <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" name=\"desactivar-usuario\" value=\"Desactivar\">
+                                    <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-usuario\" value=\"Desactivar\">
                                 </form>
                         </td>";
                     }else{
-                        echo "<td></td>";
+                        echo "<td>
+                        <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                    <input type=\"submit\" class=\"btn btn-success\" name=\"activar-usuario\" value=\"Activar\">
+                                </form></td>";
                     }
                     echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
                                 <input hidden value=\"".$array[$pos]["id"]."\" name=\"usuario\">
-                                <input type=\"submit\" name=\"modificar-usuario\" value=\"Modificar\">    
+                                <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-usuario\" value=\"Modificar\">    
                             </form>
                         </td>";
                 echo "</tr>";
@@ -183,15 +187,19 @@
                         echo "<td class=\"text-center\">
                                 <form action=\"../controladores/desactivar.php\" method=\"post\">
                                     <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" name=\"desactivar-juego\" value=\"Desactivar\">
+                                    <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-juego\" value=\"Desactivar\">
                                 </form>
                         </td>";
                     }else{
-                        echo "<td></td>";
+                        echo "<td>
+                        <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                    <input type=\"submit\" class=\"btn btn-success\" name=\"activar-juego\" value=\"Activar\">
+                                </form></td>";
                     }
                     echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
                                 <input hidden value=\"".$array[$pos]["id"]."\" name=\"juego\">
-                                <input type=\"submit\" name=\"modificar-juego\" value=\"Modificar\">    
+                                <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-juego\" value=\"Modificar\">    
                             </form>
                         </td>";
                 echo "</tr>";

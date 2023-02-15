@@ -1,7 +1,7 @@
 <?php
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
-
+    $_SESSION["seccion"] = "plataformas";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,7 @@
     <?php
         menuImprimir($user);
         $nombre_plat = $plat->nombre;
+        $id = $juegos[0]["id_plataforma"];
     ?>
     <main>
     <button class="abrir-menu">
@@ -42,11 +43,11 @@
                                 <div class=\"col-12 col-md-4 d-flex flex-column justify-content-center align-items-center\">
                                     <h2>".$juegos[$pos]["nombre"]."</h2>
                                     <h3>Lanzado el ".formatearFecha($juegos[$pos]["fecha"])."</h3>
-                                    <form action=\"../controladores/ver_mas_juego.php\" method=\"post\">
+                                    <form class=\"align-self-stretch text-center\" action=\"../controladores/ver_mas_juego.php\" method=\"post\">
                                     <input hidden name=\"id\" value=\"".$juegos[$pos]["id_juego"]."\">
                                     <input hidden name=\"nombre\" value=\"".$juegos[$pos]["nombre"]."\">
                                     <input hidden name=\"plat\" value=\"".$juegos[$pos]["id_plataforma"]."\">
-                                    <input type=\"submit\" name=\"enviar\" value=\"Ver más\">
+                                    <input type=\"submit\" class=\"btn btn-primary ver-mas\" name=\"enviar\" value=\"Ver más\">
                                 </form>
                                 </div>";
                                 

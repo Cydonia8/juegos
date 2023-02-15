@@ -167,6 +167,14 @@
             $desactivacion->close();
             $conexion->close();
         }
+        public function activarJuego($id){
+            $conexion = conectar::conectarBD();
+            $desactivacion = $conexion->prepare("update juegos set activo = 1 where id = ?");
+            $desactivacion->bind_param('i', $id);
+            $desactivacion->execute();
+            $desactivacion->close();
+            $conexion->close();
+        }
 
         public function insertarJuego($nombre, $descripcion, $plataforma, $caratula, $fecha, $activo){
             $conexion = conectar::conectarBD();

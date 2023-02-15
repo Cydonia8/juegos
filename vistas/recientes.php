@@ -41,7 +41,7 @@
                     </div>
                     <div>
                     <h4 class=\"text-center\">".$datos_ps5[$i]['juego']."</h4>
-                    <h5 class=\"text-center\">".$datos_ps5[$i]['fecha']."</h5>
+                    <h5 class=\"text-center\">".formatearFecha($datos_ps5[$i]['fecha'])."</h5>
                     </div>
                   </div>";
         }

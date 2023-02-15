@@ -38,6 +38,15 @@
             $conexion->close();
         }
 
+        public function activarUsuario($id){
+            $conexion = conectar::conectarBD();
+            $desactivacion = $conexion->prepare("update usuarios set activo = 1 where id = ?");
+            $desactivacion->bind_param('i', $id);
+            $desactivacion->execute();
+            $desactivacion->close();
+            $conexion->close();
+        }
+
         public function sacarIDUsuario($nick){
             $conexion = conectar::conectarBD();
             $consulta = $conexion->prepare("select id from usuarios where nick = ?");

@@ -7,10 +7,15 @@
         $comentario = new comentario();
         $usu = new usuario();
         $juego = new juego();
-
         $id = $usu->sacarIDUsuario($_SESSION["user"]);
-        $fecha = date('Y-m-d');
-        $nuevo = $comentario->insertarComentario($id, $_POST["juego"], $fecha, $_POST["comentario"]);
+        $comprobante = $comentario->comprobarComentarioExiste($_POST["juego"], $id);
+        if($comprobante == 0){
+            $fecha = date('Y-m-d');
+            $nuevo = $comentario->insertarComentario($id, $_POST["juego"], $fecha, $_POST["comentario"]);
+            $error = false;
+        }else{
+            $error = true;
+        }
         
         $id_juego = $_POST["juego"];
         $datos_recarga = $juego->datosRecargaJuego($_POST["juego"]);

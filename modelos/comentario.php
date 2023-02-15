@@ -92,5 +92,18 @@
             $sentencia->execute();
             $sentencia->close();
         }
+
+        public function comprobarComentarioExiste($juego, $usuario){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->prepare("select count(*) from comentario where usuario = ? and juego = ?");
+            $sentencia->bind_param('ii', $usuario, $juego);
+            $sentencia->bind_result($comprobante);
+            $sentencia->execute();
+            $sentencia->fetch();
+            $sentencia->close();
+            $conexion->close();
+
+            return $comprobante;
+        }
     }
 ?>

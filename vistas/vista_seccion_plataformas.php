@@ -32,13 +32,13 @@
         <section class="contenedor-seccion-plataformas row container-xl">
             <?php
                 foreach($plataformas as $pos => $plat){
-                    echo "<div class=\"col-12 p-3 col-md-6 plat text-center d-flex flex-column align-items-center justify-content-around\">
-                        <img src=\"".$plataformas[$pos]["logo"]."\">
-                        <form action=\"../controladores/plataforma_resumen.php\" method=\"post\">
+                    echo "<div class=\"position-relative col-12 p-3 col-md-6 plat text-center d-flex flex-column align-items-center justify-content-around\">
+                        <img class=\"img-plats\" src=\"".$plataformas[$pos]["logo"]."\">
+                        <form class=\"d-lg-none position-absolute forms-ver-mas-plataformas\" action=\"../controladores/plataforma_resumen.php\" method=\"post\">
                             <input hidden name =\"id\" value=\"".$plataformas[$pos]["id"]."\">
                             <input hidden name=\"foto\" value=\"".$plataformas[$pos]["logo"]."\">
                             <input hidden name=\"nombre\" value=\"".$plataformas[$pos]["nombre"]."\">
-                            <input type=\"submit\" name=\"enviar\">
+                            <input type=\"submit\" name=\"enviar\" value=\"Ver más\">
                         </form>
                     </div>";
                 }

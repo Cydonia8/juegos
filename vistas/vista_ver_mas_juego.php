@@ -25,8 +25,11 @@
 <body id="ver-mas">
     <?php
         menuImprimir($user);
+        $id = $_POST["plat"];
+        $nombre = $lanzamientos[0]["plataforma"];
     ?>
     <main>
+    
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -46,6 +49,22 @@
                     }
                     echo "</div>";
                 ?>
+                <?php
+                    if($_SESSION["seccion"] == "plataformas"){
+                        echo "<form class=\"forms-volver\" action=\"../controladores/plataforma_resumen.php\" method=\"post\">
+                        <input hidden name=\"id\" value=\"$id\">
+                        <input hidden name=\"nombre\" value=\"$nombre\">
+                        <input type=\"submit\" class=\"mt-3 btn btn-primary\" name=\"enviar\" value=\"Volver\">
+                    </form>";
+                    }elseif($_SESSION["seccion"] == "juegos"){
+                        echo "<a class=\"ms-3 mt-3 p-2 text-center forms-volver\" href=\"../controladores/seccion_juegos.php\">Volver</a>";
+                    }
+                ?>
+                <!-- <form class="forms-volver" action="../controladores/plataforma_resumen.php" method="post">
+                    <input hidden name="id" value="<?php echo $id; ?>">
+                    <input hidden name="nombre" value="<?php echo $nombre; ?>">
+                    <input type="submit" class="btn btn-primary" name="enviar" value="Volver">
+                </form> -->
             </div>
             <div class="comentarios container-xl mt-5 row">
                 <?php
@@ -55,41 +74,36 @@
                           Añadir comentario
                         </button>
                       </p>
-                      <div class=\"collapse\" id=\"collapseExample\">
+                      <div class=\"collapse mb-3\" id=\"collapseExample\">
                         <div class=\"card card-body\">
-                            <form action=\"../controladores/insertar_comentario.php\" method=\"post\">
+                            <form class=\"d-flex gap-2\" action=\"../controladores/insertar_comentario.php\" method=\"post\">
                                 <input type=\"text\" placeholder=\"Comentario...\" name=\"comentario\">
                                 <input hidden value=\"$id_juego\" name=\"juego\">
-                                <input type=\"submit\" name=\"enviar\" value=\"Comentar\">
+                                <input type=\"submit\" class=\"btn btn-primary enviar-comentario\" name=\"enviar\" value=\"Comentar\">
                             </form>
                         </div>
                       </div>";
-                        // echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
-                        // <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
-                        // <input hidden value=\"$id_juego\" name=\"juego\">
-                        // <input type=\"submit\" name=\"enviar\" value=\"comentar\">
-                        // </form>";
+                    if(isset($error)){
+                        if($error){
+                            echo "<h4 class=\"mensajes-temporales alert alert-danger\">Ya añadiste un comentario para este juego.</h4>";
+                        }else{
+                            echo "<h4 class=\"mensajes-temporales alert alert-success\">Comentario añadido.</h4>";
+                        }
+                    }
                         if(sizeof($comentarios) > 0){
+                            echo "<div class=\"container-comentarios row gap-5\">";
                             foreach($comentarios as $pos=>$coment){
-                                echo "<article class=\"col-12 col-md-6\">
+                                echo "<article class=\"p-2 comentario-box col-11 col-md-5\">
                                     <h4>".$comentarios[$pos]["usuario"]."</h4>
                                     <p>".$comentarios[$pos]["texto"]."</p>
                                     <h3>".formatearFecha($comentarios[$pos]["fecha"])."</h3>
                                 </article>";
                             }
+                            echo "</div>";
                         }
-                    //     echo "<form action=\"../controladores/insertar_comentario.php\" method=\"post\">
-                    //     <input type=\"textarea\" placeholder=\"Comentario...\" name=\"comentario\">
-                    //     <input hidden value=\"$id_juego\" name=\"juego\">
-                    //     <input type=\"submit\" name=\"enviar\" value=\"comentar\">
-                    // </form>";
+
                     }
                 ?>
-                <!-- <form action="../controladores/insertar_comentario.php" method="post">
-                    <input type="textarea" placeholder="Comentario..." name="comentario">
-                    <input hidden value="" name="juego">
-                    <input type="submit" name="enviar" value="comentar">
-                </form> -->
             </div>
         </section>
     </main>

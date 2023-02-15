@@ -52,11 +52,11 @@
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensaje-temporal\">Juego insertado correctamente</h3>";
+                    echo "<h3 class=\"mensaje-temporal alert alert-success w-50\">Juego insertado correctamente</h3>";
                 }else{
-                    echo "<h3 class=\"mensaje-temporal\">Alguno de los datos es erróneo</h3>";;
+                    echo "<h3 class=\"mensaje-temporal alert alert-danger w-50\">Alguno de los datos es erróneo</h3>";;
                     if($foto_error){
-                        echo "<h3 class=\"mensaje-temporal\">Formato o tamaño de foto inválidos</h3>";
+                        echo "<h3 class=\"mensaje-temporal alert alert-danger w-50\">Formato o tamaño de foto inválidos</h3>";
                     }
                 }
             }

@@ -30,11 +30,13 @@
             </button>
         <h1 class="text-center mb-5">Usuarios</h1>
         <section class="">
-            <form class="text-center" action="../controladores/busqueda_admin.php" method="post">
-                <input type="text" name="nombre" placeholder="Nombre de usuario">
-                <input type="submit" name="buscar-usuario" value="Buscar">
-            </form>
-            <a class="text-center mx-auto enlaces-insertar" href="../vistas/vista_insertar_usuario.php">Insertar usuario</a>
+            <div class="container-lg d-flex flex-column align-items-center justify-content-center gap-3">
+                <form class="text-center forms-busqueda" action="../controladores/busqueda_admin.php" method="post">
+                    <input type="text" name="nombre" placeholder="Nombre de usuario">
+                    <input type="submit" name="buscar-usuario" value="Buscar">
+                </form>
+                <a class="text-center mb-3 mx-auto enlaces-insertar" href="../vistas/vista_insertar_usuario.php">Insertar usuario</a>
+            </div>
             <div class="table-wrapper">
             <table class="mx-auto w-50 text-center">
             <tr>
