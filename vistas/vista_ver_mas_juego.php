@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -25,14 +25,17 @@
 <body id="ver-mas">
     <?php
         menuImprimir($user);
-        $id = $_POST["plat"];
-        $nombre = $lanzamientos[0]["plataforma"];
+        if(isset($_POST["plat"])){
+            $_SESSION["id_plataforma"] = $_POST["plat"];
+            $_SESSION["nombre_plataforma"] = $lanzamientos[0]["plataforma"];
+        }
     ?>
     <main>
     
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
+    
         <section class="ver-mas-juego container-xl">
             <div class="juego-info row">
                 <?php
@@ -52,19 +55,15 @@
                 <?php
                     if($_SESSION["seccion"] == "plataformas"){
                         echo "<form class=\"forms-volver\" action=\"../controladores/plataforma_resumen.php\" method=\"post\">
-                        <input hidden name=\"id\" value=\"$id\">
-                        <input hidden name=\"nombre\" value=\"$nombre\">
+                        <input hidden name=\"id\" value=\"$_SESSION[id_plataforma]\">
+                        <input hidden name=\"nombre\" value=\"$_SESSION[nombre_plataforma]\">
                         <input type=\"submit\" class=\"mt-3 btn btn-primary\" name=\"enviar\" value=\"Volver\">
                     </form>";
                     }elseif($_SESSION["seccion"] == "juegos"){
-                        echo "<a class=\"ms-3 mt-3 p-2 text-center forms-volver\" href=\"../controladores/seccion_juegos.php\">Volver</a>";
+                        echo "<a class=\"ms-3 w-25 mt-3 p-2 text-center forms-volver\" href=\"../controladores/seccion_juegos.php\">Volver</a>";
                     }
                 ?>
-                <!-- <form class="forms-volver" action="../controladores/plataforma_resumen.php" method="post">
-                    <input hidden name="id" value="<?php echo $id; ?>">
-                    <input hidden name="nombre" value="<?php echo $nombre; ?>">
-                    <input type="submit" class="btn btn-primary" name="enviar" value="Volver">
-                </form> -->
+                
             </div>
             <div class="comentarios container-xl mt-5 row">
                 <?php
@@ -101,11 +100,13 @@
                             }
                             echo "</div>";
                         }
-
                     }
                 ?>
             </div>
         </section>
     </main>
+    <?php
+        imprimirFooter();
+    ?>
 </body>
 </html>

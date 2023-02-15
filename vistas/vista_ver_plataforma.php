@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -30,6 +30,7 @@
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
+            <div><a class="forms-volver w-25 p-2 ms-auto me-4" href="../controladores/seccion_plataformas.php">Volver a plataformas</a></div>
         <h1 class="text-center mb-5">Videojuegos de <?php echo $nombre_plat; ?></h1>
         <section class="contenedor-ver-plataforma row container-xl mx-auto gap-5">
             <?php
@@ -60,5 +61,8 @@
             ?>
         </section>
     </main>
+    <?php
+        imprimirFooter();
+    ?>
 </body>
 </html>

@@ -45,5 +45,8 @@
             ?>
         </section>
     </main>
+    <?php
+        imprimirFooter();
+    ?>
 </body>
 </html>

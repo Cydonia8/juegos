@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -32,8 +32,8 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
         <h1 class="text-center mb-5">Insertar usuario</h1>
-        <section class="">
-            <form action="../controladores/insercion_admin.php" method="post">
+        <section class="container-xl d-flex justify-content-center">
+            <form action="../controladores/insercion_admin.php" class="d-flex flex-column gap-4 form-insertar-modificar" method="post">
                 <input type="text" placeholder="Nombre" name="nombre" required>
                 <input type="text" placeholder="Nombre de usuario" name="nick" required>
                 <input type="password" placeholder="Contraseña" name="pass" required>
@@ -51,5 +51,8 @@
             }
         ?>
     </main>
+    <?php
+        imprimirFooter();
+    ?>
 </body>
 </html>

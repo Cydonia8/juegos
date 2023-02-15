@@ -40,5 +40,8 @@
         </section>
 
     </main>
+    <?php
+        imprimirFooter("index");
+    ?>
 </body>
 </html>

@@ -26,7 +26,7 @@ header nav a{
     text-transform: uppercase;
     font-size: 1.5rem;
 }
-header.bg-black{
+.bg-black{
   color: #524099c5;
 }
 header nav{
@@ -36,6 +36,9 @@ header nav{
 }
 .logo-menu{
     width: 100%;
+}
+.acceder-container{
+    height: 40vh;
 }
 .abrir-menu{
     position: absolute;
@@ -206,6 +209,19 @@ table img{
     font-size: 1.2rem;
     width: 70%;
 }
+.acceder-container form{
+    border: 2px solid #795fe3;
+    border-radius: 10px;
+    padding: 2rem;
+}
+.acceder-container form input{
+    border-radius: 10px;
+}
+.acceder-container form input:last-child{
+    background-color: #795fe3;
+    color: white;
+    font-weight: bold;
+}
 .forms-ver-mas-plataformas input[type="submit"]{
     width: 80%;
     background-color: #795fe3d0;
@@ -234,11 +250,24 @@ table img{
     background-color: #795fe3d0;
     border-radius: 8px;
     border: none;
-    width: 10%;
     color: white;
     text-decoration: none;
     font-weight: bold;
     place-content: center;
+}
+.form-insertar-modificar input,select{
+    border-radius: 8px;
+    border: none;
+    background-color: #d0d0d381;
+    padding: 0.5rem;
+    transition: .6s;
+    font-weight: bolder;
+}
+.form-insertar-modificar input[type="submit"]:hover{
+    background-color: #795fe3;
+    transition: .6s;
+    color: white;
+
 }
 /* #seccion-juegos-admin table img{
     max-width: 100%;
