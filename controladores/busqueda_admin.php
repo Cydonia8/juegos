@@ -1,8 +1,8 @@
 <?php
-    require "../bd/bd.php";
-    require "../modelos/plataforma.php";
-    require "../modelos/juego.php";
-    require "../modelos/usuario.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/plataforma.php";
+    require_once "../modelos/juego.php";
+    require_once "../modelos/usuario.php";
 
     if(isset($_POST["buscar-plat"])){
         $plat = new plataforma();

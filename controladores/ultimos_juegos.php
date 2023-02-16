@@ -1,7 +1,7 @@
 <?php
     // require_once "../bd/bd.php";
     require_once "modelos/juego.php";
-    require "modelos/plataforma.php";
+    require_once "modelos/plataforma.php";
     // $j = new juego();
     $plat = new plataforma();
     $plataformas = $plat->getPlataformas();

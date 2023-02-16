@@ -1,6 +1,6 @@
 <?php
-    require "../bd/bd.php";
-    require "../modelos/comentario.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/comentario.php";
     if(isset($_POST["enviar"])){
         $com = new comentario();
 

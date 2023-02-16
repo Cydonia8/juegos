@@ -1,6 +1,6 @@
 <?php
-    require "../bd/bd.php";
-    require "../modelos/juego.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/juego.php";
     $juegos = juego::todosJuegos();
     include "../vistas/vista_seccion_juegos.php";
 ?>

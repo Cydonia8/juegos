@@ -1,8 +1,8 @@
 <?php
-    require "../bd/bd.php";
-    require "../modelos/comentario.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/comentario.php";
     require_once "../modelos/juego.php";
-    require "../modelos/usuario.php";
+    require_once "../modelos/usuario.php";
     if(isset($_POST["enviar"])){
         $comentario = new comentario();
         $usu = new usuario();

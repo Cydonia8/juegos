@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST["enviar"])){
-        require "../bd/bd.php";
+        require_once "../bd/bd.php";
         require_once "../modelos/juego.php";
         require_once "../modelos/comentario.php";
         $juego = new juego();

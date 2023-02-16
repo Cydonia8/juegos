@@ -1,9 +1,9 @@
 <?php
-    require "../bd/bd.php";
-    require "../modelos/plataforma.php";
-    require "../modelos/juego.php";
-    require "../modelos/usuario.php";
-    require "../funciones/funciones.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/plataforma.php";
+    require_once "../modelos/juego.php";
+    require_once "../modelos/usuario.php";
+    require_once "../funciones/funciones.php";
     $usu = new usuario();
     $plat = new plataforma();
     $j = new juego();

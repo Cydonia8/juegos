@@ -1,7 +1,7 @@
 <?php
     // session_start();
-    require "../bd/bd.php";
-    require "../modelos/acceso.php";
+    require_once "../bd/bd.php";
+    require_once "../modelos/acceso.php";
     if(isset($_POST["enviar"])){
         $nick = $_POST["user"];
         $pass = md5(md5($_POST["pass"]));
