@@ -45,6 +45,7 @@
                     <td>Nombre de plataforma</td>
                     <td>Logotipo de plataforma</td>
                     <td>Plataforma activa</td>
+                    <td>Desactivar plataforma</td>
                     <td>Modificar</td>
                 </tr>
                 <?php

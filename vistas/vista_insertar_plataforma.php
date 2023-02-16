@@ -31,7 +31,8 @@
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        <h1 class="text-center mb-5">Insertar plataforma</h1>
+        <h1 class="text-center mb-0">Insertar plataforma</h1>
+        <h5 class="text-center mb-5">(se inserta activa por defecto)</h5>
         <section class="container-xl d-flex justify-content-center">
             <form action="../controladores/insercion_admin.php" class="d-flex flex-column gap-4 form-insertar-modificar" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Nombre" name="nombre" required>
@@ -42,11 +43,11 @@
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales alert alert-success w-50\">Plataforma insertada</h3>";
+                    echo "<h3 class=\"mensajes-temporales alert alert-success w-50 mx-auto mt-4\">Plataforma insertada</h3>";
                 }else{
-                    echo "<h3 class=\"mensajes-temporales alert alert-danger w-50\">Datos mal, ceporro</h3>";
+                    echo "<h3 class=\"mensajes-temporales alert alert-danger w-50 mx-auto mt-4\">Datos mal, ceporro</h3>";
                     if($foto_error){
-                        echo "<h3 class=\"mensaje-temporal alert alert-danger w-50\">Formato o tamaño de foto inválidos</h3>"; 
+                        echo "<h3 class=\"mensaje-temporal alert alert-danger w-50 mx-auto mt-4\">Formato o tamaño de foto inválidos</h3>"; 
                     }
                 }
 

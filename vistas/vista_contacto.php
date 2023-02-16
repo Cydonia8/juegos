@@ -23,7 +23,7 @@
     <script src="../scripts/app.js" defer></script>
     <title>Document</title>
 </head>
-<body id="seccion-usuarios">
+<body id="seccion-contacto">
     <?php
         menuImprimir($user);
     ?>
@@ -31,25 +31,31 @@
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        <h1 class="text-center mb-0">Insertar usuario</h1>
-        <h5 class="text-center mb-5">(se inserta activo por defecto)</h5>
-        <section class="container-xl d-flex justify-content-center">
-            <form action="../controladores/insercion_admin.php" class="d-flex flex-column gap-4 form-insertar-modificar" method="post">
-                <input type="text" placeholder="Nombre" name="nombre" required>
-                <input type="text" placeholder="Nombre de usuario" name="nick" required>
-                <input type="password" placeholder="Contraseña" name="pass" required>
-                <input type="submit" name="insertar-usuario" value="Insertar">
-            </form>
+        <h1 class="text-center mb-5 text-white">¿Dudas? ¿Sugerencias? Estamos a tu disposición.</h1>
+        <section class="container-xl row mx-auto">
+        <iframe class="col-12 col-md-6" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.6129813461794!2d-118.47339308441784!3d34.02814392644623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb39055993f7%3A0xbc891fc1b60f587a!2sNaughty%20Dog%20LLC!5e0!3m2!1ses!2ses!4v1676545445023!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <form class="col-12 col-md-6 d-flex flex-column align-items-center gap-2 form-contacto" action="">
+            <div class="fila-inp d-flex justify-content-between w-100">
+                <label class="text-white" for="">Nombre</label>
+                <input class="rounded" type="text">
+            </div>
+            <div class="fila-inp d-flex justify-content-between w-100">
+                <label class="text-white" for="">Apellidos</label>
+                <input type="text"class="rounded">
+            </div>
+            <div class="fila-inp d-flex justify-content-between w-100">
+                <label class="text-white" for="">Teléfono</label>
+                <input type="text"class="rounded">
+            </div>
+            <div class="fila-inp d-flex justify-content-between w-100">
+                <label class="text-white" for="">E-mail</label>
+                <input type="email"class="rounded">
+            </div>
+            <textarea class="w-100 rounded" name="" id="" cols="30" rows="10" placeholder="Motivo de contacto"></textarea>
+            <input type="submit" class="btn">
+        </form>
         </section>
-        <?php
-            if(isset($success)){
-                if($success){
-                    echo "<h3 class=\"mensajes-temporales alert alert-success w-50 mx-auto mt-4\">Usuario insertado</h3>";
-                }else{
-                    echo "<h3 class=\"mensajes-temporales alert alert-danger w-50 mx-auto mt-4\">Datos mal, ceporro</h3>";
-                }
-            }
-        ?>
+        
     </main>
     <?php
         imprimirFooter();

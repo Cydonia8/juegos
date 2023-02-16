@@ -24,7 +24,7 @@ header nav a{
     color: white;
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .bg-black{
   color: #524099c5;
@@ -148,7 +148,9 @@ h1,h2{
 }
 #seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n):not(nth:child(even)){
     border-right: 3px solid black;
-
+}
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n){
+    border-bottom: 3px solid black;
 }
 #ver-plataforma .contenedor-ver-plataforma img{
     border-radius: 8px;
@@ -268,6 +270,36 @@ table img{
     transition: .6s;
     color: white;
 
+}
+.form-contacto input, textarea{
+    border: 2px solid #795fe3;
+    font-weight: bold;
+}
+.form-contacto{
+    font-family: 'Lato', sans-serif;
+    border-radius: 8px;
+  backdrop-filter: saturate(180%) blur(10px);
+  padding: 0.5rem;
+  font-weight: bold;
+}
+.form-contacto input[type="submit"]{
+    background-color: #795fe3ee;
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    font-family: 'Lato', sans-serif;
+    padding: 0.4rem;
+    transition: .8s;
+    color: white;
+}
+.form-contacto input[type="submit"]:hover{
+    background-color: #1a38e0ad;
+    transition: .8s;
+    color: white;
+}
+#seccion-contacto{
+    background-image: url('../media/img_assets/pexels-suludan-diliyaer-596750.jpg');
+    background-size: cover;
 }
 /* #seccion-juegos-admin table img{
     max-width: 100%;

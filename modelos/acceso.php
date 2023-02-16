@@ -17,7 +17,7 @@
 
         public function comprobarAcceso($user, $pass){
             $conexion = conectar::conectarBD();
-            $acceso = $conexion->prepare("select count(*) from usuarios where nick = ? and pass = ?");
+            $acceso = $conexion->prepare("select count(*) from usuarios where nick = ? and pass = ? and activo = 1");
             $acceso->bind_param('ss', $user, $pass);
             $acceso->bind_result($comprobante);
             $acceso->execute();

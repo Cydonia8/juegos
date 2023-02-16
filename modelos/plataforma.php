@@ -36,6 +36,19 @@
             return $plataforma;
         }
 
+        public function getPlataformas(){
+            $conexion = conectar::conectarBD();
+            $sentencia = $conexion->query("select nombre from plataformas");
+            $i=0;
+            $nombres = array();
+            while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
+                $nombres[$i] = $fila["nombre"];
+                $i++;
+            }
+            $conexion->close();
+            return $nombres;
+        }
+
         public function juegosPlataforma($id){
             $conexion = conectar::conectarBD();
             $lanzamientos = $conexion->query("select j.id id_juego, p.id id_plataforma, caratula, j.nombre juego, fecha_lanzamiento from juegos j, plataformas p where j.plataforma = p.id and p.id = '$id'");
@@ -52,6 +65,25 @@
             $conexion->close();
             return $juego;
         }
+
+        public function desactivarPlataforma($id){
+            $conexion = conectar::conectarBD();
+            $desactivar = $conexion->prepare("update plataformas set activo = 0 where id = ?");
+            $desactivar->bind_param('i', $id);
+            $desactivar->execute();
+            $desactivar->close();
+            $conexion->close();
+        }
+
+        public function activarPlataforma($id){
+            $conexion = conectar::conectarBD();
+            $desactivar = $conexion->prepare("update plataformas set activo = 1 where id = ?");
+            $desactivar->bind_param('i', $id);
+            $desactivar->execute();
+            $desactivar->close();
+            $conexion->close();
+        }
+        
 
         public function buscarPlataforma($patron){
             $cadena_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
