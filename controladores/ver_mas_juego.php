@@ -1,8 +1,9 @@
 <?php
+require_once "../bd/bd.php";
+require_once "../modelos/juego.php";
+require_once "../modelos/comentario.php";
     if(isset($_POST["enviar"])){
-        require_once "../bd/bd.php";
-        require_once "../modelos/juego.php";
-        require_once "../modelos/comentario.php";
+        
         $juego = new juego();
         $datos = $juego->datosJuego($_POST["id"]);
         $lanzamientos = $juego->lanzamientosJuego($_POST["nombre"]);
