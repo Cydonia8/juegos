@@ -48,7 +48,7 @@
                             </div>";
                     }
                 }else{
-                    echo "<h2>No hay comentarios</h2>";
+                    echo "<h2 class=\"text-center\">No hay comentarios</h2>";
                 }
             ?>
         </section>

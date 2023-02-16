@@ -25,6 +25,7 @@
         public function ultimosComentarios(){
             $ultimos = $this->bd->query("select caratula, u.nombre user, texto, fecha from comentario c, juegos j, usuarios u where c.usuario = u.id and j.id = c.juego and j.activo = 1 order by fecha desc limit 5");
             $i = 0;
+            $comentarios = array();
             while($fila=$ultimos->fetch_array(MYSQLI_ASSOC)){
                 $comentarios[$i]['foto'] = $fila['caratula'];
                 $comentarios[$i]['usuario'] = $fila['user'];
