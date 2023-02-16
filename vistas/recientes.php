@@ -45,7 +45,7 @@
                            <img src=\"".adecuar_ruta_foto($array['caratula'])."\">
                       </div>
                          <div>
-                         <h4 class=\"text-center\">".$array['juego']."</h4>
+                         <h4 class=\"text-center mt-2\">".$array['juego']."</h4>
                         <h5 class=\"text-center\">".formatearFecha($array['fecha'])."</h5>
                         </div>
                        </div>";

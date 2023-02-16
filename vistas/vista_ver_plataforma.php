@@ -24,7 +24,7 @@
     <?php
         menuImprimir($user);
         $nombre_plat = $plat->nombre;
-        $id = $juegos[0]["id_plataforma"];
+        $id = $_POST["id"];
     ?>
     <main>
     <button class="abrir-menu">
