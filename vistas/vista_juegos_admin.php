@@ -46,6 +46,7 @@
                 <td>Plataforma</td>
                 <td>Imagen del juego</td>
                 <td>Fecha de lanzamiento</td>
+                <td>Precio</td>
                 <td>Juego activo</td>
                 <td>Desactivar</td>
                 <td>Modificar</td>

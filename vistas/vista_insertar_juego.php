@@ -47,6 +47,7 @@
                 </select>
                 <input type="file" name="foto" required>
                 <input type="date" name="fecha" required>
+                <input type="number" step="0.01" name="precio" min="0" placeholder="Precio" required>
                 <input type="submit" name="insertar-juego" value="Insertar">
             </form>
         </section>

@@ -116,7 +116,7 @@
         
         public function getJuegos(){
             $conexion = conectar::conectarBD();
-            $sentencia = $conexion->query("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo from juegos j, plataformas p where j.plataforma = p.id");
+            $sentencia = $conexion->query("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo, precio from juegos j, plataformas p where j.plataforma = p.id");
             $i=0;
             $resultados=array();
             while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
@@ -127,6 +127,7 @@
                 $resultados[$i]["caratula"] = $fila["caratula"];
                 $resultados[$i]["fecha"] = $fila["fecha_lanzamiento"];
                 $resultados[$i]["activo"] = $fila["activo"];
+                $resultados[$i]["precio"] = $fila["precio"];
                 $i++;
             }
             $conexion->close();
@@ -176,10 +177,10 @@
             $conexion->close();
         }
 
-        public function insertarJuego($nombre, $descripcion, $plataforma, $caratula, $fecha, $activo){
+        public function insertarJuego($nombre, $descripcion, $plataforma, $caratula, $fecha, $activo,$precio){
             $conexion = conectar::conectarBD();
-            $insercion = $conexion->prepare("insert into juegos values (null, ?, ?, ?, ?, ?, ?)");
-            $insercion->bind_param('ssissi', $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo);
+            $insercion = $conexion->prepare("insert into juegos values (null, ?, ?, ?, ?, ?, ?, ?)");
+            $insercion->bind_param('ssissid', $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo, $precio);
             $insercion->execute();
             $insercion->close();
             $conexion->close();
@@ -187,7 +188,7 @@
 
         public function getDatosJuego($id){
             $conexion = conectar::conectarBD();
-            $consulta = $conexion->query("select id, nombre, descripcion, plataforma, caratula, fecha_lanzamiento from juegos where id = '$id'");
+            $consulta = $conexion->query("select id, nombre, descripcion, plataforma, caratula, fecha_lanzamiento, precio from juegos where id = '$id'");
             $fila = $consulta->fetch_array(MYSQLI_ASSOC);
 
             $resultado[0]["id"] = $fila["id"];
@@ -196,16 +197,17 @@
             $resultado[0]["plataforma"] = $fila["plataforma"];
             $resultado[0]["caratula"] = $fila["caratula"];
             $resultado[0]["fecha"] = $fila["fecha_lanzamiento"];
+            $resultado[0]["precio"] = $fila["precio"];
             
             $conexion->close();
 
             return $resultado;
         }
         
-        public function modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha){
+        public function modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $precio){
             $conexion = conectar::conectarBD();
-            $modificacion = $conexion->prepare("update juegos set nombre = ?, descripcion = ?, plataforma = ?, caratula = ?, fecha_lanzamiento = ? where id = ? ");
-            $modificacion->bind_param('ssissi', $nombre, $descripcion, $plataforma, $caratula, $fecha, $id);
+            $modificacion = $conexion->prepare("update juegos set nombre = ?, descripcion = ?, plataforma = ?, caratula = ?, fecha_lanzamiento = ?, precio = ? where id = ? ");
+            $modificacion->bind_param('ssissdi', $nombre, $descripcion, $plataforma, $caratula, $fecha, $precio, $id);
             $modificacion->execute();
             $modificacion->close();
             $conexion->close();

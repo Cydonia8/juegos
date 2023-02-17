@@ -62,6 +62,7 @@
         $tamanio_foto = $_FILES["foto"]["size"];
         $extension_foto = $_FILES["foto"]["type"];
         $fecha = $_POST["fecha"];
+        $precio = $_POST["precio"];
         $success = false;
         $foto_error = false;
 
@@ -79,7 +80,7 @@
                 $foto = "../media/img_juegos/".$nombre_nuevo;
                 move_uploaded_file($ruta_original, $foto);
                 $success = true;
-                $j->insertarJuego($nombre, $descripcion, $plataforma, $foto, $fecha, 1);
+                $j->insertarJuego($nombre, $descripcion, $plataforma, $foto, $fecha, 1, $precio);
             }else{
                 $foto_error = true;
             }

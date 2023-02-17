@@ -88,13 +88,13 @@ input_busqueda.addEventListener("keyup", ()=>{
     if(buscar===""){
         filtro = [...lista]
     }else{
-        filtro = lista.filter(item => item.name.toLowerCase().includes(buscar))
+        filtro = lista.filter(item => item.juego_nombre.toLowerCase().includes(buscar))
     }
 
     if(filtro.length===0){
         contenedor_productos.classList.add("no-resultados")
         contenedor_productos.innerHTML=`<h2>No hay productos con estas condiciones</h2>
-                                        <img id="noprod-foto" src="noprod.jpg">`
+                                        <img id="noprod-foto" src="../media/img_assets/noprod.jpg">`
     }else{
         contenedor_productos.classList.remove("no-resultados")
         renderizar(filtro, contenedor_productos, crearProducto)
@@ -107,7 +107,7 @@ actualizar_fecha.addEventListener("click", ()=>{
     const fecha_inicial = formatoFecha(fecha_inicio.value)
     const fecha_final = formatoFecha(fecha_tope.value)
 
-    let filtro = lista.filter(item => formatoFechaObjeto(item.date) >= fecha_inicial && formatoFechaObjeto(item.date) <= fecha_final )
+    let filtro = lista.filter(item => formatoFechaObjeto(item.fecha) >= fecha_inicial && formatoFechaObjeto(item.fecha) <= fecha_final )
 
     if(filtro.length === 0){
         contenedor_productos.classList.add("no-resultados")
@@ -125,13 +125,13 @@ input_precio.addEventListener("change", ()=>{
     let filtro;
 
     input_precio.nextElementSibling.innerText=`Filtro máximo de ${valor} €`
-    filtro = lista.filter(item => parseFloat(item.price) <= parseFloat(valor))
+    filtro = lista.filter(item => parseFloat(item.precio) <= parseFloat(valor))
     console.log(filtro)
 
     if(filtro.length===0){
         contenedor_productos.classList.add("no-resultados")
         contenedor_productos.innerHTML=`<h2>No hay productos con estas condiciones</h2>
-        <img id="noprod-foto" src="noprod.jpg">`
+        <img id="noprod-foto" src="../media/img_assets/noprod.jpg">`
     }else{
         contenedor_productos.classList.remove("no-resultados")
         renderizar(filtro, contenedor_productos, crearProducto)
@@ -144,23 +144,23 @@ InicializarTienda()
 const filtros_sticky_ul = document.querySelector(".filtros > ul")
 
 //Evento para colocar el menú de filtros en posición horizontal
-modo_vertical.addEventListener("click", ()=>{
-    if(!seccion_productos_filtros.classList.contains("vertical")){
-        seccion_productos_filtros.classList.add("vertical")
-        container_filtros.classList.add("vertical")
-        filtros_sticky.classList.add("vertical")
-        filtros_sticky_ul.classList.add("vertical")
-    }else{
-        seccion_productos_filtros.classList.remove("vertical")
-        container_filtros.classList.remove("vertical")
-        filtros_sticky.classList.remove("vertical")
-        filtros_sticky_ul.classList.remove("vertical")
-    }
+// modo_vertical.addEventListener("click", ()=>{
+//     if(!seccion_productos_filtros.classList.contains("vertical")){
+//         seccion_productos_filtros.classList.add("vertical")
+//         container_filtros.classList.add("vertical")
+//         filtros_sticky.classList.add("vertical")
+//         filtros_sticky_ul.classList.add("vertical")
+//     }else{
+//         seccion_productos_filtros.classList.remove("vertical")
+//         container_filtros.classList.remove("vertical")
+//         filtros_sticky.classList.remove("vertical")
+//         filtros_sticky_ul.classList.remove("vertical")
+//     }
     
-})
+// })
 
 //Colocamos los elementos básicos de la tienda, productos y categorias para filtrar
-async function InicializarTienda(url = "listaProductos.php"){
+async function InicializarTienda(url = "../bd/listaProds.php"){
     container_animacion.classList.add("mostrar-animacion")
     setTimeout(()=>{
         container_animacion.classList.remove("mostrar-animacion")
@@ -185,13 +185,13 @@ async function InicializarTienda(url = "listaProductos.php"){
     }
 
     //Array con categorías sin repetir
-    const categorias_no_rep = lista.map(item => item.category).filter((c,i,array)=>array.indexOf(c)===i)
-    const lista_categorias = document.createElement("ul");
+    const plataformas_no_rep = lista.map(item => item.plat).filter((c,i,array)=>array.indexOf(c)===i)
+    const lista_plataformas = document.createElement("ul");
     contenedor_filtros.innerHTML=""
-    contenedor_filtros.appendChild(lista_categorias);
-    lista_categorias.innerHTML=`<li class="categoria">Todos</li>`
-    categorias_no_rep.forEach(cate => {
-        lista_categorias.innerHTML+=`<li class="categoria">${cate}</li>`
+    contenedor_filtros.appendChild(lista_plataformas);
+    lista_plataformas.innerHTML=`<li class="categoria">Todos</li>`
+    plataformas_no_rep.forEach(cate => {
+        lista_plataformas.innerHTML+=`<li class="categoria">${cate}</li>`
     })
 
     renderizar(lista, contenedor_productos, crearProducto)
@@ -199,13 +199,13 @@ async function InicializarTienda(url = "listaProductos.php"){
 
 
     //Determinar el precio más alto para ajustar el rango del input
-    const precio_mayor = lista.map(item => item.price).sort((a,b)=>b-a)[0]
+    const precio_mayor = lista.map(item => item.precio).sort((a,b)=>b-a)[0]
     input_precio.setAttribute("max", precio_mayor)
 
 
    
 
-    lista_categorias.addEventListener("click", (evento)=>{
+    lista_plataformas.addEventListener("click", (evento)=>{
         const pulsado = evento.target
 
         if(pulsado.matches(".categoria")){
@@ -215,7 +215,7 @@ async function InicializarTienda(url = "listaProductos.php"){
             if(pulsado.innerText==="Todos"){
                 filtro = [...lista]
             }else{
-                filtro = lista.filter(item => item.category===pulsado.innerText)
+                filtro = lista.filter(item => item.plat===pulsado.innerText)
             }
             renderizar(filtro, contenedor_productos, crearProducto)
         }
@@ -227,37 +227,34 @@ async function InicializarTienda(url = "listaProductos.php"){
 function crearProducto(p){
     const producto = document.createElement("article");
     producto.className="producto"
-    producto.setAttribute("data-id", p.id)
+    producto.classList.add("col-12", "col-md-4")
+    producto.setAttribute("data-id", p.juego_id)
     producto.innerHTML = `  <div class="foto-producto">
-                                <img src="${p.image}" alt="">
-                                <i id="ampliar" class="fa-solid fa-eye"></i>
+                                <img id="img-prod" class="img-fluid" src="${p.caratula}" alt="">
                             </div>
-                            <div class="datos-producto">
-                                <h2>${p.name}</h2>
-                                <h3>A la venta por ${p.price} €</h3>
-                                <h3>Producto de la categoría ${p.category}</h3>
-                                <h4>Disponible desde el ${adaptarFecha(p.date)}</h4>
+                            <div class="datos-producto d-flex">
+                            <h4>${p.juego_nombre}</h4>
+                                <h4>${p.precio} €</h4>
                             </div>`;
 
     const imagen = producto.querySelector(".foto-producto");
-    const ampliar = producto.querySelector("i");
-
-    imagen.addEventListener("mouseenter", ()=>{
-        ampliar.classList.add("mostrar")
-    })
-    imagen.addEventListener("mouseleave", ()=>{
-        ampliar.classList.remove("mostrar")
-    })
-    ampliar.addEventListener("click", (evento)=>{
+    const img_prod = producto.querySelector("#img-prod")
+    // img_prod.addEventListener("mouseenter", (evento)=>{
+    //     evento.target.style.transform="scale(1.05)"
+    // })
+    // img_prod.addEventListener("mouseleave", (evento)=>{
+    //     evento.target.style.transform="none"
+    // })
+    img_prod.addEventListener("click", (evento)=>{
         const padre = evento.currentTarget.parentElement.parentElement;
         const id = padre.getAttribute("data-id");
         contenido_modal.setAttribute("data-product", id)
 
-        const producto_buscado = lista.find(item => item.id === id);
-        contenido_modal.innerHTML=`<img src="${producto_buscado.image}" alt="">
-                                    <h3>${producto_buscado.name}</h3>
-                                    <h3>${producto_buscado.price} €</h3>
-                                    <h4>ID del producto: ${producto_buscado.id}</h4>
+        const producto_buscado = lista.find(item => item.juego_id === id);
+        contenido_modal.innerHTML=`<img src="${producto_buscado.caratula}" alt="">
+                                    <h3>${producto_buscado.juego_nombre}</h3>
+                                    <h3>${producto_buscado.precio} €</h3>
+                                    <h4>ID del producto: ${producto_buscado.juego_id}</h4>
                                     <div>
                                         <button class="añadir-producto">Añadir al carrito</button>
                                         <input id="unidades-añadir" type="number" value="1" min="1">
@@ -274,13 +271,13 @@ function crearProducto(p){
                 unidades = 1
             }
             const product_id = evento.target.parentElement.parentElement.getAttribute("data-product")
-            const producto_buscar = lista.find(item => item.id===product_id)
+            const producto_buscar = lista.find(item => item.juego_id===product_id)
             //Copia del producto con campo extra cantidad, en el que guardaremos las unidades añadidas
             let prod_campo_cantidad = {...producto_buscar, cantidad:unidades}
             
             //Mediante el filter comprobamos si en el array recuento_carrito había ya algún producto con el id del que se intenta añadir al carrito
             //Si no lo hay, lo añadimos. Si lo hay, significa que es un producto repetido y no lo permitimos
-            const repetido = recuento_carrito.filter(item=>item.id===prod_campo_cantidad.id)
+            const repetido = recuento_carrito.filter(item=>item.juego_id===prod_campo_cantidad.id)
             if(repetido.length==0){     
                 recuento_carrito.push(prod_campo_cantidad)
                 localStorage.setItem("carrito", JSON.stringify(recuento_carrito))
@@ -301,11 +298,11 @@ function crearProducto(p){
 function crearProductoCarrito(producto){
     const prod_carrito = document.createElement("div")
     prod_carrito.classList.add("producto-carrito")
-    prod_carrito.setAttribute("data-product", producto.id)
-    prod_carrito.innerHTML = `<img src="${producto.image}" alt="">
+    prod_carrito.setAttribute("data-product", producto.juego_id)
+    prod_carrito.innerHTML = `<img src="${producto.caratula}" alt="">
                         <div class="contenido">
-                            <span class="nombre-producto">${producto.name}</span>
-                            <span class="precio-producto">${producto.price} €</span>
+                            <span class="nombre-producto">${producto.juego_nombre}</span>
+                            <span class="precio-producto">${producto.precio} €</span>
                             <div class="botones-carrito">
                                     <div><span>Cantidad: </span><span class=\"cantidad-prod\">${producto.cantidad}</span></div> <i id="aumentar-cantidad" class="fa-solid fa-plus"></i> <i id="reducir-cantidad" class="fa-solid fa-minus"></i>
                                 <button id="eliminar-producto">
@@ -313,7 +310,7 @@ function crearProductoCarrito(producto){
                                 </button>
                             </div>
                         </div>`
-    total_precio+=producto.cantidad * producto.price
+    total_precio+=producto.cantidad * producto.precio
     console.log(total_precio)
     actualizarPrecio(total_precio)
 
@@ -331,13 +328,13 @@ function crearProductoCarrito(producto){
         producto["cantidad"]++
         evento.currentTarget.previousElementSibling.children[1].innerText=producto["cantidad"]
         console.log(producto["cantidad"])
-        total_precio+=parseFloat(producto["price"])
+        total_precio+=parseFloat(producto["precio"])
         actualizarPrecio(parseFloat(total_precio))
         actualizarLista(recuento_carrito, producto)
     })
     reducir_cantidad.addEventListener("click", (evento)=>{
         producto["cantidad"]--
-        total_precio-=parseFloat(producto["price"])
+        total_precio-=parseFloat(producto["precio"])
         actualizarPrecio(parseFloat(total_precio))
         if(producto["cantidad"] != 0){
             evento.currentTarget.previousElementSibling.previousElementSibling.children[1].innerText=producto["cantidad"]
@@ -433,12 +430,12 @@ function actualizarPrecio(precio){
 
 //Funcion que actualiza la lista del carrito para cuando se añadan o resten unidades a un producto, así como en el local storage
 function actualizarLista(lista, producto){
-    let indice = lista.findIndex(item=>item.id===producto.id)
+    let indice = lista.findIndex(item=>item.juego_id===producto.juego_id)
     lista.splice(indice,1, producto)
     localStorage.setItem("carrito", JSON.stringify(lista))
 }
 //Funcion que elimina un producto de la lista y del local storage si la cantidad llega a 0
 function eliminarProductoLista(lista, producto){
-    let lista_actualizada = lista.filter(item => item.id !== producto.id)
+    let lista_actualizada = lista.filter(item => item.juego_id !== producto.juego_id)
     localStorage.setItem("carrito", JSON.stringify(lista_actualizada))
 }

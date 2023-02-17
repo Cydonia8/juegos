@@ -196,6 +196,7 @@
                     <td class=\"text-center\">".$array[$pos]["plataforma"]."</td>
                     <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$array[$pos]["caratula"]."\"></td>
                     <td class=\"text-center\">".formatearFecha($array[$pos]["fecha"])."</td>
+                    <td class=\"text-center\">".$array[$pos]["precio"]."€</td>
                     <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
                     if($array[$pos]["activo"] == 1){
                         echo "<td class=\"text-center\">

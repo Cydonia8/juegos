@@ -42,6 +42,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&Josefin+Sans:wght@500&Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
@@ -54,10 +56,14 @@
     <script src="../scripts/tienda.js" defer></script>
     <title>Document</title>
 </head>
-<body>
+<body id="tienda">
     <?php
         menuImprimir($user);
     ?>
+    <main>
+    <button class="abrir-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
     <!-- <header>
         <div>
             <img src="majesty.png" alt="">
@@ -97,24 +103,26 @@
     </section>
 
     <!-- Productos y filtros -->
-    <section class="seccion-productos-filtros">
-        <div class="container-filtros">
-            <div class="filtros-sticky">
+    
+    <section class="seccion-productos-filtros container-fluid">
+    <div class="row">
+        <div class="container-filtros col-12 col-md-2">
+            <div class="filtros-sticky d-flex flex-column justify-content-evenly">
                 <form class="filtrar-nombre">
                     <input id="busqueda-nombre" type="text" placeholder="Nombre">
                 </form>
                 <div class="filtros">
-                    <h3>Categorias</h2>
+                    <h5>Categorias</h5>
                 </div>
                 <div class="filtro-precio">
-                    <h4>Filtrar productos por precio máximo</h4>
+                    <h5>Filtrar productos por precio máximo</h5>
                     <form class="filtrar-precio">
-                        <input id="precio" type="range" min="0" max="200"value="0">
+                        <input id="precio" type="range" step="0.01" min="0" max="200"value="0">
                         <p>No se ha aplicado filtro de precio</p>
                     </form>
                 </div>
                 <div class="filtro-fecha">
-                    <h4>Filtrar productos entre dos fechas</h4>
+                    <h5>Filtrar productos entre dos fechas</h5>
                     <form class="filtrar-fecha">
                         <input id="fecha-inicio" type="date">
                         <span>a</span>
@@ -131,10 +139,12 @@
                 </div>
             </div>
         </div>
-        <div class="container-productos">
+        <div class="container-productos col-12 col-md-10 row">
             
         </div>
+        </div>
     </section>
+    
 
     <!-- Modal para las fotos de productos -->
     <section class="modal-productos">
@@ -145,5 +155,9 @@
             <h4></h4>
         </div>
     </section>
+    </main>
+    <?php
+        imprimirFooter();
+    ?>
 </body>
 </html>

@@ -5,6 +5,7 @@
 	header("Access-Control-Allow-Origin: *");
 
     $conexion = new mysqli('localhost', 'root', '', 'tienda_juegos');
+    $conexion->set_charset('utf8');
     // $conexion->select_db($dbname);
     sleep(1);
     $consulta_total = $conexion->query("select count(*) total from juegos");
@@ -20,15 +21,22 @@
     $limite = $_REQUEST['limite'] ?? $limite_default;
     $datos = [];
     
-    $sentencia = $conexion->query("select * from juegos limit $offset, $limite");
-    
+    $sentencia = $conexion->query("select j.id juego_id, j.nombre juego_nombre, caratula, fecha_lanzamiento, precio, j.activo juego_activo, p.nombre plat from juegos j, plataformas p where j.plataforma = p.id and j.activo = 1 limit $offset, $limite");
+    $i=0;
     while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
-        $datos[] = $fila;
+        $datos[$i]["juego_id"] = $fila["juego_id"];
+        $datos[$i]["juego_nombre"] = $fila["juego_nombre"];
+        $datos[$i]["caratula"] = $fila["caratula"];
+        $datos[$i]["fecha"] = $fila["fecha_lanzamiento"];
+        $datos[$i]["precio"] = $fila["precio"];
+        $datos[$i]["activo"] = $fila["juego_activo"];
+        $datos[$i]["plat"] = $fila["plat"];
+        $i++;
     }
     $info['total'] = $total;
     $info['datos'] = $datos;
 
-    echo $info["datos"]
+    // echo $info["datos"]
     $patron_url = explode("?", $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])[0];
     
     //Determinamos el siguiente enlace

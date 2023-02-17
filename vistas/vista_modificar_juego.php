@@ -29,6 +29,7 @@
         $caratula_original = $datos[0]["caratula"];
         $id = $datos[0]["id"];
         $fecha = $datos[0]["fecha"];
+        $precio = $datos[0]["precio"]
     ?>
     <main>
     <button class="abrir-menu">
@@ -53,6 +54,7 @@
                 </select>
                 <input type="file" name="foto">
                 <input type="date" name="fecha" value="<?php echo $fecha; ?>">
+                <input type="number" step="0.01" name="precio" value="<?php echo $precio; ?>">
                 <input hidden value="<?php echo $caratula_original; ?>" name="foto-original">
                 <input hidden value="<?php echo $id; ?>" name="id">
                 <input type="submit" name="modificacion-juego" value="Modificar">

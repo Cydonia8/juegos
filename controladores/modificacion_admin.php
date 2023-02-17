@@ -92,6 +92,7 @@
         $plataforma = $_POST["plataforma"];
         $fecha = $_POST["fecha"];
         $id = $_POST["id"];
+        $precio =$_POST["precio"];
         $success = false;
         $foto_error = false;
 
@@ -125,7 +126,7 @@
             }
         }
         if($success){
-            $j->modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha);
+            $j->modificarJuego($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $precio);
         }
         $datos = $j->getDatosJuego($id);
         $plats = $plat->getNombrePlataformas();
