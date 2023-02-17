@@ -299,7 +299,7 @@
                   <a href="https://www.cylex.es/granada/videoclub.html" class="text-white">Alquiler de videojuegos</a>
                 </p>
                 <p>
-                  <a href="https://www.instant-gaming.com/es/" class="text-white">Venta digital</a>
+                  <a href="../controladores/tienda.php" class="text-white">Venta digital</a>
                 </p>
                 <p>
                   <a href="../controladores/tlouII.php" class="text-white">The Last of Us Part II: en profundidad</a>
@@ -407,7 +407,7 @@
                     <a href="https://www.cylex.es/granada/videoclub.html" class="text-white">Alquiler de videojuegos</a>
                   </p>
                   <p>
-                    <a href="https://www.instant-gaming.com/es/" class="text-white">Venta digital</a>
+                    <a href="controladores/tienda.php" class="text-white">Venta digital</a>
                   </p>
                   <p>
                     <a href="controladores/tlouII.php" class="text-white">The Last of Us Part II: en profundidad</a>

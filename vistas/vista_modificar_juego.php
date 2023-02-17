@@ -61,11 +61,11 @@
         <?php
             if(isset($success)){
                 if($success){
-                    echo "<h3 class=\"mensajes-temporales alert alert-success w-50\">Juego modificado</h3>";
+                    echo "<h3 class=\"mensajes-temporales alert alert-success w-50 mx-auto mt-3\">Juego modificado</h3>";
                 }else{
-                    echo "<h3 class=\"mensajes-temporales alert alert-danger w-50 m-3\">Datos mal, ceporro</h3>";
+                    echo "<h3 class=\"mensajes-temporales alert alert-danger w-50 mx-auto mt-3\">Datos mal, ceporro</h3>";
                     if($foto_error){
-                        echo "<h3 class=\"mensaje-temporal alert alert-danger w-50\">Formato o tamaño de foto inválidos</h3>"; 
+                        echo "<h3 class=\"mensaje-temporal alert alert-danger w- mx-auto mt-3\">Formato o tamaño de foto inválidos</h3>"; 
                     }
                 }
 
