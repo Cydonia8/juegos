@@ -46,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&Josefin+Sans:wght@500&Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&Lato:wght@500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -61,6 +61,10 @@
         menuImprimir($user);
     ?>
     <main>
+        <h1 class="text-center mb-5">Tienda digital de Ready Player One</h1>
+        <div class="mx-auto text-center logo-extra">
+            <img class="img-fluid" src="../media/img_assets/ready2nobgfill.png" alt="">
+        </div>
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -105,14 +109,15 @@
     <!-- Productos y filtros -->
     
     <section class="seccion-productos-filtros container-fluid">
-    <div class="row">
-        <div class="container-filtros col-12 col-md-2">
-            <div class="filtros-sticky d-flex flex-column justify-content-evenly">
+    <div class="row justify-content-center gap-5 gap-md-0">
+        <div class="container-filtros col-12 col-lg-2">
+            <h3 class="">Filtros de producto</h3>
+            <div class="filtros-sticky d-flex flex-column justify-content-start gap-4 align-items-center">
                 <form class="filtrar-nombre">
                     <input id="busqueda-nombre" type="text" placeholder="Nombre">
                 </form>
                 <div class="filtros">
-                    <h5>Categorias</h5>
+                    
                 </div>
                 <div class="filtro-precio">
                     <h5>Filtrar productos por precio máximo</h5>
@@ -122,9 +127,9 @@
                     </form>
                 </div>
                 <div class="filtro-fecha">
-                    <h5>Filtrar productos entre dos fechas</h5>
+                    <h5 class="mb-3">Filtrar productos entre dos fechas</h5>
                     <form class="filtrar-fecha">
-                        <input id="fecha-inicio" type="date">
+                        <input id="fecha-inicio" class="mb-3" type="date">
                         <span>a</span>
                         <input id="fecha-tope" type="date">
                         <i id="actualizar-fecha" class="fa-solid fa-arrow-rotate-right"></i>
@@ -134,12 +139,12 @@
                     <button id="abrir-carrito">Abrir carrito</button>
                 </div>
                 <div class="paginadores">
-                    <button id="anterior">Anterior</button>
-                    <button id="siguiente">Siguiente</button>
+                    <button id="anterior"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="siguiente"><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
-        <div class="container-productos col-12 col-md-10 row">
+        <div class="container-productos col-12 col-lg-10 row">
             
         </div>
         </div>

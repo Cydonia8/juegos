@@ -62,7 +62,8 @@ anterior.addEventListener("click", cambiarPagina);
 
 function cambiarPagina(eventos){
     container_animacion.classList.add("mostrar-animacion")
-    let url = eventos.target.getAttribute("data-link")
+    let url = eventos.currentTarget.getAttribute("data-link")
+    console.log(url)
     InicializarTienda(url)
     setTimeout(()=>{
         container_animacion.classList.remove("mostrar-animacion")
@@ -187,7 +188,7 @@ async function InicializarTienda(url = "../bd/listaProds.php"){
     //Array con categorías sin repetir
     const plataformas_no_rep = lista.map(item => item.plat).filter((c,i,array)=>array.indexOf(c)===i)
     const lista_plataformas = document.createElement("ul");
-    contenedor_filtros.innerHTML=""
+    contenedor_filtros.innerHTML="<h5>Plataformas</h5>"
     contenedor_filtros.appendChild(lista_plataformas);
     lista_plataformas.innerHTML=`<li class="categoria">Todos</li>`
     plataformas_no_rep.forEach(cate => {
@@ -227,14 +228,14 @@ async function InicializarTienda(url = "../bd/listaProds.php"){
 function crearProducto(p){
     const producto = document.createElement("article");
     producto.className="producto"
-    producto.classList.add("col-12", "col-md-4")
+    producto.classList.add("col-12", "col-lg-4", "col-md-6")
     producto.setAttribute("data-id", p.juego_id)
     producto.innerHTML = `  <div class="foto-producto">
-                                <img id="img-prod" class="img-fluid" src="${p.caratula}" alt="">
+                                <img id="img-prod" class="img-fluid mb-2" src="${p.caratula}" alt="">
                             </div>
                             <div class="datos-producto d-flex">
                             <h4>${p.juego_nombre}</h4>
-                                <h4>${p.precio} €</h4>
+                                <h4 class="mb-2">${p.precio} €</h4>
                             </div>`;
 
     const imagen = producto.querySelector(".foto-producto");

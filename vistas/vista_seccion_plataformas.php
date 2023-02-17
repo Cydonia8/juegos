@@ -25,6 +25,9 @@
         menuImprimir($user);
     ?>
     <main>
+    <div class="mx-auto text-center logo-extra">
+            <img class="img-fluid" src="../media/img_assets/ready2nobgfill.png" alt="">
+        </div>
     <button class="abrir-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>

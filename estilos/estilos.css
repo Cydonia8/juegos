@@ -39,9 +39,8 @@ header nav a{
     background-color: #272727;
     font-family: 'Barlow Condensed', sans-serif!important;
 }
-#seccion-tlou h1,h2{
+#seccion-tlou h1{
     font-family: 'Barlow Condensed', sans-serif!important;
-    text-transform: uppercase;
     backdrop-filter: blur(3px);
 }
 #seccion-tlou h1{
@@ -76,8 +75,11 @@ header nav{
     font-size: 1.5rem;
     z-index: 1000;
 }
-h1,h2{
-    font-family: 'Lato', sans-serif;
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+}
+h2{
+    font-family: 'Josefin Sans', sans-serif;
 }
 .juego img{
     max-width: 100%;
@@ -654,7 +656,7 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
     padding: 0;
 }
 #tienda{
-    font-family: 'Josefin', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 #tienda .container-productos img:hover{
     transform: scale(1.05);
@@ -666,16 +668,23 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
 #tienda .filtros-sticky{
     height: 100%;
 }
+#tienda .filtros-sticky li{
+    list-style: none;
+    cursor: pointer;
+}
 #tienda ul, h5, h4{
     margin: 0;
 }
-#tienda h5, h4{
+#tienda .filtros-sticky h5{
     font-size: 1em;
-    font-family: 'Josefin', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 @media screen and (min-width: 1000px){
     .abrir-menu{
+        display: none;
+    }
+    .logo-extra{
         display: none;
     }
 }
@@ -689,6 +698,9 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
         height: auto;
         transition: .8s;
         height: 70vh;
+    }
+    .logo-extra{
+        display: block;
     }
     .mostrar-menu{
         left: 0;

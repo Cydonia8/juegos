@@ -8,7 +8,7 @@
     $conexion->set_charset('utf8');
     // $conexion->select_db($dbname);
     sleep(1);
-    $consulta_total = $conexion->query("select count(*) total from juegos");
+    $consulta_total = $conexion->query("select count(*) total from juegos where activo = 1");
     $fila = $consulta_total->fetch_array(MYSQLI_ASSOC);
     $total = $fila['total'];
 
