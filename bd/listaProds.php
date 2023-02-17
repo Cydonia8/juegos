@@ -23,13 +23,12 @@
     $sentencia = $conexion->query("select * from juegos limit $offset, $limite");
     
     while($fila = $sentencia->fetch_array(MYSQLI_ASSOC)){
-        echo $fila["nombre"];
         $datos[] = $fila;
     }
     $info['total'] = $total;
     $info['datos'] = $datos;
 
-    
+    echo $info["datos"]
     $patron_url = explode("?", $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])[0];
     
     //Determinamos el siguiente enlace
