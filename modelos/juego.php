@@ -137,9 +137,9 @@
         public function buscarJuego($patron){
             $patron_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
             $conexion = conectar::conectarBD();
-            $sentencia = $conexion->prepare("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo from juegos j, plataformas p where j.plataforma = p.id and j.nombre like ?");
+            $sentencia = $conexion->prepare("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo, precio from juegos j, plataformas p where j.plataforma = p.id and j.nombre like ?");
             $sentencia->bind_param('s', $patron_busqueda);
-            $sentencia->bind_result($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo);
+            $sentencia->bind_result($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo, $precio);
             $sentencia->execute();
             
             $resultados = array();
@@ -153,6 +153,7 @@
                 $resultados[$i]["caratula"] = $caratula;
                 $resultados[$i]["fecha"] = $fecha;
                 $resultados[$i]["activo"] = $activo;
+                $resultados[$i]["precio"] = $precio;
                 $i++;
             }
             $sentencia->close();
