@@ -79,12 +79,13 @@
 
         public function datosJuego($id){
             $conexion = conectar::conectarBD();
-            $datos = $conexion->query("select id, descripcion, caratula, nombre from juegos where id = '$id'");
+            $datos = $conexion->query("select id, descripcion, caratula, nombre, precio from juegos where id = '$id'");
             $fila = $datos->fetch_array(MYSQLI_ASSOC);
             $datos_juego[0]["nombre"] = $fila["nombre"];
             $datos_juego[0]["foto"] = $fila["caratula"];
             $datos_juego[0]["descripcion"] = $fila["descripcion"];
             $datos_juego[0]["id"] = $fila["id"];
+            $datos_juego[0]["precio"] = $fila["precio"];
             $conexion->close();
             return $datos_juego;
         }

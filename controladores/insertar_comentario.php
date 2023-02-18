@@ -25,5 +25,7 @@
         $comentarios = $comentario->comentariosJuego($id_juego, $datos_recarga[0]["plataforma"]);
    
         include "../vistas/vista_ver_mas_juego.php";
+    }else{
+        header("location:../index.php");
     }
 ?>

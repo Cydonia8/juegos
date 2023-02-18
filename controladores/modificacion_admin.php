@@ -132,5 +132,7 @@
         $plats = $plat->getNombrePlataformas();
         include "../vistas/vista_modificar_juego.php";
 
+    }else{
+        header("location:../index.php");
     }
 ?>

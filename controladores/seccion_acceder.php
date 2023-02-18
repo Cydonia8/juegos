@@ -13,6 +13,8 @@
         }else{
             include "../vistas/vista_acceder.php";
         }
+    }else{
+        header("location:../index.php");
     }
-    // include "../vistas/vista_acceder.php";
+    
 ?>

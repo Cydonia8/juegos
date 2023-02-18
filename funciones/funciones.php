@@ -468,4 +468,10 @@
         
     }
 
+    function restringirAcceso($visitante, $permitido){
+      if($visitante != $permitido){
+          header("location:../index.php");
+      }
+  }
+
 ?>

@@ -54,7 +54,7 @@
             $plat->insertarPlataforma($nombre, $foto);
         }
         include "../vistas/vista_insertar_plataforma.php";
-    }else {
+    }elseif(isset($_POST["insertar-juego"])) {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
         $plataforma = $_POST["plataforma"];
@@ -88,5 +88,7 @@
         }
         $datos = $plat->getNombrePlataformas();
         include "../vistas/vista_insertar_juego.php";
+    }else{
+        header("location:../index.php");
     }
 ?>

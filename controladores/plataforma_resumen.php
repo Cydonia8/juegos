@@ -6,6 +6,8 @@
         $plat->nombre=$_POST["nombre"];
         $juegos = $plat->juegosPlataforma($_POST["id"]);
         include "../vistas/vista_ver_plataforma.php";
-     }
+     }else{
+      header("location:../index.php");
+  }
      
 ?>
