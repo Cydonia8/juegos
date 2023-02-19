@@ -110,10 +110,10 @@
                     $nuevo_nombre;
                     switch($extension_foto){
                         case "image/jpeg":
-                            $nuevo_nombre = $nombre.".jpeg";
+                            $nuevo_nombre = $id.".jpeg";
                             break;
                         case "image/png":
-                            $nuevo_nombre = $nombre.".png";
+                            $nuevo_nombre = $id.".png";
                             break;
                     }
                     $caratula = "../media/img_juegos/".$nuevo_nombre;

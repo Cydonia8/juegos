@@ -62,7 +62,7 @@
 
         public static function todosJuegos(){
             $conexion = conectar::conectarBD();
-            $todos = $conexion->query("select p.id id_plat, j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
+            $todos = $conexion->query("select p.id id_plat, j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id and j.activo = 1 order by p.nombre asc");
             $i = 0;
             while($fila=$todos->fetch_array(MYSQLI_ASSOC)){
                 $juegos[$i]["juego"] = $fila["juego"];
@@ -75,6 +75,17 @@
 
             return $juegos;
             $conexion->close();
+        }
+
+        public function obtenerAutoid(){
+            $conexion = conectar::conectarBD();
+            $consulta_id = $conexion->prepare("select auto_increment cod from information_schema.tables where table_schema = 'tienda_juegos' and table_name = 'juegos'");
+            $consulta_id->bind_result($id);
+            $consulta_id->execute();
+            $consulta_id->fetch();
+            $consulta_id->close();
+        
+            return $id;
         }
 
         public function datosJuego($id){

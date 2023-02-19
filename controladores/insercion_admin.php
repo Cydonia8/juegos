@@ -65,16 +65,17 @@
         $precio = $_POST["precio"];
         $success = false;
         $foto_error = false;
+        $auto_id = $j->obtenerAutoid();
 
         if(!cadenaVacia($nombre) and !cadenaVacia($descripcion) and $plataforma != "null"){
             if(comprobarTamanio($tamanio_foto) and comprobarExtension($extension_foto)){
                 $nombre_nuevo;
                 switch($extension_foto){
                     case "image/jpeg":
-                        $nombre_nuevo = $nombre.".jpeg";
+                        $nombre_nuevo = $auto_id.".jpeg";
                         break;
                     case "image/png":
-                        $nombre_nuevo = $nombre.".png";
+                        $nombre_nuevo = $auto_id.".png";
                         break;
                 }
                 $foto = "../media/img_juegos/".$nombre_nuevo;

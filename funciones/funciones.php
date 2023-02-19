@@ -128,97 +128,112 @@
         return $salida;
     }
     function imprimirPlataforma($array){
+      if(sizeof($array) > 0){
         foreach($array as $pos=>$dato){
-            echo "<tr>
-                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
-                    <td class=\"text-center\"><img class=\"w-50\" src=\"".$array[$pos]["logo"]."\"></td>
-                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
-                    if($array[$pos]["activo"] == 1){
+          echo "<tr>
+                  <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                  <td class=\"text-center\"><img class=\"w-50\" src=\"".$array[$pos]["logo"]."\"></td>
+                  <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
+                  if($array[$pos]["activo"] == 1){
+                    echo "<td class=\"text-center\">
+                            <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-plataforma\" value=\"Desactivar\">
+                            </form>
+                    </td>";
+                }else{
+                    echo "<td>
+                    <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                <input type=\"submit\" class=\"btn btn-success\" name=\"activar-plataforma\" value=\"Activar\">
+                            </form></td>";
+                }
+                 echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                      <input hidden value=\"".$array[$pos]["id"]."\" name=\"plataforma\">
+                      <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-plat\" value=\"Modificar\">    
+                  </form>
+                  </td>
+          </tr>";
+        }
+      }else{
+        echo "<h2 class=\"text-center alert alert-danger\">No hay coincidencias</h2>";
+      }
+        
+    }
+
+    function imprimirUsuario($array){
+      if(sizeof($array) > 0){
+        foreach($array as $pos=>$usu){
+          echo "<tr>
+                  <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["nick"]."</td>
+                  <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
+                  if($array[$pos]["activo"] == 1){
                       echo "<td class=\"text-center\">
                               <form action=\"../controladores/desactivar.php\" method=\"post\">
                                   <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                  <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-plataforma\" value=\"Desactivar\">
+                                  <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-usuario\" value=\"Desactivar\">
                               </form>
                       </td>";
                   }else{
                       echo "<td>
                       <form action=\"../controladores/desactivar.php\" method=\"post\">
                                   <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                  <input type=\"submit\" class=\"btn btn-success\" name=\"activar-plataforma\" value=\"Activar\">
+                                  <input type=\"submit\" class=\"btn btn-success\" name=\"activar-usuario\" value=\"Activar\">
                               </form></td>";
                   }
-                   echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
-                        <input hidden value=\"".$array[$pos]["id"]."\" name=\"plataforma\">
-                        <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-plat\" value=\"Modificar\">    
-                    </form>
-                    </td>
-            </tr>";
+                  echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                              <input hidden value=\"".$array[$pos]["id"]."\" name=\"usuario\">
+                              <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-usuario\" value=\"Modificar\">    
+                          </form>
+                      </td>";
+              echo "</tr>";
         }
-    }
-
-    function imprimirUsuario($array){
-        foreach($array as $pos=>$usu){
-            echo "<tr>
-                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["nick"]."</td>
-                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
-                    if($array[$pos]["activo"] == 1){
-                        echo "<td class=\"text-center\">
-                                <form action=\"../controladores/desactivar.php\" method=\"post\">
-                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-usuario\" value=\"Desactivar\">
-                                </form>
-                        </td>";
-                    }else{
-                        echo "<td>
-                        <form action=\"../controladores/desactivar.php\" method=\"post\">
-                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" class=\"btn btn-success\" name=\"activar-usuario\" value=\"Activar\">
-                                </form></td>";
-                    }
-                    echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
-                                <input hidden value=\"".$array[$pos]["id"]."\" name=\"usuario\">
-                                <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-usuario\" value=\"Modificar\">    
-                            </form>
-                        </td>";
-                echo "</tr>";
-        }
+      }else{
+        echo "<h2 class=\"text-center alert alert-danger\">No hay coincidencias</h2>";
+      }
+        
     }
 
     function imprimirJuego($array){
+      if(sizeof($array) > 0){
         foreach($array as $pos=>$usu){
-            echo "<tr>
-                    <td class=\"text-center\">".$array[$pos]["id"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["descripcion"]."</td>
-                    <td class=\"text-center\">".$array[$pos]["plataforma"]."</td>
-                    <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$array[$pos]["caratula"]."\"></td>
-                    <td class=\"text-center\">".formatearFecha($array[$pos]["fecha"])."</td>
-                    <td class=\"text-center\">".$array[$pos]["precio"]."€</td>
-                    <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
-                    if($array[$pos]["activo"] == 1){
-                        echo "<td class=\"text-center\">
-                                <form action=\"../controladores/desactivar.php\" method=\"post\">
-                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-juego\" value=\"Desactivar\">
-                                </form>
-                        </td>";
-                    }else{
-                        echo "<td>
-                        <form action=\"../controladores/desactivar.php\" method=\"post\">
-                                    <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
-                                    <input type=\"submit\" class=\"btn btn-success\" name=\"activar-juego\" value=\"Activar\">
-                                </form></td>";
-                    }
-                    echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
-                                <input hidden value=\"".$array[$pos]["id"]."\" name=\"juego\">
-                                <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-juego\" value=\"Modificar\">    
-                            </form>
-                        </td>";
-                echo "</tr>";
+          echo "<tr>
+                  <td class=\"text-center\">".$array[$pos]["id"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["nombre"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["descripcion"]."</td>
+                  <td class=\"text-center\">".$array[$pos]["plataforma"]."</td>
+                  <td class=\"text-center\"><img class=\"img-fluid\" src=\"".$array[$pos]["caratula"]."\"></td>
+                  <td class=\"text-center\">".formatearFecha($array[$pos]["fecha"])."</td>
+                  <td class=\"text-center\">".$array[$pos]["precio"]."€</td>
+                  <td class=\"text-center\">".usuarioActivo($array[$pos]["activo"])."</td>";
+                  if($array[$pos]["activo"] == 1){
+                      echo "<td class=\"text-center\">
+                              <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                  <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                  <input type=\"submit\" class=\"btn btn-danger\" name=\"desactivar-juego\" value=\"Desactivar\">
+                              </form>
+                      </td>";
+                  }else{
+                      echo "<td>
+                      <form action=\"../controladores/desactivar.php\" method=\"post\">
+                                  <input hidden name=\"id\" value=\"".$array[$pos]["id"]."\">
+                                  <input type=\"submit\" class=\"btn btn-success\" name=\"activar-juego\" value=\"Activar\">
+                              </form></td>";
+                  }
+                  echo "<td class=\"text-center\"><form action=\"../controladores/modificacion_admin.php\" method=\"post\">
+                              <input hidden value=\"".$array[$pos]["id"]."\" name=\"juego\">
+                              <input type=\"submit\" class=\"btn btn-info\" name=\"modificar-juego\" value=\"Modificar\">    
+                          </form>
+                      </td>";
+              echo "</tr>";
         }
+      }else{
+        echo "<h2 class=\"text-center alert alert-danger\">No hay coincidencias</h2>";
+      }
+        
     }
 
     function cadenaVacia($cadena){
@@ -473,5 +488,7 @@
           header("location:../index.php");
       }
   }
+
+ 
 
 ?>

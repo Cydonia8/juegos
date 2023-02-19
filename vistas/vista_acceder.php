@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../estilos/estilos.css">
-    <script src="../scripts/app.js" defer></script>
+    <script src="../scripts/acceder.js" defer></script>
     <title>Acceder | RPO</title>
 </head>
 <body id="seccion-acceder">
@@ -39,7 +39,10 @@
         <section class="container-xl d-flex justify-content-center align-items-center acceder-container">
             <form class="bg-black yellow-dark pattern-diagonal-lines-lg d-flex flex-wrap flex-column gap-3 w-50 align-items-start align-items-md-center" action="../controladores/seccion_acceder.php" method="post">
                 <input type="text" name="user" placeholder="Usuario">
-                <input type="text" name="pass" placeholder="Contraseña">
+                <!-- <div class="d-flex align-items-center"> -->
+                    <input type="password" name="pass" placeholder="Contraseña">
+                    <i id="ver-pass"class="fa-solid fa-eye"></i>
+                <!-- </div> -->
                 <input type="submit" name="enviar" value="Acceder">
             </form>
             <?php

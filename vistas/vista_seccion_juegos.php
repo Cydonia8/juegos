@@ -26,6 +26,7 @@
         menuImprimir($user);
     ?>
     <main>
+    <h1 class="text-center">Descubre todos los juegos de nuestro catálogo</h1>
     <div class="mx-auto text-center logo-extra">
             <img class="img-fluid" src="../media/img_assets/ready2nobgfill.png" alt="">
         </div>

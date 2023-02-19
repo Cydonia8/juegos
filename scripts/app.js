@@ -6,6 +6,7 @@ const temporales = document.querySelector(".mensajes-temporales");
 const img_plats = document.querySelectorAll(".img-plats")
 const plats = document.querySelectorAll(".plat")
 
+
 abrir_menu.addEventListener("click", ()=>{
     if(menu.classList.contains("mostrar-menu")){
         menu.classList.remove("mostrar-menu")
