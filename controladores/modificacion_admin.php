@@ -31,6 +31,8 @@
 
         if($pass == ""){
             $pass = $pass_original;
+        }else{
+            $pass = md5(md5($pass));
         }
 
         if(!cadenaVacia($nombre) and !cadenaVacia($nick) and !cadenaVacia($pass)){

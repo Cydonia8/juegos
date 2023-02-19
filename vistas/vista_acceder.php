@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
     require_once "../funciones/funciones.php";
     $user = comprobarVisitante();
     if($user != ""){
@@ -45,14 +47,14 @@
                 <!-- </div> -->
                 <input type="submit" name="enviar" value="Acceder">
             </form>
-            <?php
+        </section>
+        <?php
                 if(isset($comprobante)){
                     if($comprobante == 0){
-                        echo "ladron de mierda";
+                        echo "<h2 class=\"alert alert-danger text-center\">Datos incorrectos</h2>";
                     }
                 }
             ?>
-        </section>
     </main>
     <?php
         imprimirFooter();
