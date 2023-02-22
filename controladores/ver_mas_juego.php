@@ -12,6 +12,8 @@ require_once "../modelos/comentario.php";
             $comentarios = $comentario->comentariosJuego($_POST["id"], $_POST["plat"]);
         }
         include "../vistas/vista_ver_mas_juego.php";
+    }else{
+        header("location:../index.php");
     }
     
 ?>

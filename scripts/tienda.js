@@ -62,7 +62,8 @@ anterior.addEventListener("click", cambiarPagina);
 
 function cambiarPagina(eventos){
     container_animacion.classList.add("mostrar-animacion")
-    let url = eventos.target.getAttribute("data-link")
+    let url = eventos.currentTarget.getAttribute("data-link")
+    console.log(url)
     InicializarTienda(url)
     setTimeout(()=>{
         container_animacion.classList.remove("mostrar-animacion")
@@ -93,7 +94,7 @@ input_busqueda.addEventListener("keyup", ()=>{
 
     if(filtro.length===0){
         contenedor_productos.classList.add("no-resultados")
-        contenedor_productos.innerHTML=`<h2>No hay productos con estas condiciones</h2>
+        contenedor_productos.innerHTML=`<h2 class="text-center">No hay productos con estas condiciones</h2>
                                         <img id="noprod-foto" src="../media/img_assets/noprod.jpg">`
     }else{
         contenedor_productos.classList.remove("no-resultados")
@@ -111,7 +112,7 @@ actualizar_fecha.addEventListener("click", ()=>{
 
     if(filtro.length === 0){
         contenedor_productos.classList.add("no-resultados")
-        contenedor_productos.innerHTML=`<h2>No hay productos con estas condiciones</h2>
+        contenedor_productos.innerHTML=`<h2 class="text-center">No hay productos con estas condiciones</h2>
         <img id="noprod-foto" src="noprod.jpg">`
     }else{
         contenedor_productos.classList.remove("no-resultados")
@@ -130,7 +131,7 @@ input_precio.addEventListener("change", ()=>{
 
     if(filtro.length===0){
         contenedor_productos.classList.add("no-resultados")
-        contenedor_productos.innerHTML=`<h2>No hay productos con estas condiciones</h2>
+        contenedor_productos.innerHTML=`<h2 class="text-center">No hay productos con estas condiciones</h2>
         <img id="noprod-foto" src="../media/img_assets/noprod.jpg">`
     }else{
         contenedor_productos.classList.remove("no-resultados")
@@ -187,7 +188,7 @@ async function InicializarTienda(url = "../bd/listaProds.php"){
     //Array con categorías sin repetir
     const plataformas_no_rep = lista.map(item => item.plat).filter((c,i,array)=>array.indexOf(c)===i)
     const lista_plataformas = document.createElement("ul");
-    contenedor_filtros.innerHTML=""
+    contenedor_filtros.innerHTML="<h4>Plataformas</h4>"
     contenedor_filtros.appendChild(lista_plataformas);
     lista_plataformas.innerHTML=`<li class="categoria">Todos</li>`
     plataformas_no_rep.forEach(cate => {
@@ -227,14 +228,14 @@ async function InicializarTienda(url = "../bd/listaProds.php"){
 function crearProducto(p){
     const producto = document.createElement("article");
     producto.className="producto"
-    producto.classList.add("col-12", "col-md-4")
+    producto.classList.add("col-12", "col-lg-4", "col-md-6")
     producto.setAttribute("data-id", p.juego_id)
     producto.innerHTML = `  <div class="foto-producto">
-                                <img id="img-prod" class="img-fluid" src="${p.caratula}" alt="">
+                                <img id="img-prod" class="img-fluid mb-2" src="${p.caratula}" alt="">
                             </div>
                             <div class="datos-producto d-flex">
                             <h4>${p.juego_nombre}</h4>
-                                <h4>${p.precio} €</h4>
+                                <h4 class="mb-2">${p.precio} €</h4>
                             </div>`;
 
     const imagen = producto.querySelector(".foto-producto");
@@ -254,7 +255,7 @@ function crearProducto(p){
         contenido_modal.innerHTML=`<img src="${producto_buscado.caratula}" alt="">
                                     <h3>${producto_buscado.juego_nombre}</h3>
                                     <h3>${producto_buscado.precio} €</h3>
-                                    <h4>ID del producto: ${producto_buscado.juego_id}</h4>
+                                    <h4>Lanzado el ${adaptarFecha(producto_buscado.fecha)} en ${producto_buscado.plat}</h4>
                                     <div>
                                         <button class="añadir-producto">Añadir al carrito</button>
                                         <input id="unidades-añadir" type="number" value="1" min="1">

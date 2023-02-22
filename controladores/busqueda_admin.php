@@ -16,6 +16,8 @@
         $juego = new juego();
         $resultados = $juego->buscarJuego($_POST["nombre"]);
         include "../vistas/vista_juegos_admin.php";
+    }else{
+        header("location:../index.php");
     }
 ?>
 

@@ -62,7 +62,7 @@
 
         public static function todosJuegos(){
             $conexion = conectar::conectarBD();
-            $todos = $conexion->query("select p.id id_plat, j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id order by p.nombre asc");
+            $todos = $conexion->query("select p.id id_plat, j.nombre juego, j.id id_juego, caratula, p.nombre plataforma from juegos j, plataformas p where j.plataforma = p.id and j.activo = 1 order by p.nombre asc");
             $i = 0;
             while($fila=$todos->fetch_array(MYSQLI_ASSOC)){
                 $juegos[$i]["juego"] = $fila["juego"];
@@ -77,14 +77,26 @@
             $conexion->close();
         }
 
+        public function obtenerAutoid(){
+            $conexion = conectar::conectarBD();
+            $consulta_id = $conexion->prepare("select auto_increment cod from information_schema.tables where table_schema = 'tienda_juegos' and table_name = 'juegos'");
+            $consulta_id->bind_result($id);
+            $consulta_id->execute();
+            $consulta_id->fetch();
+            $consulta_id->close();
+        
+            return $id;
+        }
+
         public function datosJuego($id){
             $conexion = conectar::conectarBD();
-            $datos = $conexion->query("select id, descripcion, caratula, nombre from juegos where id = '$id'");
+            $datos = $conexion->query("select id, descripcion, caratula, nombre, precio from juegos where id = '$id'");
             $fila = $datos->fetch_array(MYSQLI_ASSOC);
             $datos_juego[0]["nombre"] = $fila["nombre"];
             $datos_juego[0]["foto"] = $fila["caratula"];
             $datos_juego[0]["descripcion"] = $fila["descripcion"];
             $datos_juego[0]["id"] = $fila["id"];
+            $datos_juego[0]["precio"] = $fila["precio"];
             $conexion->close();
             return $datos_juego;
         }
@@ -137,9 +149,9 @@
         public function buscarJuego($patron){
             $patron_busqueda = str_pad($patron, strlen($patron)+2, '%', STR_PAD_BOTH);
             $conexion = conectar::conectarBD();
-            $sentencia = $conexion->prepare("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo from juegos j, plataformas p where j.plataforma = p.id and j.nombre like ?");
+            $sentencia = $conexion->prepare("select j.id id, j.nombre juego, descripcion, p.nombre plataforma, caratula, fecha_lanzamiento, j.activo activo, precio from juegos j, plataformas p where j.plataforma = p.id and j.nombre like ?");
             $sentencia->bind_param('s', $patron_busqueda);
-            $sentencia->bind_result($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo);
+            $sentencia->bind_result($id, $nombre, $descripcion, $plataforma, $caratula, $fecha, $activo, $precio);
             $sentencia->execute();
             
             $resultados = array();
@@ -153,6 +165,7 @@
                 $resultados[$i]["caratula"] = $caratula;
                 $resultados[$i]["fecha"] = $fecha;
                 $resultados[$i]["activo"] = $activo;
+                $resultados[$i]["precio"] = $precio;
                 $i++;
             }
             $sentencia->close();

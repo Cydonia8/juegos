@@ -31,6 +31,8 @@
 
         if($pass == ""){
             $pass = $pass_original;
+        }else{
+            $pass = md5(md5($pass));
         }
 
         if(!cadenaVacia($nombre) and !cadenaVacia($nick) and !cadenaVacia($pass)){
@@ -110,10 +112,10 @@
                     $nuevo_nombre;
                     switch($extension_foto){
                         case "image/jpeg":
-                            $nuevo_nombre = $nombre.".jpeg";
+                            $nuevo_nombre = $id.".jpeg";
                             break;
                         case "image/png":
-                            $nuevo_nombre = $nombre.".png";
+                            $nuevo_nombre = $id.".png";
                             break;
                     }
                     $caratula = "../media/img_juegos/".$nuevo_nombre;
@@ -132,5 +134,7 @@
         $plats = $plat->getNombrePlataformas();
         include "../vistas/vista_modificar_juego.php";
 
+    }else{
+        header("location:../index.php");
     }
 ?>

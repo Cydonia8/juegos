@@ -37,26 +37,39 @@ header nav a{
 }
 #seccion-tlou{
     background-color: #272727;
-    font-family: 'Barlow Condensed', sans-serif!important;
-}
-#seccion-tlou h1,h2{
-    font-family: 'Barlow Condensed', sans-serif!important;
-    text-transform: uppercase;
-    backdrop-filter: blur(3px);
+    font-family: 'Josefin Sans', sans-serif!important;
 }
 #seccion-tlou h1{
-    font-size: 3rem;
+    font-family: 'Josefin Sans', sans-serif!important;
+    backdrop-filter: blur(3px);
+    font-size: 3.5rem;
 }
 #seccion-tlou .banner{
     background-image: url('../media/img_juegos/tlouIIbg.jpg');
     background-size: cover;
-    height: 50vh;
+    background-position: center;
+    height: 70vh;
+}
+.nd-container{
+    backdrop-filter: blur(3px);
 }
 #seccion-tienda .container-tienda{
     height: 40vh;
 }
+#seccion-tlou h2{
+    font-size: 2.5rem;
+}
+#seccion-tlou p{
+    font-size: 1.5rem;
+}
 #seccion-tienda .container-tienda div{
     border: 2px solid;
+}
+#seccion-tlou footer *{
+    font-size: inherit;
+}
+#seccion-tlou img{
+    border-radius: 20px;
 }
 header nav{
     width: 100%;
@@ -76,8 +89,11 @@ header nav{
     font-size: 1.5rem;
     z-index: 1000;
 }
-h1,h2{
-    font-family: 'Lato', sans-serif;
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+}
+h2{
+    font-family: 'Josefin Sans', sans-serif;
 }
 .juego img{
     max-width: 100%;
@@ -168,9 +184,15 @@ h1,h2{
     border-bottom: 3px solid black;
     border-right: 3px solid black;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(1n):last-child{
-    border-bottom: none;
+#ver-mas h4,h5{
+    font-family: 'Josefin Sans', sans-serif;
 }
+#ver-mas p{
+    font-family: 'Lato', sans-serif;
+}
+/* #seccion-plataformas .contenedor-seccion-plataformas div:nth-child(1n):last-child{
+    border-bottom: none;
+} */
 #seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2n){
     border-bottom: 3px solid black;
     border-right: none;
@@ -178,7 +200,7 @@ h1,h2{
 #seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n):not(nth:child(even)){
     border-right: 3px solid black;
 }
-#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(3n){
+#seccion-plataformas .contenedor-seccion-plataformas div:nth-child(2n){
     border-bottom: 3px solid black;
 }
 #ver-plataforma .contenedor-ver-plataforma img{
@@ -276,6 +298,11 @@ table img{
 .forms-volver{
     display: flex;
 }
+#ver-pass{
+    color: white;
+    cursor: pointer;
+    font-size: 1.5em;
+}
 .forms-volver input[type="submit"],a.forms-volver{
     z-index: 999;
     background-color: #795fe3d0;
@@ -286,7 +313,7 @@ table img{
     font-weight: bold;
     place-content: center;
 }
-.form-insertar-modificar input,select{
+.form-insertar-modificar input,select,textarea{
     border-radius: 8px;
     border: none;
     background-color: #d0d0d381;
@@ -654,7 +681,7 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
     padding: 0;
 }
 #tienda{
-    font-family: 'Josefin', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 #tienda .container-productos img:hover{
     transform: scale(1.05);
@@ -662,21 +689,66 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
 #tienda .container-productos img{
     border-radius: 8px;
     filter: drop-shadow(1px -1px 6px #000);
+    cursor: pointer;
 }
 #tienda .filtros-sticky{
     height: 100%;
 }
+#tienda .filtros-sticky li{
+    list-style: none;
+    cursor: pointer;
+}
 #tienda ul, h5, h4{
     margin: 0;
 }
-#tienda h5, h4{
+#tienda .filtros-sticky h5{
     font-size: 1em;
-    font-family: 'Josefin', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
-
+#tienda .container-filtros{
+    border-right: 3px solid #795fe3;
+}
+#seccion-tlou .abrir-menu{
+    display: block!important;
+}
+#seccion-tlou header{
+    display: none;
+    
+}
+.nd-container{
+    width: 25%;
+}
+@media screen and (min-width: 1400px) {
+    #seccion-tlou header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        display: none;
+        height: auto;
+        transition: .8s;
+        
+    }
+}
 @media screen and (min-width: 1000px){
     .abrir-menu{
         display: none;
+    }
+    .logo-extra{
+        display: none;
+    }
+}
+@media screen and (max-width: 1190px) {
+    #seccion-tlou h1{
+        font-size: 3rem;
+    }
+    .nd-container{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    #seccion-tlou h1{
+        font-size: 2rem;
     }
 }
 @media screen and (max-width: 1000px){
@@ -690,6 +762,14 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
         transition: .8s;
         height: 70vh;
     }
+
+    .logo-extra{
+        display: block;
+    }
+    #tienda .container-filtros{
+        border-bottom: 3px solid #795fe3;
+        border-right: none;
+    }
     .mostrar-menu{
         left: 0;
         transition: .8s;
@@ -701,5 +781,8 @@ box-shadow: -4px 7px 21px -7px rgba(0,0,0,0.75);
         flex-direction: column;
         align-items: center;
         height: 70vh;
+    }
+    .banner{
+        background-position: 45%!important;
     }
 }

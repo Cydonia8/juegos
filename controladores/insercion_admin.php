@@ -54,7 +54,7 @@
             $plat->insertarPlataforma($nombre, $foto);
         }
         include "../vistas/vista_insertar_plataforma.php";
-    }else {
+    }elseif(isset($_POST["insertar-juego"])) {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
         $plataforma = $_POST["plataforma"];
@@ -65,16 +65,17 @@
         $precio = $_POST["precio"];
         $success = false;
         $foto_error = false;
+        $auto_id = $j->obtenerAutoid();
 
         if(!cadenaVacia($nombre) and !cadenaVacia($descripcion) and $plataforma != "null"){
             if(comprobarTamanio($tamanio_foto) and comprobarExtension($extension_foto)){
                 $nombre_nuevo;
                 switch($extension_foto){
                     case "image/jpeg":
-                        $nombre_nuevo = $nombre.".jpeg";
+                        $nombre_nuevo = $auto_id.".jpeg";
                         break;
                     case "image/png":
-                        $nombre_nuevo = $nombre.".png";
+                        $nombre_nuevo = $auto_id.".png";
                         break;
                 }
                 $foto = "../media/img_juegos/".$nombre_nuevo;
@@ -88,5 +89,7 @@
         }
         $datos = $plat->getNombrePlataformas();
         include "../vistas/vista_insertar_juego.php";
+    }else{
+        header("location:../index.php");
     }
 ?>

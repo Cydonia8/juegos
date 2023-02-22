@@ -38,6 +38,8 @@
         $id = $_POST["id"];
         $p->activarPlataforma($id);
         header("location:plataformas_admin.php");
+    }else{
+        header("location:../index.php");
     }
     
 ?>

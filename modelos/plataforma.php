@@ -23,6 +23,20 @@
 
         public static function sacarPlataformas(){
             $conexion = conectar::conectarBD();
+            $plataformas = $conexion->query("select nombre, logotipo, id, activo from plataformas where activo = 1");
+            $i = 0;
+            while($fila = $plataformas->fetch_array(MYSQLI_ASSOC)){
+                $plataforma[$i]["logo"] = $fila["logotipo"];
+                $plataforma[$i]["id"] = $fila["id"];
+                $plataforma[$i]["nombre"] = $fila["nombre"];
+                $plataforma[$i]["activo"] = $fila["activo"];
+                $i++;
+            }
+            $conexion->close();
+            return $plataforma;
+        }
+        public static function sacarPlataformasAdmin(){
+            $conexion = conectar::conectarBD();
             $plataformas = $conexion->query("select nombre, logotipo, id, activo from plataformas");
             $i = 0;
             while($fila = $plataformas->fetch_array(MYSQLI_ASSOC)){
@@ -51,7 +65,7 @@
 
         public function juegosPlataforma($id){
             $conexion = conectar::conectarBD();
-            $lanzamientos = $conexion->query("select j.id id_juego, p.id id_plataforma, caratula, j.nombre juego, fecha_lanzamiento from juegos j, plataformas p where j.plataforma = p.id and p.id = '$id'");
+            $lanzamientos = $conexion->query("select j.id id_juego, p.id id_plataforma, caratula, j.nombre juego, fecha_lanzamiento from juegos j, plataformas p where j.plataforma = p.id and p.id = '$id' and j.activo = 1");
             $i = 0;
             $juego = array();
             while($fila = $lanzamientos->fetch_array(MYSQLI_ASSOC)){
