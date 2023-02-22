@@ -62,6 +62,10 @@
                         if($current_plataforma != $juegos[$pos+1]["plataforma"]){
                             echo "</div></div>";
                         }
+                    }elseif($pos < sizeof($juegos)-1){
+                        if($current_plataforma != $juegos[$pos+1]["plataforma"]){
+                            echo "</div></div>";
+                        }
                     }
                 }
                 echo "</div></div>";
