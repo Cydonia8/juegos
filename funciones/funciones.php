@@ -62,7 +62,7 @@
                                 <li><a href=\"index.php\">Inicio</a></li>
                                 <li><a href=\"controladores/juegos_admin.php\">Juegos</a></li>
                                 <li><a href=\"controladores/plataformas_admin.php\">Plataformas</a></li>
-                                <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
+                                <li><a class=\"logo-menu\" href=\"index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_usuarios.php\">Usuarios</a></li>
                                 <li><a href=\"controladores/comentarios_admin.php\">Comentarios</a></li>
                                 <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
@@ -87,7 +87,7 @@
                             <ul>
                                 <li><a href=\"index.php\">Inicio</a></li>
                                 <li><a href=\"controladores/seccion_juegos.php\">Juegos</a></li>
-                                <li><a class=\"logo-menu\" href=\"../index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
+                                <li><a class=\"logo-menu\" href=\"index.php\"><img src=\"media/img_assets/ready2nobgfill.png\"></a></li>
                                 <li><a href=\"controladores/seccion_plataformas.php\">Plataformas</a></li>
                                 <li><a href=\"controladores/cerrar_sesion.php\">Cerrar sesión</a></li>
                             </ul>
